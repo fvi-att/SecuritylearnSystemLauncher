@@ -33,7 +33,7 @@ RUN cd /var/www/ && git clone https://github.com/fvi-att/SecLearnController.git 
 
 ENV PYTHONPATH /usr/local/lib/python27.zip:/usr/local/lib/python2.7:/usr/local/lib/python2.7/plat-linux2:/usr/local/lib/python2.7/lib-tk:/usr/local/lib/python2.7/lib-old:/usr/local/lib/python2.7/lib-dynload:/usr/local/lib/python2.7/site-packages:/usr/local/lib/python2.7/dist-packages
 
-COPY 000-default.conf /etc/apache2/sites-enabled/
+ADD 000-default.conf /etc/apache2/sites-enabled/
 
 #start service
 ENTRYPOINT /etc/init.d/mysql start && /etc/init.d/apache2 start && /etc/init.d/ssh start && /bin/bash

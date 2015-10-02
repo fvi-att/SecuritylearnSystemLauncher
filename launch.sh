@@ -23,6 +23,7 @@ curl -sSL https://get.docker.com/ | sh
 #build Docker container
 mkdir -p ~/work/controll
 cp Dockerfile ~/work/controll/Dockerfile
+cp 000-default.conf ~/work/controll/000-default.conf
 cd ~/work/controll
 
 #wget https://gist.githubusercontent.com/fvi-att/65854df646be14c29ffa/raw/531f24982f060c267081e64c1d46058c72208385/Dockerfile -O ~/work/controll/Dockerfile
