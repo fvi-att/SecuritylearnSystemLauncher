@@ -38,10 +38,10 @@ iptables -A INPUT -p tcp --dport 2222 -j ACCEPT
 docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=admin --name mariadb mariadb:latest
 
 #RUN APP CONTAINER
-CONTROLL_CONTAINER=$(docker run -itd --name main -p 2222:22 -p 80:80 -v /tmp/:/tmp/ -v /var/www/  --link mariadb:mariadb main)
+docker run -itd --name main -p 2222:22 -p 80:80 -v /tmp/:/tmp/ -v /var/www/ --link mariadb:mariadb main
 
 #docker exec $CONTROLL_CONTAINER ip addr add 172.17.0.10/16 dev eth0
-docker exec -it $CONTROLL_CONTAINER /bin/bash
+docker exec -it main /bin/bash
 
 #end trap
 trap 0
