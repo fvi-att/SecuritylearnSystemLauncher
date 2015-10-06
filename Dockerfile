@@ -38,6 +38,14 @@ RUN cd /var/www/ && git clone https://github.com/fvi-att/SecLearnApp.git && chow
 
 ADD 000-default.conf /etc/apache2/sites-enabled/
 
+#initilize db
+ADD init.sql ~/
+RUN cd ~/ && mysql -u root -p admin -h $MARIADB_PORT_3306_TCP_ADDR < init.sql
+
+RUN cd /var/www/SecLearnApp/SecLearnApp/ && ./manage.py migrate
+
+
+
 #start service
 ENTRYPOINT /etc/init.d/mysql start && /etc/init.d/apache2 start && /etc/init.d/ssh start && /bin/bash
 
