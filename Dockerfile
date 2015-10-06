@@ -32,7 +32,7 @@ RUN expect -c "spawn passwd sysadmin; expect \"New password:\"; send -- \"admin\
 
 #download latest webapp source from git
 
-RUN cd /var/www/ && git clone https://github.com/fvi-att/SecLearnController.git && chown root:www-data -R * && chmod 755 -R *
+RUN cd /var/www/ && git clone https://github.com/fvi-att/SecLearnApp.git && chown root:www-data -R * && chmod 755 -R *
 
 #ENV PYTHONPATH /usr/local/lib/python27.zip:/usr/local/lib/python2.7:/usr/local/lib/python2.7/plat-linux2:/usr/local/lib/python2.7/lib-tk:/usr/local/lib/python2.7/lib-old:/usr/local/lib/python2.7/lib-dynload:/usr/local/lib/python2.7/site-packages:/usr/local/lib/python2.7/dist-packages
 
