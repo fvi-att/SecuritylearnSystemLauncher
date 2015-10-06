@@ -4,6 +4,7 @@ MAINTAINER fvi@shimizu shimizu.r.ad@m.titech.ac.jp
 #basic settings
 ENV LANG ja_JP.UTF-8
 ENV LANGUAGE ja
+ENV LC_ALL C
 
 RUN awk '$1 ~ "^deb" { $3 = $3 "-backports"; print; exit }' /etc/apt/sources.list > /etc/apt/sources.list.d/backports.list
 
@@ -24,7 +25,7 @@ RUN apt-get -y install python2.7 && apt-get -y install python-dev
 #RUN  cd /tmp/Python-2.7.10 && ./configure &&  make && make install 
 
 #install pip and Django and apache_wsgi_mod
-RUN  apt-get install -y python-setuptools python-pip libapache2-mod-wsgi && pip install Django==1.8.0 && pip install mysql-python && a2enmod wsgi
+RUN  apt-get install -y python-setuptools python-pip libapache2-mod-wsgi && pip install Django==1.8.5 && pip install mysql-python && a2enmod wsgi
 
 #add sysadmin user
 RUN useradd sysadmin
@@ -36,18 +37,15 @@ RUN cd /var/www/ && git clone https://github.com/fvi-att/SecLearnApp.git && chow
 
 #ENV PYTHONPATH /usr/local/lib/python27.zip:/usr/local/lib/python2.7:/usr/local/lib/python2.7/plat-linux2:/usr/local/lib/python2.7/lib-tk:/usr/local/lib/python2.7/lib-old:/usr/local/lib/python2.7/lib-dynload:/usr/local/lib/python2.7/site-packages:/usr/local/lib/python2.7/dist-packages
 
-ADD 000-default.conf /etc/apache2/sites-enabled/
+#COPY 000-default.conf /etc/apache2/sites-enabled/
 
 #initilize db
-ADD init.sql ~/
-RUN cd ~/ && mysql -u root -p admin -h $MARIADB_PORT_3306_TCP_ADDR < init.sql
-
-RUN cd /var/www/SecLearnApp/SecLearnApp/ && ./manage.py migrate
+COPY configs/  /tmp/configs/
+#COPY init_db.sh /tmp/
+RUN cd /tmp/configs/ && cp 000-default.conf /etc/apache2/sites-enabled/ && cp init_db.sh ~/ && cp create_db.sql ~/
+#RUN cd /var/www/SecLearnApp/SecLearnApp/ && ./manage.py migrate
 
 
 
 #start service
 ENTRYPOINT /etc/init.d/mysql start && /etc/init.d/apache2 start && /etc/init.d/ssh start && /bin/bash
-
-
-
