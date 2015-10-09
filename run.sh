@@ -1,5 +1,9 @@
 #! /bin/sh
 
+#REMOVE OLD CONTAINER
+docker stop `docker ps -aq`
+docker rm `docker ps -aq`
+
 #RUN DATABASE CONTAINER
 docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=admin --name mariadb mariadb:latest
 
