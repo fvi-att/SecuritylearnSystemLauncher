@@ -24,16 +24,11 @@ curl -sSL https://get.docker.com/ | sh
 #mkdir -p ~/work/controll
 #cp Dockerfile ~/work/controll/Dockerfile
 #cp 000-default.conf ~/work/controll/000-default.conf
+#cd ~/work/controll
 
 #wget https://gist.githubusercontent.com/fvi-att/65854df646be14c29ffa/raw/531f24982f060c267081e64c1d46058c72208385/Dockerfile -O ~/work/controll/Dockerfile
 
-#if you use Vagrant. turn up this line.
-cd /vagrant/
-
-docker build -t main_app .
-
-#sleep for ready..
-sleep 15s
+docker pull fviaatt/securitylearn
 
 
 #container launch settings
@@ -44,7 +39,7 @@ iptables -A INPUT -p tcp --dport 2222 -j ACCEPT
 docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=admin --name mariadb mariadb:latest
 
 #RUN APP CONTAINER
-docker run -itd --name main_app -p 2222:22 -p 80:80 -v /tmp/:/tmp/ -v /var/www/ --link mariadb:mariadb main_app
+docker run -itd --name main_app -p 80:80 -v /tmp/:/tmp/ -v /var/www/ --link mariadb:mariadb fviaatt/securitylearn
 
 #docker exec $CONTROLL_CONTAINER ip addr add 172.17.0.10/16 dev eth0
 docker exec -it main_app /bin/bash

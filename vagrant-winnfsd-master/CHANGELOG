@@ -1,0 +1,92 @@
+CHANGELOG
+=========
+
+1.1.0
+------
+
+Update binary again (contains many fixes from the winnfsd project, thanks to all contributors, especially to Yann Schepens)
+
+1.0.11
+------
+
+Update binary (contains many fixes from the winnfsd project, thanks to all contributors, especially to Yann Schepens)
+
+
+1.0.10
+------
+
+Fix issue if path contains space
+
+
+1.0.9
+-----
+
+Update binary
+Change batch file for windows 8
+
+
+1.0.8
+-----
+
+Correct typos
+Add logging parameter
+
+
+1.0.7
+-----
+
+Add uid and gid support
+Add support for multiple boxes
+
+
+1.0.6
+-----
+
+Add support for vagrant 1.5.0 and higher
+Remove support for vagrant lower than 1.5.0
+Improve error message
+
+
+1.0.5
+-----
+
+Match vagrant documentation for activating nfs
+
+
+1.0.4
+-----
+
+Improve batch file
+Update readme
+Update WinNFSd
+
+
+1.0.3
+-----
+
+Move nfspaths file to .vagrant dir
+
+
+1.0.2
+-----
+
+2013-12-18
+
+Improve setting up of the firewall rules
+
+
+1.0.1
+-----
+
+2013-12-18
+
+Fix batch file
+Easy setup for the firewall rules
+
+
+1.0.0
+-----
+
+2013-12-12
+
+First release

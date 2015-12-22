@@ -2,19 +2,16 @@
 
 #this is installing script use ./xxx.sh or nohup xxx.sh &
 
-#set trap
-trap 'install finish' 0
-trap 'install interapted' 2
 
 #install essential-tools
 
-apt-get update
-apt-get install -y build-essential emacs24 vim
-apt-get install -y git curl
+#apt-get update
+#apt-get install -y build-essential emacs24 vim
+#apt-get install -y git curl
 
 
 #install docker
-curl -sSL https://get.docker.com/ | sh
+#curl -sSL https://get.docker.com/ | sh
 
 #docker pull baseimages
 #docker pull fviaatt/securitylearn
@@ -28,7 +25,7 @@ curl -sSL https://get.docker.com/ | sh
 #wget https://gist.githubusercontent.com/fvi-att/65854df646be14c29ffa/raw/531f24982f060c267081e64c1d46058c72208385/Dockerfile -O ~/work/controll/Dockerfile
 
 #if you use Vagrant. turn up this line.
-cd /vagrant/
+#cd /vagrant/
 
 docker build -t main_app .
 

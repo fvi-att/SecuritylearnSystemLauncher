@@ -1,0 +1,15 @@
+---
+en:
+  vagrant_winnfsd:
+    hosts:
+      windows:
+        nfs_export: |-
+          Preparing to edit nfs mounting file.
+        nfs_prune: |-
+          Pruning invalid NFS exports.
+    firewall:
+      error: |-
+        It seems that you don't have the privileges to change the firewall rules. NFS will not work without that firewall
+        changes. Execute the following commands via cmd as administrator:
+      xp_error: |-
+        If you are an Windows XP user run the following command instead:
