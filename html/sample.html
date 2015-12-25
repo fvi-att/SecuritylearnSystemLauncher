@@ -24,7 +24,9 @@
  
 <!-- スタイルシートはできるだけ早くレンダリングされるため、HTMLドキュメントの上の方に記述
      href属性にスタイルシートファイルのURIを記述 -->
-<link rel="stylesheet" href="">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+
+
 <style>
   .drag {width:100px; height: 100px; margin:10px; border:solid 1px #333; float:left;}
   .drop { width: 480px; height: 200px; margin: 10px; border: solid 1px #333; background-color:#cf6; }
@@ -70,8 +72,21 @@
 
 
 <body> 
-<!-- コンテンツを記述 -->
-  <h2>このボックスを該当する　&quot;情報のやり取りの部分に　&quot; ドラッグしてください。</h2>
+  <!-- コンテンツを記述 -->
+
+  <!-- アラートの表示 -->
+  <div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>正解です！</strong> 次の章へ進みましょう！
+</div>
+  <!-- Breadcrumb -->
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active">Data</li>
+</ol>
+
+  <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
 <div id="main">
   <div id="drag1" class="drag">HTMLリクエスト</div>
   <div id="drag2" class="drag">HTMLデータ</div>
@@ -90,16 +105,20 @@
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 
 
-
+<!-- for bootstrap -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
 <script type="text/javascript">
 
+  
 <!-- JQuery 操作 -->
 $(function() {
   // 1ドラッグ＆ドロップ機能を実装
   $('.drag').draggable();
   $('.drop').droppable({
     drop: function(e,ui) {
-        alert(ui.draggable.text() + "がboxにドロップされました　評価を開始します");
+    alert(ui.draggable.text() + "がboxにドロップされました　評価を開始します");
+    
     }
    });
 　$('.arrow').droppable({
