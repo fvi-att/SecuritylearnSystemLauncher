@@ -33,6 +33,8 @@
   .arrow {width: auto, max-height: 150px; margin: 10px; float:left; transform: rotate(-90deg); z-index:1;}
   .arrow img{max-height:80%; width:auto;}
   .alert {display:none;}
+  nav {height:3%}
+  #container{margin-top:3%;}
   hr { clear: both; }
 </style>
 
@@ -73,7 +75,32 @@
 </head>
 
 
-<body> 
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+
+        <!--ブランド名 ロゴ名の表示-->
+        <a class="navbar-brand" href="#">SecLearn</a>
+
+        <!--トグルボタンの設置-->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id="nav-content" class="collapse navbar-collapse">
+
+        <!--リンクのリスト メニューリスト-->
+        <ul class="nav navbar-nav">
+          <li><a href="">Link1</a></li>
+          <li><a href="">Link2</a></li>
+          <li><a href="">Link3</a></li>
+	</ul>
+      </div>
+  </nav>
+
+  <div id="container">
   <div class="col-md-2">
     <ol>
       <li><a href="">始めに</a></li>
@@ -113,9 +140,9 @@
 
   <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
 <div id="main">
-  <div id="drag1" class="drag">HTMLリクエスト</div>
-  <div id="drag2" class="drag">HTMLデータ</div>
-  <div id="drag3" class="drag">SQL</div>
+  <div id="drag1" class="drag" id="box1">HTMLリクエスト</div>
+  <div id="drag2" class="drag" id="box2">HTMLデータ</div>
+  <div id="drag3" class="drag" id="box3">SQL</div>
   <hr />
   <div class="drop">ブラウザ</div>
   <div class="arrow" id="arrow1"><img src="arrow.png"></div>
@@ -124,7 +151,7 @@
   <div class="drop">リレーショナル・データベース</div>
 </div>
 
-
+</div>
 </div>
 <!-- 右フレーム -->
 
@@ -140,7 +167,8 @@
 <script type="text/javascript">
 
   
-<!-- JQuery 操作 -->
+  <!-- JQuery 操作 -->
+  
 $(function() {
 // 1ドラッグ＆ドロップ機能を実装
   alert("it's should work");
