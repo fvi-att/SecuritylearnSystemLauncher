@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
  
 <!-- ページのタイトルを記述 -->
-<title>sampleページ</title>
+<title>情報セキュリティ人材育成システムSecLearn</title>
  
 <!-- パフォーマンスのために使用する文字のエンコーディングを記述
      参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
@@ -28,13 +28,14 @@
 
 
 <style>
-  .drag {width:100px; height: 100px; margin:10px; border:solid 1px #333; float:left; text-align:middle;  z-index:2;}
+  .dragbox {width:100px; height: 100px; margin:10px; border:solid 1px #333; float:left; text-align:middle;  z-index:2;}
   .drop { width: 200px; height: 400px; margin: 10px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
   .arrow {width: auto, max-height: 150px; margin: 10px; float:left; transform: rotate(-90deg); z-index:1;}
   .arrow img{max-height:80%; width:auto;}
   .alert {display:none;}
   nav {height:3%}
   #container{margin-top:3%;}
+  .col-md-2 {border-right: 1px solid #d3d3d3; height:10000px}
   hr { clear: both; }
 </style>
 
@@ -107,14 +108,16 @@
       <li><a href="">ブラウザとサーバの関係</a></li>
       <li><a href="">ブラウザとデータベースの関係</a></li>
       <li><a href="">ブラウザからメッセージを送る。</a></li>
-      <li><a href="">講義</a></li>
-      <li><a href="">講義</a></li>
-      <li><a href="">講義</a></li>
-      <li><a href="">講義</a></li>
-      <li><a href="">講義</a></li>
-      <li><a href="">講義</a></li>
-      <li><a href="">講義</a></li>
-      <li><a href="">講義</a></li>
+      <li><a href="">送られるデータはどのように処理されるのか</a></li>
+      <li><a href="">コマンドが混入していたら</a></li>
+      <li><a href="">JavaScriptを混入させてみる</a></li>
+      <li><a href="">脅威モデル</a></li>
+      <li><a href="">脅威モデル1.　Spoofing</a></li>
+      <li><a href="">脅威モデル2.　Tampering</a></li>
+      <li><a href="">脅威モデル3.　Reduction</a></li>
+      <li><a href="">脅威モデル4.　InformationDisclosure</a></li>
+      <li><a href="">脅威モデル5.　DoS</a></li>
+      <li><a href="">脅威モデル6.　Evalation　Privilleges</a></li>
     </ol>
   </div>
   <!-- 左フレーム -->
@@ -133,16 +136,16 @@
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Library</a></li>
-  <li class="active">Data</li>
+  <li><a href="#">始めに</a></li>
+  <li><a href="#">サーバ間とブラウザの関係</a></li>
+  <li class="active">データベースとサーバの関係</li>
 </ol>
 
   <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
 <div id="main">
-  <div id="drag1" class="drag" id="box1">HTMLリクエスト</div>
-  <div id="drag2" class="drag" id="box2">HTMLデータ</div>
-  <div id="drag3" class="drag" id="box3">SQL</div>
+  <div id="drag1"; class="dragbox">HTMLリクエスト</div>
+  <div id="drag2"; class="dragbox">HTMLデータ</div>
+  <div id="drag3"; class="dragbox">SQL</div>
   <hr />
   <div class="drop">ブラウザ</div>
   <div class="arrow" id="arrow1"><img src="arrow.png"></div>
@@ -164,22 +167,21 @@
 <!-- for bootstrap -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
-<script type="text/javascript">
 
-  
-  <!-- JQuery 操作 -->
-  
+
+<script>  
+  <!-- JQuery 操作 -->  
 $(function() {
 // 1ドラッグ＆ドロップ機能を実装
   alert("it's should work");
-  $('.drag').draggable();
-  $('.drop').droppable({
+  $(".dragbox").draggable();
+  $(".dragbox").droppable({
     drop: function(e,ui) {
 alert(ui.draggable.text() + "がboxにドロップされました　評価を開始します");
 
     }
    });
-　$('.arrow').droppable({
+　$(".arrow").droppable({
      drop: function(e,ui){
 alert(ui.draggable.text() + "がarrowにドロップされました　評価を開始します。");
     $("#correct-popup").show();
