@@ -62,7 +62,13 @@
 <link rel="icon" sizes="196x196" href="">
 <link rel="apple-touch-icon" sizes="152x152" href="">
 -->
- 
+
+
+<!-- for bootstrap -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+
+
 <!-- スクリプトでブロッキングを起こさないものはここに記述
      可能であれば「async（文書の読み込みが完了した時点でスクリプトを実行）」を使用
      Example: <script src="" async></script> -->
@@ -71,6 +77,26 @@
 <script type="text/javascript"
   src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 
+
+<!-- Jquery -->
+<script>
+  
+$(function() {
+// 1ドラッグ＆ドロップ機能を実装
+  $(".dragbox").draggable();
+  $(".drop").droppable({
+    drop: function(e,ui) {
+      alert(ui.draggable.text() + "がboxにドロップされました　評価を開始します");
+    }
+   });
+　$(".arrow").droppable({
+     drop: function(e,ui){
+       alert(ui.draggable.text() + "がarrowにドロップされました　評価を開始します。");
+    $("#correct-popup").show();
+  }});
+
+});
+</script>
 
 
 </head>
@@ -164,31 +190,8 @@
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 
 
-<!-- for bootstrap -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
 
 
-<script>  
-  <!-- JQuery 操作 -->  
-$(function() {
-// 1ドラッグ＆ドロップ機能を実装
-  alert("it's should work");
-  $(".dragbox").draggable();
-  $(".dragbox").droppable({
-    drop: function(e,ui) {
-alert(ui.draggable.text() + "がboxにドロップされました　評価を開始します");
-
-    }
-   });
-　$(".arrow").droppable({
-     drop: function(e,ui){
-alert(ui.draggable.text() + "がarrowにドロップされました　評価を開始します。");
-    $("#correct-popup").show();
-  }});
-
-});
-</script>
 
 </body>
 </html>
