@@ -30,6 +30,7 @@
 <style>
   .dragbox {width:100px; height: 100px; margin:10px; border:solid 1px #333; float:left; text-align:middle;  z-index:2;}
   .drop { width: 200px; height: 400px; margin: 10px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
+  .drop img{width:150px; height:auto; margin:auto; text-align:center; vertical-align:middle; floating:clear;}
   .arrow {width: auto, max-height: 150px; margin: 10px; float:left; transform: rotate(-90deg); z-index:1;}
   .arrow img{max-height:80%; width:auto;}
   .alert {display:none;}
@@ -173,11 +174,11 @@ $(function() {
   <div id="drag2"; class="dragbox">HTMLデータ</div>
   <div id="drag3"; class="dragbox">SQL</div>
   <hr />
-  <div class="drop">ブラウザ</div>
+  <div class="drop">ブラウザ <img src="chrome_browser.png"></div>
   <div class="arrow" id="arrow1"><img src="arrow.png"></div>
-  <div class="drop">アプリケーションサーバ</div>
+  <div class="drop">アプリケーションサーバ<img src="server.png"></div>
   <div class="arrow" id="arrow1"><img src="arrow.png"></div>
-  <div class="drop">リレーショナル・データベース</div>
+  <div class="drop">リレーショナル・データベース<img src="database.png"></div>
 </div>
 
 </div>
