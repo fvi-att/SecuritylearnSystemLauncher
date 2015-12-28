@@ -74,7 +74,7 @@
 
 
 <body> 
-  <div class="col-md-3">
+  <div class="col-md-2">
     <ol>
       <li><a href="">始めに</a></li>
       <li><a href="">ブラウザとサーバの関係</a></li>
@@ -91,7 +91,7 @@
     </ol>
   </div>
   <!-- 左フレーム -->
-<div class="col-md-9">
+<div class="col-md-10">
   <!-- アラートの表示 -->
 <div class="alert alert-success alert-dismissible" role="alert" id="correct-popup">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -142,7 +142,8 @@
   
 <!-- JQuery 操作 -->
 $(function() {
-  // 1ドラッグ＆ドロップ機能を実装
+// 1ドラッグ＆ドロップ機能を実装
+  alert("it's should work");
   $('.drag').draggable();
   $('.drop').droppable({
     drop: function(e,ui) {
