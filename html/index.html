@@ -26,8 +26,10 @@
      href属性にスタイルシートファイルのURIを記述 -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 
+<script type="text/javascript" src="js/Evaluate_0001.js"></script>
 
 <style>
+  #blocks_field {border-bottom: 1px solid #d3d3d3;}
   .dragbox {width:100px; height: 100px; margin:10px; border:solid 1px #333; background-color:#e0ffff; float:left; text-align:middle;  z-index:2;}
   .drop { width: 200px; height: 400px; margin: 10px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
   .drop img{width:150px; height:auto; margin:auto; text-align:center; vertical-align:middle; floating:clear;}
@@ -35,9 +37,11 @@
   .arrow img{max-height:90% max-width:90%;}
   .alert {display:none;}
   nav {height:3%}
+  
   #container{margin-top:3%;}
   .col-md-2 {border-right: 1px solid #d3d3d3; height:10000px}
-  hr { clear: both; }
+  #main {clear:both;}
+  .control {float:left; margin-left:1%; padding-top:1%; border-top:solid 1px #d3d3d3; width:1500px}
 </style>
 
 
@@ -98,19 +102,9 @@
           <span class="icon-bar"></span>
         </button>
       </div>
-      <div id="nav-content" class="collapse navbar-collapse">
-
-        <!--リンクのリスト メニューリスト
-        <ul class="nav navbar-nav">
-          <li><a href="">Link1</a></li>
-          <li><a href="">Link2</a></li>
-          <li><a href="">Link3</a></li>
-	</ul>
-	-->
-      </div>
   </nav>
 
-  <div id="container">
+<div id="container">
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked">
       <li><a href="">始めに</a></li>
@@ -126,12 +120,12 @@
       <li><a href="">脅威モデル3.　Reduction</a></li>
       <li><a href="">脅威モデル4.　InformationDisclosure</a></li>
       <li><a href="">脅威モデル5.　DoS</a></li>
-      <li><a href="">脅威モデル6.　Evalation　Privilleges</a></li>
+      <li><a href="">脅威モデル6.　Elavation　Privilleges</a></li>
     </ul>
   </div>
   <!-- 左フレーム -->
 <div class="col-md-10">
-  <!-- アラートの表示 -->
+  <!-- アラートの表示 
 <div class="alert alert-success alert-dismissible" role="alert" id="correct-popup">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>正解です！</strong> 次の章へ進みましょう！
@@ -142,6 +136,7 @@
   <strong>どこか間違っているようです</strong>　確認してみましょう！
 </div>
 
+-->
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
@@ -149,23 +144,30 @@
   <li><a href="#">サーバ間とブラウザの関係</a></li>
   <li class="active">データベースとサーバの関係</li>
 </ol>
-
+  <div id="main">
   <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
-<div id="main">
-  <div id="drag1"; class="dragbox">HTMLリクエスト</div>
-  <div id="drag2"; class="dragbox">HTMLデータ</div>
-  <div id="drag3"; class="dragbox">SQL</div>
-  <hr />
-  <div class="drop">ブラウザ <img src="chrome_browser.png"></div>
-  <div class="arrow" id="arrow1"><img src="arrow.png"></div>
-  <div class="drop">アプリケーションサーバ<img src="server.png"></div>
-  <div class="arrow" id="arrow1"><img src="arrow.png"></div>
-  <div class="drop">リレーショナル・データベース<img src="database.png"></div>
+ 
+   <div id="blocks_field">
+     <div id="drag1"; class="dragbox">HTMLリクエスト</div>
+     <div id="drag2"; class="dragbox">HTMLデータ</div>
+     <div id="drag3"; class="dragbox">SQL</div>
+   </div>
+  <div id="drops_field">
+    <div class="drop">ブラウザ <img src="chrome_browser.png"></div>
+    <div class="arrow" id="arrow1"><img src="arrow.png"></div>
+    <div class="drop">アプリケーションサーバ<img src="server.png"></div>
+    <div class="arrow" id="arrow1"><img src="arrow.png"></div>
+    <div class="drop">リレーショナル・データベース<img src="database.png"></div>
+  </div>
+ 
+  </div>
 
-  <button class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>採点する</button> <button class="btn btn-warning"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>リセットする</button>
 </div>
 
+<div class="control">
+   <button class="btn btn-primary" id="btn_eval"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>採点する</button> <button class="btn btn-warning" id="btn_reset"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>リセットする</button>
 </div>
+
 </div>
 <!-- 右フレーム -->
 
@@ -174,20 +176,30 @@
 <!-- SCRIPTS -->
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
-<script type="text/javascript">  
+<script type="text/javascript">
+  var user_answers = {};
 $(function() {
 // 1ドラッグ＆ドロップ機能を実装
   $(".dragbox").draggable();
   $(".drop").droppable({
     drop: function(e,ui) {
-      alert(ui.draggable.text() + "がboxにドロップされました　評価を開始します");
+     // alert(ui.draggable.text() + "がboxにドロップされました　評価を開始します");
     }
    });
 　$(".arrow").droppable({
      drop: function(e,ui){
-       alert(ui.draggable.text() + "がarrowにドロップされました　評価を開始します。");
-    $("#correct-popup").show();
-  }});
+
+    user_answers[$(this).attr("id")] = ui.draggable.attr("id");
+    alert(user_answers.toSource());
+    //$("#correct-popup").show();
+}});
+
+
+$("#btn_eval").click(function() {
+
+    alert(Evaluate(user_answers).toSource());
+});
+
 
 });
 </script>
