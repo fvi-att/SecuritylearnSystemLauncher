@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- IE8+に対して「IE=edge」と指定することで、利用できる最も互換性の高い最新のエンジンを使用するよう指示できます
+     参考: https://www.modern.ie/en-us/performance/how-to-use-x-ua-compatible -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+<!-- ページのタイトルを記述 -->
+<title>sampleページ</title>
+ 
+<!-- パフォーマンスのために使用する文字のエンコーディングを記述
+     参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
+<meta charset="utf-8">
+ 
+<!-- content属性にページの紹介文を記述 -->
+<meta name="description" content="Page for Learning Security">
+ 
+<!-- content属性にページの著者情報を記述 -->
+<meta name="author" content="Ryosuke Shimizu">
+ 
+<!-- モバイル端末への対応、ページをビューポートの幅に合わせてレンダリング（Android, iOS6以降）
+     ズームを許可しない設定「user-scalable=no」は加えない -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<!-- スタイルシートはできるだけ早くレンダリングされるため、HTMLドキュメントの上の方に記述
+     href属性にスタイルシートファイルのURIを記述 -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+
+
+<style>
+  .drag {width:100px; height: 100px; margin:10px; border:solid 1px #333; float:left; text-align:middle;  z-index:2;}
+  .drop { width: 200px; height: 400px; margin: 10px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
+  .arrow {width: auto, max-height: 150px; margin: 10px; float:left; transform: rotate(-90deg); z-index:1;}
+  .arrow img{max-height:80%; width:auto;}
+  .alert {display:none;}
+  hr { clear: both; }
+</style>
+
+
+<!-- IE8以下用に2つのスクリプトを記述
+     html5shiv.js: IE8以下にHTML5の要素を認識するようにさせる
+     respond.js: IE8以下にMedia Queriesの代替え機能を提供 -->
+<!--&#91;if lt IE 9&#93;>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<!&#91;endif&#93;-->
+
+<link type="text/css" rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+
+
+ 
+<!-- href属性にファビコンファイルのURIを記述 -->
+<link rel="shortcut icon" href="">
+ 
+<!-- コメントアウトしてあるコードは、iOS/Android用のアイコン指定 -->
+<!--
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="196x196" href="">
+<link rel="apple-touch-icon" sizes="152x152" href="">
+-->
+ 
+<!-- スクリプトでブロッキングを起こさないものはここに記述
+     可能であれば「async（文書の読み込みが完了した時点でスクリプトを実行）」を使用
+     Example: <script src="" async></script> -->
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+
+
+</head>
+
+
+<body> 
+  <div class="col-md-3">
+    <ol>
+      <li><a href="">始めに</a></li>
+      <li><a href="">ブラウザとサーバの関係</a></li>
+      <li><a href="">ブラウザとデータベースの関係</a></li>
+      <li><a href="">ブラウザからメッセージを送る。</a></li>
+      <li><a href="">講義</a></li>
+      <li><a href="">講義</a></li>
+      <li><a href="">講義</a></li>
+      <li><a href="">講義</a></li>
+      <li><a href="">講義</a></li>
+      <li><a href="">講義</a></li>
+      <li><a href="">講義</a></li>
+      <li><a href="">講義</a></li>
+    </ol>
+  </div>
+  <!-- 左フレーム -->
+<div class="col-md-9">
+  <!-- アラートの表示 -->
+<div class="alert alert-success alert-dismissible" role="alert" id="correct-popup">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>正解です！</strong> 次の章へ進みましょう！
+</div>
+
+<div class="alert alert-warning alert-dismissible" role="alert" id="incorrect-popup">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>どこか間違っているようです</strong>　確認してみましょう！
+</div>
+
+
+  <!-- Breadcrumb -->
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active">Data</li>
+</ol>
+
+  <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
+<div id="main">
+  <div id="drag1" class="drag">HTMLリクエスト</div>
+  <div id="drag2" class="drag">HTMLデータ</div>
+  <div id="drag3" class="drag">SQL</div>
+  <hr />
+  <div class="drop">ブラウザ</div>
+  <div class="arrow" id="arrow1"><img src="arrow.png"></div>
+  <div class="drop">アプリケーションサーバ</div>
+  <div class="arrow" id="arrow1"><img src="arrow.png"></div>
+  <div class="drop">リレーショナル・データベース</div>
+</div>
+
+
+</div>
+<!-- 右フレーム -->
+
+<!-- スクリプトでブロッキングを起こすものはここに記述
+ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
+<!-- SCRIPTS -->
+<!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+
+
+<!-- for bootstrap -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+  
+<!-- JQuery 操作 -->
+$(function() {
+  // 1ドラッグ＆ドロップ機能を実装
+  $('.drag').draggable();
+  $('.drop').droppable({
+    drop: function(e,ui) {
+alert(ui.draggable.text() + "がboxにドロップされました　評価を開始します");
+
+    }
+   });
+　$('.arrow').droppable({
+     drop: function(e,ui){
+alert(ui.draggable.text() + "がarrowにドロップされました　評価を開始します。");
+    $("#correct-popup").show();
+  }});
+
+});
+</script>
+
+</body>
+</html>
