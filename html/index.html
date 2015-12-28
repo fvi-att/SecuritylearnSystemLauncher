@@ -79,25 +79,6 @@
   src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 
 
-<!-- Jquery -->
-<script>
-  
-$(function() {
-// 1ドラッグ＆ドロップ機能を実装
-  $(".dragbox").draggable();
-  $(".drop").droppable({
-    drop: function(e,ui) {
-      alert(ui.draggable.text() + "がboxにドロップされました　評価を開始します");
-    }
-   });
-　$(".arrow").droppable({
-     drop: function(e,ui){
-       alert(ui.draggable.text() + "がarrowにドロップされました　評価を開始します。");
-    $("#correct-popup").show();
-  }});
-
-});
-</script>
 
 
 </head>
@@ -189,6 +170,24 @@ $(function() {
 ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
 <!-- SCRIPTS -->
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<!-- Jquery -->
+<script type="text/javascript">  
+$(function() {
+// 1ドラッグ＆ドロップ機能を実装
+  $(".dragbox").draggable();
+  $(".drop").droppable({
+    drop: function(e,ui) {
+      alert(ui.draggable.text() + "がboxにドロップされました　評価を開始します");
+    }
+   });
+　$(".arrow").droppable({
+     drop: function(e,ui){
+       alert(ui.draggable.text() + "がarrowにドロップされました　評価を開始します。");
+    $("#correct-popup").show();
+  }});
+
+});
+</script>
 
 
 
