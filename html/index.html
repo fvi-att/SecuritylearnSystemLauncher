@@ -28,11 +28,11 @@
 
 
 <style>
-  .dragbox {width:100px; height: 100px; margin:10px; border:solid 1px #333; float:left; text-align:middle;  z-index:2;}
+  .dragbox {width:100px; height: 100px; margin:10px; border:solid 1px #333; background-color:#e0ffff; float:left; text-align:middle;  z-index:2;}
   .drop { width: 200px; height: 400px; margin: 10px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
   .drop img{width:150px; height:auto; margin:auto; text-align:center; vertical-align:middle; floating:clear;}
-  .arrow {width: auto, max-height: 150px; margin: 10px; float:left; transform: rotate(-90deg); z-index:1;}
-  .arrow img{max-height:80%; width:auto;}
+  .arrow {width: 150px, max-height: 150px; margin: 10px; float:left; z-index:1;}
+  .arrow img{max-height:90% max-width:90%;}
   .alert {display:none;}
   nav {height:3%}
   #container{margin-top:3%;}
@@ -100,21 +100,22 @@
       </div>
       <div id="nav-content" class="collapse navbar-collapse">
 
-        <!--リンクのリスト メニューリスト-->
+        <!--リンクのリスト メニューリスト
         <ul class="nav navbar-nav">
           <li><a href="">Link1</a></li>
           <li><a href="">Link2</a></li>
           <li><a href="">Link3</a></li>
 	</ul>
+	-->
       </div>
   </nav>
 
   <div id="container">
   <div class="col-md-2">
-    <ol>
+    <ul class="nav nav-pills nav-stacked">
       <li><a href="">始めに</a></li>
       <li><a href="">ブラウザとサーバの関係</a></li>
-      <li><a href="">ブラウザとデータベースの関係</a></li>
+      <li class="active"><a href="">ブラウザとデータベースの関係</a></li>
       <li><a href="">ブラウザからメッセージを送る。</a></li>
       <li><a href="">送られるデータはどのように処理されるのか</a></li>
       <li><a href="">コマンドが混入していたら</a></li>
@@ -126,14 +127,14 @@
       <li><a href="">脅威モデル4.　InformationDisclosure</a></li>
       <li><a href="">脅威モデル5.　DoS</a></li>
       <li><a href="">脅威モデル6.　Evalation　Privilleges</a></li>
-    </ol>
+    </ul>
   </div>
   <!-- 左フレーム -->
 <div class="col-md-10">
   <!-- アラートの表示 -->
 <div class="alert alert-success alert-dismissible" role="alert" id="correct-popup">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>正解です！</strong> 次の章へ進みましょう！
+  <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>正解です！</strong> 次の章へ進みましょう！
 </div>
 
 <div class="alert alert-warning alert-dismissible" role="alert" id="incorrect-popup">
@@ -160,6 +161,8 @@
   <div class="drop">アプリケーションサーバ<img src="server.png"></div>
   <div class="arrow" id="arrow1"><img src="arrow.png"></div>
   <div class="drop">リレーショナル・データベース<img src="database.png"></div>
+
+  <button class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>採点する</button> <button class="btn btn-warning"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>リセットする</button>
 </div>
 
 </div>
