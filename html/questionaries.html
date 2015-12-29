@@ -42,6 +42,9 @@
   .col-md-2 {border-right: 1px solid #d3d3d3; height:10000px}
   #main {clear:both;}
   .control {float:left; margin-left:1%; padding-top:1%; border-top:solid 1px #d3d3d3; width:1500px}
+
+
+  .jumbotron {padding-left:3%;}
 </style>
 
 
@@ -109,7 +112,7 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="start.html">始めに</a></li>
       <li><a href="">ブラウザとサーバの関係</a></li>
-      <li class="active"><a href="">ブラウザとデータベースの関係</a></li>
+      <li><a href="index.html">ブラウザとデータベースの関係</a></li>
       <li><a href="">ブラウザからメッセージを送る。</a></li>
       <li><a href="">送られるデータはどのように処理されるのか</a></li>
       <li><a href="">コマンドが混入していたら</a></li>
@@ -121,7 +124,7 @@
       <li><a href="">脅威モデル4.　InformationDisclosure</a></li>
       <li><a href="">脅威モデル5.　DoS</a></li>
       <li><a href="">脅威モデル6.　Elavation　Privilleges</a></li>
-      <li><a href="questionaries.html">アンケートのお願い</a></li>      
+      <li class="active"><a href="questionaries.html">アンケートのお願い</a></li>
     </ul>
   </div>
   <!-- 左フレーム -->
@@ -141,37 +144,21 @@
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li><a href="#">始めに</a></li>
-  <li><a href="#">サーバ間とブラウザの関係</a></li>
-  <li class="active">データベースとサーバの関係</li>
+  <li><a href="#">アンケートのお願い</a></li>
+  
 </ol>
 
   <div id="main">
-  <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
- 
-   <div id="blocks_field">
-     <div id="drag1"; class="dragbox">HTMLリクエスト</div>
-     <div id="drag2"; class="dragbox">HTMLデータ</div>
-     <div id="drag3"; class="dragbox">SQL</div>
-   </div>
-  
-  <div id="drops_field">
-    <div class="drop">ブラウザ <img src="chrome_browser.png"></div>
-    <div class="arrow" id="arrow1"><img src="arrow.png"></div>
-    <div class="drop">アプリケーションサーバ<img src="server.png"></div>
-    <div class="arrow" id="arrow2"><img src="arrow.png"></div>
-    <div class="drop">リレーショナル・データベース<img src="database.png"></div>
-  </div>
- 
+    <h1>SecLearnの機能に関するアンケート協力のお願い</h1>
+    <p>現在、SecLearnを利用したユーザに関して調査を行っています。　下記のアンケートにお応えくださいますようよろしくお願いします</p>
+    <iframe src="https://docs.google.com/forms/d/1iY-I34U44Bj6h780j-WplYbraeemWvTdeIoP1kYk_p0/viewform?embedded=true" width="750px" height="500px" frameborder="1" marginheight="10px" marginwidth="10px">読み込んでいます...</iframe>
   </div>
 
   <!-- main -->
 
 </div>
 
-<div class="control">
-   <button class="btn btn-primary" id="btn_eval"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>採点する</button> <button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>リセットする</button>
-</div>
+
 
 </div>
 <!-- 右フレーム -->
@@ -181,41 +168,6 @@
 <!-- SCRIPTS -->
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
-<script type="text/javascript">
-  var user_answers = new Object();
-$(function() {
-// 1ドラッグ＆ドロップ機能を実装
-  $(".dragbox").draggable();
-  $(".drop").droppable({
-    drop: function(e,ui) {
-     // alert(ui.draggable.text() + "がboxにドロップされました　評価を開始します");
-    }
-   });
-　$(".arrow").droppable({
-     drop: function(e,ui){
-
-    user_answers[$(this).attr("id")] = ui.draggable.attr("id");
-    alert(user_answers.toSource());
-    
-  }});
-
-  
-
-
-  $("#btn_eval").click(function() {
-  //外部モジュール　Evaluate_xxxx.js内のEvaluateメソッドを用いて評価を行う
-  result_obj = Evaluate(user_answers);
-  if(result_obj.result) {
-    $("#correct-popup").show(); 
-  }else{
-    $("#incorrect-popup").show();
-  }
-});
-
-
-});
-</script>
-
 
 
 
