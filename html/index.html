@@ -125,17 +125,17 @@
   </div>
   <!-- 左フレーム -->
 <div class="col-md-10">
-  <!-- アラートの表示 
+  <!-- 正解の表示 -->
 <div class="alert alert-success alert-dismissible" role="alert" id="correct-popup">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>正解です！</strong> 次の章へ進みましょう！
 </div>
-
+<!--
 <div class="alert alert-warning alert-dismissible" role="alert" id="incorrect-popup">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>どこか間違っているようです</strong>　確認してみましょう！
 </div>
-
+-->
 -->
 
   <!-- Breadcrumb -->
@@ -156,7 +156,7 @@
     <div class="drop">ブラウザ <img src="chrome_browser.png"></div>
     <div class="arrow" id="arrow1"><img src="arrow.png"></div>
     <div class="drop">アプリケーションサーバ<img src="server.png"></div>
-    <div class="arrow" id="arrow1"><img src="arrow.png"></div>
+    <div class="arrow" id="arrow2"><img src="arrow.png"></div>
     <div class="drop">リレーショナル・データベース<img src="database.png"></div>
   </div>
  
@@ -177,7 +177,7 @@
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
 <script type="text/javascript">
-  var user_answers = {};
+  var user_answers = new Object();
 $(function() {
 // 1ドラッグ＆ドロップ機能を実装
   $(".dragbox").draggable();
@@ -191,13 +191,17 @@ $(function() {
 
     user_answers[$(this).attr("id")] = ui.draggable.attr("id");
     alert(user_answers.toSource());
-    //$("#correct-popup").show();
-}});
+    
+  }});
+
+  
 
 
 $("#btn_eval").click(function() {
+  result_obj = Evaluate(user_answers);
+  alert(result_obj.toSource());
+  $("#correct-popup").show(); 
 
-    alert(Evaluate(user_answers).toSource());
 });
 
 
