@@ -30,8 +30,9 @@
 
 <style>
   
-  #blocks_field {border-bottom: 1px solid #d3d3d3;}
+  #blocks_field {border-bottom: 1px solid #d3d3d3; position:abusolute;}
   .dragbox {width:100px; height: 100px; margin:10px; border:solid 1px #333; background-color:#e0ffff; float:left; text-align:middle;  z-index:2;}
+ #drops_field {width:auto;height:auto;float:left;}
   .drop { width: 200px; height: 400px; margin: 10px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
   .drop img{width:150px; height:auto; margin:auto; text-align:center; vertical-align:middle; floating:clear;}
   .arrow {width: 150px, max-height: 150px; margin: 10px; float:left; z-index:1; border:2px #333; border-style:dashed; border-radius:5px; text-align:top;　clear:both;}
@@ -143,8 +144,8 @@
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
   <li><a href="#">始めに</a></li>
-  <li><a href="#">サーバ間とブラウザの関係</a></li>
-  <li class="active">データベースとサーバの関係</li>
+  <li><a href="#">ブラウザとサーバの関係</a></li>
+  <li class="active">演習</li>
 </ol>
 
   <div id="main">
@@ -216,15 +217,15 @@ $(function() {
   result_obj = Evaluate(user_answers);
   if(result_obj.result) {
   //正解の時
-  $("#right_message").text("正解です");
+  $("#right_message").html(result_obj.feedback);
   $("#correct-popup").show();
-  window.setTimeout(function() { $("incorrect-popup").hide(); }, 2000);
+
   
   }else{
   //不正解の時
   $("#incorrect-popup").show();
-  $("#right_message").text(result_obj.feedback);
-  window.setTimeout(function() { $("incorrect-popup").hide(); }, 2000);
+  $("#right_message").html(result_obj.feedback);
+
    
   }
 });
