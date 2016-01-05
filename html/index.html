@@ -29,6 +29,7 @@
 <script type="text/javascript" src="js/Evaluate_0001.js"></script>
 
 <style>
+  
   #blocks_field {border-bottom: 1px solid #d3d3d3;}
   .dragbox {width:100px; height: 100px; margin:10px; border:solid 1px #333; background-color:#e0ffff; float:left; text-align:middle;  z-index:2;}
   .drop { width: 200px; height: 400px; margin: 10px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
@@ -39,7 +40,7 @@
   nav {height:3%}
   
   #container{margin-top:3%; padding-top:1%;}
-  .col-md-2 {border-right: 1px solid #d3d3d3; height:10000px}
+  .col-md-2 {border-right: 1px solid #d3d3d3; height:100%}
   #main {clear:both;}
   .control {float:left; margin-left:1%; padding-top:1%; border-top:solid 1px #d3d3d3; width:1500px}
 </style>
@@ -148,12 +149,14 @@
 
   <div id="main">
   <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
- 
+  <div id="drag_field">
    <div id="blocks_field">
      <div id="drag1"; class="dragbox">HTMLリクエスト</div>
      <div id="drag2"; class="dragbox">HTMLデータ</div>
      <div id="drag3"; class="dragbox">SQL</div>
    </div>
+   <!-- ドラッグする要素置き場とDrop先を分けるため -->
+   <div style="clear:both"></div>
   
   <div id="drops_field">
     <div class="drop">ブラウザ <img src="images/chrome_browser.png"></div>
@@ -163,15 +166,15 @@
     <div class="drop">リレーショナル・データベース<img src="images/database.png"></div>
   </div>
  
+    </div>
   </div>
-
   <!-- main -->
-
-</div>
-
 <div class="control">
    <button class="btn btn-primary" id="btn_eval"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>採点する</button> <button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>リセットする</button>
 </div>
+</div>
+
+
 
 </div>
 <!-- 右フレーム -->
