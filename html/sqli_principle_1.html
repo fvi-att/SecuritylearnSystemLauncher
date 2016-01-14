@@ -110,13 +110,11 @@
 <div id="container">
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked">
-      <li class="active"><a href="#">始めに</a></li>
+     <li class="active"><a href="#">始めに</a></li>
       <li><a href="lecture1.html">ブラウザとサーバの関係</a></li>
       <li><a href="index.html">ブラウザとデータベースの関係</a></li>
-      <li><a href="">ブラウザからメッセージを送る。</a></li>
-      <li><a href="">送られるデータはどのように処理されるのか</a></li>
-      <li><a href="">コマンドが混入していたら</a></li>
-      <li><a href="">JavaScriptを混入させてみる</a></li>
+      <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
+      
       <li><a href="">脅威モデル</a></li>
       <li><a href="">脅威モデル1.　Spoofing</a></li>
       <li><a href="">脅威モデル2.　Tampering</a></li>
@@ -132,7 +130,8 @@
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li class="active"><a href="#">始めに</a></li>
+  <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
+  <li class="active"><a href="#">原理</a></li>
 </ol>
 
 <div id="main">
@@ -152,11 +151,14 @@
     <h2>文字列リテラルに対するSQLインジェクションの原理</h2>
     <p>文字列リテラルに対するSQLインジェクションの脆弱性とは、ウェブアプリケーションが文字列リテラルにユーザからの入力値を連結してSQL文を組み立てることにより、意図しないSQL文を実行してしまうことで、データベースを不正に操作されてしまう問題です。</p>
     <p>この脆弱性がどのように悪用されてしまうのか、次の図を使って見てみましょう。</p>
+    <img src="images/sqli_scenario/image001.png" alt="SQL文の組み立て">
     <p>図 2は、指定したIDの個人情報をuserテーブルから取得するSQL文を、ユーザからの入力値を利用して文字列連結により組み立てる例です。このとき、入力値に「' OR 'A'='A' --」という文字列を与えると、次のようなSQL文が組み立てられることになります。</p>
+    <img src="images/sqli_scenario/image002.png" alt="SQL文構造の恣意的な破壊">
     <p>入力値の先頭のシングルクォートでidの文字列リテラルを終端し、OR演算子を付け加えて条件をTRUE（真）にすることで、userテーブルの全てのレコードが取得されることになります。</p>
     <p>末尾の「--」以降はコメントとして無視されます。</p>
     <p>このように、入力値にSQL文を構成する入力値やSQLコメントを含ませることでSQL文の意味を変更され、意図しないSQL文を実行されてしまう可能性があります。</p>
     <p>次の図で文字列リテラルに対するSQLインジェクションによって、オンラインバンキングへ不正ログインが行われる例を見てみましょう。</p>
+    <img src="images/sqli_scenario/image003.png" alt="システム破壊の様子">
     <ol>
       <li>悪意のある人がログイン時に、SQL文を構成する入力値を送信します。</li>
       <li>ウェブアプリケーションは、①の入力値を連結してSQL文を組み立て、データベースへ送信します。</li>
