@@ -135,30 +135,33 @@
   <li class="active"><a href="#">始めに</a></li>
 </ol>
 
-  <div id="main">
+<div id="main">
+  <blockquote cite="https://www.ipa.go.jp/security/vuln/appgoat/">
     <div class="jumbotron">
-      <h1>SecLearnへようこそ</h1>
-      <p>SecLearnは情報セキュリティ人材育成e-learningシステムです。</p>
-      <p>SecLearnは、情報セキュリティのモデルの一つである　ThreatModel(脅威モデル)と情報システムとの関係を学習することができるe-learningシステムです。</p>
-      <p><a class="btn btn-primary btn-lg" href="lecture1.html" role="button">学習を始める</a></p>
+      <h1>SQLインジェクション攻撃の原理</h1>
+      <p>この章ではSQLインジェクション攻撃の原理を学びます</p>
     </div>
-    
+
+    <h1>原理解説</h1>
+    <p>まずは、文字列リテラルに対するSQLインジェクションの脆弱性の原理を理解するために、基礎知識としてSQLのリテラルについて学習します。</p>
+    <h2> 文字列リテラルとは</h2>
+    <p>リテラルとは、次のSQL文中の「'yamada'」のような定数のことをいいます。また、文字列としてのリテラルのことを文字列リテラルと呼びます。</p>
+    <p>SELECT * FROM user WHERE id = 'yamada';</p>
+    <p>では次に、文字列リテラルに対するSQLインジェクションがどのようにして起きてしまうのか見てみましょう。</p>
   </div>
+ 
+<!-- main -->
+</div>
 
-  <!-- main -->
+
 
 </div>
 
-<div class="control">
-  <p>SecLearnは、情報セキュリティの問題は、複雑な情報システム中のプログラムやデータの相互関係から発生する、という考えに基づき制作されました。</p>
-  <p>このシステムの必要環境は以下のとおりです　ブラウザ：Chrome40以上 横1400以上の解像度</p>
-  <p>引用：本研究は　IPA（情報処理機構）が提供する　脆弱性体験ツール　AppGoatの一部データを引用しています。
-</div>
-
-</div>
-<!-- 右フレーム -->
-
-
+<!-- スクリプトでブロッキングを起こすものはここに記述
+ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
+<!-- SCRIPTS -->
+<!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<!-- Jquery -->
 
 
 

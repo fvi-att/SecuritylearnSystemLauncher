@@ -1,3 +1,21 @@
+/*
+擬似デバッガシステムの動きを定義するオブジェクトの生成
+*/
+function getDebuggerProcess() {
+
+    var process_obj = {
+	process:[
+	    {id:"arrow1"},{id:"arrow2"}
+	]
+    }
+
+    return process_obj;
+}
+
+
+
+
+
 function Evaluate(target) {
 
 
