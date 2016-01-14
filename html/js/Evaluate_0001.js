@@ -5,7 +5,7 @@ function getDebuggerProcess() {
 
     var process_obj = {
 	process:[
-	    {id:"arrow1"},{id:"arrow2"}
+	    {id:"drop1"},{id:"arrow1"},{id:"drop2"},{id:"arrow2"},{id:"drop3"}
 	]
     }
 
