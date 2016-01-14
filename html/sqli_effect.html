@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
  
 <!-- ページのタイトルを記述 -->
-<title>情報セキュリティ人材育成システムSecLearn</title>
+<title>SQLインジェクションに関する学習</title>
  
 <!-- パフォーマンスのために使用する文字のエンコーディングを記述
      参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
@@ -27,25 +27,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 
 <script type="text/javascript" src="js/Evaluate_0001.js"></script>
-
-<style>
-  #blocks_field {border-bottom: 1px solid #d3d3d3;}
-  .dragbox {width:100px; height: 100px; margin:10px; border:solid 1px #333; background-color:#e0ffff; float:left; text-align:middle;  z-index:2;}
-  .drop { width: 200px; height: 400px; margin: 10px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
-  .drop img{width:150px; height:auto; margin:auto; text-align:center; vertical-align:middle; floating:clear;}
-  .arrow {width: 150px, max-height: 150px; margin: 10px; float:left; z-index:1;}
-  .arrow img{max-height:90% max-width:90%;}
-  .alert {display:none;}
-  nav {height:3%}
-  
-  #container{margin-top:3%;}
-  .col-md-2 {border-right: 1px solid #d3d3d3; height:10000px}
-  #main {clear:both;}
-  .control {float:left; margin-left:1%; padding-top:1%; border-top:solid 1px #d3d3d3; width:1500px}
-
-
-  .jumbotron {padding-left:3%; background-size:cover;  color:#ffffff; background-image:url("images/background_jumbotron.jpg");}
-</style>
+<link rel="stylesheet" type="text/css" href="css/default.css">
 
 
 <!-- IE8以下用に2つのスクリプトを記述
@@ -110,13 +92,11 @@
 <div id="container">
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked">
-      <li class="active"><a href="#">始めに</a></li>
+     <li class="active"><a href="#">始めに</a></li>
       <li><a href="lecture1.html">ブラウザとサーバの関係</a></li>
       <li><a href="index.html">ブラウザとデータベースの関係</a></li>
-      <li><a href="">ブラウザからメッセージを送る。</a></li>
-      <li><a href="">送られるデータはどのように処理されるのか</a></li>
-      <li><a href="">コマンドが混入していたら</a></li>
-      <li><a href="">JavaScriptを混入させてみる</a></li>
+      <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
+      
       <li><a href="">脅威モデル</a></li>
       <li><a href="">脅威モデル1.　Spoofing</a></li>
       <li><a href="">脅威モデル2.　Tampering</a></li>
@@ -132,24 +112,33 @@
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li class="active"><a href="#">始めに</a></li>
+  <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
+  <li class="active"><a href="#">原理</a></li>
 </ol>
 
 <div id="main">
-  <blockquote cite="https://www.ipa.go.jp/security/vuln/appgoat/">
-    <div class="jumbotron">
-      <h1>SQLインジェクション攻撃の原理</h1>
-      <p>この章ではSQLインジェクション攻撃の原理を学びます</p>
-    </div>
+  
+   
+      <h1>SQLインジェクション攻撃の影響</h1>
+      <p>この章ではSQLインジェクション攻撃の影響を学びます</p>
+   
 
-    <h1>原理解説</h1>
-    <p>まずは、文字列リテラルに対するSQLインジェクションの脆弱性の原理を理解するために、基礎知識としてSQLのリテラルについて学習します。</p>
-    <h2> 文字列リテラルとは</h2>
-    <p>リテラルとは、次のSQL文中の「'yamada'」のような定数のことをいいます。また、文字列としてのリテラルのことを文字列リテラルと呼びます。</p>
-    <p>SELECT * FROM user WHERE id = 'yamada';</p>
-    <p>では次に、文字列リテラルに対するSQLインジェクションがどのようにして起きてしまうのか見てみましょう。</p>
+    <h1>影響解説</h1>
+    <p>SQLインジェクションの脆弱性が含まれていると、データベースを不正に操作されてしまう可能性があります。データベースを不正に操作されることにより、次のような被害を受ける可能性があります。</p>
+    <h2>データベースに蓄積された非公開情報を閲覧される</h2>
+    <p>データベースの非公開情報を閲覧されることで、個人情報や機密情報などが漏えいする可能性があります。</p>
+
+    <h2>データベースに蓄積された情報を改竄、消去される</h2>
+    <p>データベースの情報を改ざん、消去されることで、ウェブページが改ざんされたり、パスワードが変更されてしまったり、システムが停止するといった被害が発生する可能性があります。</p>
+    <h2>認証回避によって不正にログインされる</h2>
+    <p>不正にログインされることで、ログインしたユーザに許可されている全ての操作が可能となり、不正な行為が行われる可能性があります。</p>
+
+    <h2>ストアドプロシージャなどを利用した OS コマンドを実行される</h2>
+    <p>OSコマンドを実行されることで、システムの乗っ取りや、他への攻撃の踏み台として悪用される可能性があります。</p>
+
+    
   </div>
- 
+<a href="sqli_fixing.html">対策ページヘ</a>
 <!-- main -->
 </div>
 
