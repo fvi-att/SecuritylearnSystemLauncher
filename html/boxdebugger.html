@@ -203,6 +203,11 @@ $(function() {
   /*変更している部分を表示する　*/
 $("#" + processes[process_step_cnt]["id"] ).css('border-color','red');
 $("#" + processes[process_step_cnt]["id"] ).css('border-width','5px');
+
+/*擬似デバッガ内での処理を行うステップ */
+processes[process_step_cnt]["action"]();
+
+
 if (process_step_cnt > 0){
 $("#" + processes[process_step_cnt -1]["id"] ).css('border-color','blue');
 $("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
