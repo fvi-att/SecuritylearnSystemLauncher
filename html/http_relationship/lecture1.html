@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
  
 <!-- ページのタイトルを記述 -->
-<title>情報セキュリティ人材育成システムSecLearn</title>
+<title>解説ページ</title>
  
 <!-- パフォーマンスのために使用する文字のエンコーディングを記述
      参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
@@ -25,9 +25,12 @@
 <!-- スタイルシートはできるだけ早くレンダリングされるため、HTMLドキュメントの上の方に記述
      href属性にスタイルシートファイルのURIを記述 -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="css/default.css">
 
 <script type="text/javascript" src="js/Evaluate_0001.js"></script>
+<link rel="stylesheet" type="text/css" href="css/default.css">
+
+
+
 
 <!-- IE8以下用に2つのスクリプトを記述
      html5shiv.js: IE8以下にHTML5の要素を認識するようにさせる
@@ -41,6 +44,7 @@
   href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
 
 
+ 
 <!-- href属性にファビコンファイルのURIを記述 -->
 <link rel="shortcut icon" href="">
  
@@ -90,9 +94,9 @@
 <div id="container">
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked">
-      <li class="active"><a href="#">始めに</a></li>
-      <li><a href="lecture1.html">ブラウザとサーバの関係</a></li>
-      <li><a href="index.html">ブラウザとデータベースの関係</a></li>
+     <li><a href="../start.html">始めに</a></li>
+      <li><a href="introduce.html">ブラウザとサーバの関係</a></li>
+      <li><a href="#">ブラウザとデータベースの関係</a></li>
       <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
       
       <li><a href="">脅威モデル</a></li>
@@ -106,145 +110,54 @@
     </ul>
   </div>
   <!-- 左フレーム -->
-<div class="col-md-8">
-  <!-- 正解の表示 -->
-<div class="alert alert-success alert-dismissible" role="alert" id="correct-popup">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>正解です！</strong> 次の章へ進みましょう！
-</div>
-
-<div class="alert alert-warning alert-dismissible" role="alert" id="incorrect-popup">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>どこか間違っているようです</strong>　確認してみましょう！
-</div>
-
-
+<div class="col-md-10">
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li><a href="#">始めに</a></li>
-  <li><a href="#">サーバ間とブラウザの関係</a></li>
-  <li><a href="#">データベースとサーバの関係</a></li>
-  <li class="active">擬似デバッガーを利用した演習</li>
+  <li><a href="ブラウザとサーバの関係">SQLインジェクション</a></li>
+  <li><a href="exercise01.html">演習</a></li>
+  <li class="active"><a href="#">演習の解説</a></li>
 </ol>
 
-  <div id="main">
-  <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
-  <div id="drag_field">
-    
-   <div id="blocks_field">
-     <div id="drag1"; class="dragbox">HTMLリクエスト</div>
-     <div id="drag2"; class="dragbox">HTMLファイル</div>
-     <div id="drag3"; class="dragbox">Javascript</div>
-     <div id="drag4"; class="dragbox">SQL</div>
-     <div id="drag5"; class="dragbox">データベース実行結果</div>
-   </div>
-   <!-- ドラッグする要素置き場とDrop先を分けるため -->
-   <div style="clear:both"></div>
-  
-  <div id="drops_field">
-    <div class="drop" id="drop1">ブラウザ <img src="images/chrome_browser.png"></div>
-    <div class="arrow" id="arrow1"><img src="images/arrow.png"></div>
-    <div class="drop" id="drop2">ウェブサーバ<img src="images/server.png"></div>
-    
-  </div>
- 
+<div id="main">
+  <blockquote cite="https://www.ipa.go.jp/security/vuln/appgoat/">
+    <div class="jumbotron">
+      <h1>ウェブサーバとブラウザの最も単純な情報のやり取り</h1>
+      <p>ここでは演習で得られた結果から、ウェブサーバとブラウザの間でやり取りされる情報について解説を行います</p>
     </div>
+
+    <h1>ブラウザがサーバに送信する情報</h1>
+    <p>ブラウザがインターネットを経由してサーバに要求するものは、HTMLファイルと呼ばれるHTMLマークアップ言語によって書かれた人間が読みやすい文書のデータです。</p>
+    <p>この文書をサーバに要求する際、ブラウザはサーバに<strong>HTTPリクエスト</strong>を送信します</p>
+    <blockquote>
+      GET　/www.yoheim.net/?key1=value1&key2=value2 HTTP/1.1</br>
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</br>
+Accept-Charset:Shift_JIS,utf-8;q=0.7,*;q=0.3</br>
+Accept-Encoding:gzip,deflate,sdch</br>
+Accept-Language:ja,en-US;q=0.8,en;q=0.6</br>
+Cache-Control:max-age=0</br>
+Connection:keep-alive</br>
+Cookie:utma=something;</br>
+Host:www.yoheim.net</br>
+User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.54 Safari/536.5</br>
+    </blockquote>
+    <p>HTTPリクエストの中身はこのようになっていますが、現時点ではどのような構造なのか理解する必要はありません。</p>
+    
+    
   </div>
-  <!-- main -->
-  <div class="control">
-    <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>ステップを進める</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
-
-</div>
-</div>
-
-<!--右側表示システム -->
-<div class="col-md-2">
-  <h3>ここにヒントや正解、フィードバックが表示されます</h3>
-  <div id="right_message"></div>
-  <a href="lecture1.html">とりあえず次のページへ</a>
+<a href="boxdebugger.html">データベースとの関連を深くする</a>
+<!-- main -->
 </div>
 
 
+
 </div>
-<!-- 右フレーム -->
 
 <!-- スクリプトでブロッキングを起こすものはここに記述
 ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
 <!-- SCRIPTS -->
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
-<script type="text/javascript">
-
-// intilized nums
-  var user_answers = new Object();
-  var process_step_cnt = 0;
-
-  
-$(function() {
-// 1ドラッグ＆ドロップ機能を実装
-  $(".dragbox").draggable();
-  $(".drop").droppable({
-    drop: function(e,ui) {
-     
-    }
-   });
-　$(".arrow").droppable({
-     drop: function(e,ui){
-
-    user_answers[$(this).attr("id")] = ui.draggable.attr("id");
-    //alert(user_answers.toSource());
-    
-  }});
-
-
-
-  /* 擬似デバッガを操作*/
-  $("#btn_start").click(function(){
-  process_obj = getDebuggerProcess();
-  processes = process_obj["process"];
-
-  /*変更している部分を表示する　*/
-$("#" + processes[process_step_cnt]["id"] ).css('border-color','red');
-$("#" + processes[process_step_cnt]["id"] ).css('border-width','5px');
-
-/*擬似デバッガ内での処理を行うステップ */
-processes[process_step_cnt]["action"]();
-
-
-if (process_step_cnt > 0){
-$("#" + processes[process_step_cnt -1]["id"] ).css('border-color','blue');
-$("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
-}
-  process_step_cnt++;
-　
-　$("#step_cnt").text(process_step_cnt);
-
-
-  });
-
-
-  /* arrowの中身が正解かどうか評価を行う　*/
-  $("#btn_eval").click(function() {
-  //外部モジュール　Evaluate_xxxx.js内のEvaluateメソッドを用いて評価を行う
-  result_obj = Evaluate(user_answers);
-
-  if(result_obj.result) {
-    //正解の時
-    $("#right_message").html(result_obj.feedback);
-    $("#correct-popup").show();
-
-  }else{
-    //不正解の時
-    $("#incorrect-popup").show();
-    $("#right_message").html(result_obj.feedback);
-  }
-  });
-
-
-});
-</script>
-
 
 
 
