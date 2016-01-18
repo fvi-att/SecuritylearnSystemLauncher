@@ -41,7 +41,7 @@ RUN cd /var/www/ && git clone https://github.com/fvi-att/SecLearnApp.git && chow
 
 #initilize db
 COPY configs/  /tmp/configs/
-#COPY init_db.sh /tmp/
+COPY init_db.sh /tmp/
 RUN cd /tmp/configs/ && cp 000-default.conf /etc/apache2/sites-enabled/ && cp init_db.sh ~/ && cp create_db.sql ~/
 #RUN cd /var/www/SecLearnApp/SecLearnApp/ && ./manage.py migrate
 

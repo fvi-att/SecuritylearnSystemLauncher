@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
  
 <!-- ページのタイトルを記述 -->
-<title>情報セキュリティ人材育成システムSecLearn</title>
+<title>サーバとブラウザの情報のやり取り</title>
  
 <!-- パフォーマンスのために使用する文字のエンコーディングを記述
      参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
@@ -26,8 +26,9 @@
      href属性にスタイルシートファイルのURIを記述 -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 
-<script type="text/javascript" src="js/Evaluate_0001a.js"></script>
+<script type="text/javascript" src="js/Evaluate_0001.js"></script>
 <link rel="stylesheet" type="text/css" href="css/default.css">
+
 
 
 <!-- IE8以下用に2つのスクリプトを記述
@@ -92,13 +93,11 @@
 <div id="container">
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="start.html">始めに</a></li>
+      <li><a href="../start.html">始めに</a></li>
       <li class="active"><a href="#">ブラウザとサーバの関係</a></li>
-      <li><a href="">ブラウザとデータベースの関係</a></li>
-      <li><a href="">ブラウザからメッセージを送る。</a></li>
-      <li><a href="">送られるデータはどのように処理されるのか</a></li>
-      <li><a href="">コマンドが混入していたら</a></li>
-      <li><a href="">JavaScriptを混入させてみる</a></li>
+      <li><a href="#">ブラウザとデータベースの関係</a></li>
+      <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
+      
       <li><a href="">脅威モデル</a></li>
       <li><a href="">脅威モデル1.　Spoofing</a></li>
       <li><a href="">脅威モデル2.　Tampering</a></li>
@@ -106,117 +105,56 @@
       <li><a href="">脅威モデル4.　InformationDisclosure</a></li>
       <li><a href="">脅威モデル5.　DoS</a></li>
       <li><a href="">脅威モデル6.　Elavation　Privilleges</a></li>
-      <li><a href="questionaries.html">アンケートのお願い</a></li>      
+      <li><a href="questionaries.html">アンケートのお願い</a></li>
     </ul>
   </div>
   <!-- 左フレーム -->
-<div class="col-md-8">
-  <!-- 正解の表示 -->
-<div class="alert alert-success alert-dismissible" role="alert" id="correct-popup">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>正解です！</strong> 次の章へ進みましょう！
-</div>
-
-<div class="alert alert-warning alert-dismissible" role="alert" id="incorrect-popup">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>どこか間違っているようです</strong>　確認してみましょう！
-</div>
-
-
+<div class="col-md-10">
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li><a href="#">始めに</a></li>
-  <li><a href="#">ブラウザとサーバの関係</a></li>
-  <li class="active">演習</li>
+  <li class="active"><a href="#">始めに</a></li>
 </ol>
 
-  <div id="main">
-  <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
-  <div id="drag_field">
-   <div id="blocks_field">
-     <div id="drag1"; class="dragbox">HTMLリクエスト<span><button type="button" class="btn btn-default" onclick="window.open('lecture1_htmlrequest.html');"><span class="glyphicon glyphicon-edit"></span>編集</button></span></div>
-     <div id="drag2"; class="dragbox">HTMLデータ</div>
-     <div id="drag3"; class="dragbox">SQL</div>
-     <div id="drag4"; class="dragbox">SSHソケットデータ</div>
-     <div id="drag5"; class="dragbox">SQL結果データ</div>
-   </div>
-   <!-- ドラッグする要素置き場とDrop先を分けるため -->
-   <div style="clear:both"></div>
+<div id="main">
+  <h1>サーバとブラウザの関係の演習</h1>
+  <p>ウェブアプリケーションを構成する　サーバとブラウザの関係を俯瞰的視点を通して確認していきましょう。</p>
+
+  <h2>事前に確認する用語</h2>
+  <ul>
+    <li>サーバ　：　クライアントサーバモデルにおいてクライアントからの要求に対して何らかのサービスを提供する役割を果たす。今回はウェブサーバを中心にすすめる。</li>
+    <li>ブラウザ：　、ウェブページを画面や印刷機に出力したり、ハイパーリンクをたどったりするなどの機能がある。単にブラウザ（ブラウザー）と呼んだ場合、多くはウェブブラウザのことを指す。</li>
+  </ul>
+
   
-  <div id="drops_field">
-    <div class="drop">ブラウザ <img src="images/chrome_browser.png"></div>
-    <div class="arrow" id="arrow1">ココにドロップ<img src="images/arrow.png"></div>
-    <div class="drop">アプリケーションサーバ<img src="images/server.png"></div>
-    
+
+  <h2>参考URL</h2>
+  <ul>
+    <li><a href="http://ja.wikipedia.org/サーバ">サーバ</a></li>
+    <li><a href="http://ja.wikipedia.org/ブラウザ">ブラウザ</a></li>
+  </ul>
+
+  <h2>演習を行うにあたって</h2>
+  <p>それでは、実際にウェブアプリケーションの構造を本システムが提供する俯瞰的視点を通して学びましょう</p>
+  <h2>演習の目的</h2>
+  <p>情報システムに対する俯瞰的視点を通して、システム内部でどのような作用が行われているのかを確認します。</p>
+  <p>また、演習を通して本システムの操作方法を学習します</p>
+  
+  <a href="exercise01.html">演習を行う</a>
+  
   </div>
- 
-    </div>
-  </div>
+
   <!-- main -->
+
+</div>
+
 <div class="control">
-   <button class="btn btn-primary" id="btn_eval"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>採点する</button> <button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>リセットする</button>
-</div>
-</div>
 
-<!--右側表示システム -->
-<div class="col-md-2">
-  <h3>ここにヒントや正解、フィードバックが表示されます</h3>
-  <p id="right_message"></p>
 </div>
-
-
 
 </div>
 <!-- 右フレーム -->
 
-<!-- スクリプトでブロッキングを起こすものはここに記述
-ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
-<!-- SCRIPTS -->
-<!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<!-- Jquery -->
-<script type="text/javascript">
-  var user_answers = new Object();
-$(function() {
-// 1ドラッグ＆ドロップ機能を実装
-  $(".dragbox").draggable();
-  $(".drop").droppable({
-    drop: function(e,ui) {
-     
-    }
-   });
-　$(".arrow").droppable({
-     drop: function(e,ui){
-
-    user_answers[$(this).attr("id")] = ui.draggable.attr("id");
-    //alert(user_answers.toSource());
-    
-  }});
-
-  
-
-
-  $("#btn_eval").click(function() {
-  //外部モジュール　Evaluate_xxxx.js内のEvaluateメソッドを用いて評価を行う
-  result_obj = Evaluate(user_answers);
-  if(result_obj.result) {
-  //正解の時
-  $("#right_message").html(result_obj.feedback);
-  $("#correct-popup").show();
-
-  
-  }else{
-  //不正解の時
-  $("#incorrect-popup").show();
-  $("#right_message").html(result_obj.feedback);
-
-   
-  }
-});
-
-
-});
-</script>
 
 
 

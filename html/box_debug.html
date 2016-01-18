@@ -26,8 +26,24 @@
      href属性にスタイルシートファイルのURIを記述 -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 
-<script type="text/javascript" src="js/Evaluate_0001a.js"></script>
-<link rel="stylesheet" type="text/css" href="css/default.css">
+<script type="text/javascript" src="js/Evaluate_0001.js"></script>
+
+<style>
+  
+  #blocks_field {border-bottom: 1px solid #d3d3d3;}
+  .dragbox {width:100px; height: 100px; margin:10px; border:solid 1px #333; background-color:#e0ffff; float:left; text-align:middle;  z-index:2;}
+  .drop { width: 200px; height: 400px; margin: 10px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
+  .drop img{width:150px; height:auto; margin:auto; text-align:center; vertical-align:middle; floating:clear;}
+  .arrow {width: 150px, max-height: 150px; margin: 10px; float:left; z-index:1; border:2px #333; border-style:dashed; border-radius:5px; text-align:top;　clear:both;}
+  .arrow img{max-height:90% max-width:90%;}
+  .alert {display:none;}
+  nav {height:3%}
+  
+  #container{margin-top:3%; padding-top:1%;}
+  .col-md-2 {border-right: 1px solid #d3d3d3; height:100%}
+  #main {clear:both;}
+  .control {float:left; margin-left:1%; padding-top:1%; border-top:solid 1px #d3d3d3; width:1500px}
+</style>
 
 
 <!-- IE8以下用に2つのスクリプトを記述
@@ -93,8 +109,8 @@
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked">
       <li><a href="start.html">始めに</a></li>
-      <li class="active"><a href="#">ブラウザとサーバの関係</a></li>
-      <li><a href="">ブラウザとデータベースの関係</a></li>
+      <li><a href="">ブラウザとサーバの関係</a></li>
+      <li class="active"><a href="">ブラウザとデータベースの関係</a></li>
       <li><a href="">ブラウザからメッセージを送る。</a></li>
       <li><a href="">送られるデータはどのように処理されるのか</a></li>
       <li><a href="">コマンドが混入していたら</a></li>
@@ -127,19 +143,17 @@
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
   <li><a href="#">始めに</a></li>
-  <li><a href="#">ブラウザとサーバの関係</a></li>
-  <li class="active">演習</li>
+  <li><a href="#">サーバ間とブラウザの関係</a></li>
+  <li class="active">データベースとサーバの関係</li>
 </ol>
 
   <div id="main">
   <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
   <div id="drag_field">
    <div id="blocks_field">
-     <div id="drag1"; class="dragbox">HTMLリクエスト<span><button type="button" class="btn btn-default" onclick="window.open('lecture1_htmlrequest.html');"><span class="glyphicon glyphicon-edit"></span>編集</button></span></div>
+     <div id="drag1"; class="dragbox">HTMLリクエスト</div>
      <div id="drag2"; class="dragbox">HTMLデータ</div>
      <div id="drag3"; class="dragbox">SQL</div>
-     <div id="drag4"; class="dragbox">SSHソケットデータ</div>
-     <div id="drag5"; class="dragbox">SQL結果データ</div>
    </div>
    <!-- ドラッグする要素置き場とDrop先を分けるため -->
    <div style="clear:both"></div>
@@ -148,7 +162,8 @@
     <div class="drop">ブラウザ <img src="images/chrome_browser.png"></div>
     <div class="arrow" id="arrow1">ココにドロップ<img src="images/arrow.png"></div>
     <div class="drop">アプリケーションサーバ<img src="images/server.png"></div>
-    
+    <div class="arrow" id="arrow2">ココにドロップ<img src="images/arrow.png"></div>
+    <div class="drop">リレーショナル・データベース<img src="images/database.png"></div>
   </div>
  
     </div>
@@ -162,9 +177,8 @@
 <!--右側表示システム -->
 <div class="col-md-2">
   <h3>ここにヒントや正解、フィードバックが表示されます</h3>
-  <p id="right_message"></p>
+  <div id="right_message"></div>
 </div>
-
 
 
 </div>
@@ -199,20 +213,18 @@ $(function() {
   $("#btn_eval").click(function() {
   //外部モジュール　Evaluate_xxxx.js内のEvaluateメソッドを用いて評価を行う
   result_obj = Evaluate(user_answers);
+
   if(result_obj.result) {
-  //正解の時
-  $("#right_message").html(result_obj.feedback);
-  $("#correct-popup").show();
+    //正解の時
+    $("#right_message").html(result_obj.feedback);
+    $("#correct-popup").show();
 
-  
   }else{
-  //不正解の時
-  $("#incorrect-popup").show();
-  $("#right_message").html(result_obj.feedback);
-
-   
+    //不正解の時
+    $("#incorrect-popup").show();
+    $("#right_message").html(result_obj.feedback);
   }
-});
+  });
 
 
 });
