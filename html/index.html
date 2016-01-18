@@ -30,9 +30,10 @@
 <link rel="stylesheet" type="text/css" href="css/default.css">
 
 
+
 <!-- IE8以下用に2つのスクリプトを記述
      html5shiv.js: IE8以下にHTML5の要素を認識するようにさせる
-v     respond.js: IE8以下にMedia Queriesの代替え機能を提供 -->
+     respond.js: IE8以下にMedia Queriesの代替え機能を提供 -->
 <!--&#91;if lt IE 9&#93;>
 <script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -93,7 +94,7 @@ v     respond.js: IE8以下にMedia Queriesの代替え機能を提供 -->
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked">
       <li class="active"><a href="#">始めに</a></li>
-      <li><a href="lecture1.html">ブラウザとサーバの関係</a></li>
+      <li><a href="http_relationship/introduction.html">ブラウザとサーバの関係</a></li>
       <li><a href="index.html">ブラウザとデータベースの関係</a></li>
       <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
       
@@ -108,109 +109,39 @@ v     respond.js: IE8以下にMedia Queriesの代替え機能を提供 -->
     </ul>
   </div>
   <!-- 左フレーム -->
-<div class="col-md-8">
-  <!-- 正解の表示 -->
-<div class="alert alert-success alert-dismissible" role="alert" id="correct-popup">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>正解です！</strong> 次の章へ進みましょう！
-</div>
-
-<div class="alert alert-warning alert-dismissible" role="alert" id="incorrect-popup">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>どこか間違っているようです</strong>　確認してみましょう！
-</div>
-
-
+<div class="col-md-10">
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li><a href="#">始めに</a></li>
-  <li><a href="#">サーバ間とブラウザの関係</a></li>
-  <li class="active">データベースとサーバの関係</li>
+  <li class="active"><a href="#">始めに</a></li>
 </ol>
 
   <div id="main">
-  <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
-  <div id="drag_field">
-   <div id="blocks_field">
-     <div id="drag1"; class="dragbox">HTMLリクエスト</div>
-     <div id="drag2"; class="dragbox">HTMLデータ</div>
-     <div id="drag3"; class="dragbox">SQL</div>
-   </div>
-   <!-- ドラッグする要素置き場とDrop先を分けるため -->
-   <div style="clear:both"></div>
-  
-  <div id="drops_field">
-    <div class="drop">ブラウザ <img src="images/chrome_browser.png"></div>
-    <div class="arrow" id="arrow1">ココにドロップ<img src="images/arrow.png"></div>
-    <div class="drop">アプリケーションサーバ<img src="images/server.png"></div>
-    <div class="arrow" id="arrow2">ココにドロップ<img src="images/arrow.png"></div>
-    <div class="drop">リレーショナル・データベース<img src="images/database.png"></div>
-  </div>
- 
+    <div class="jumbotron">
+      <h1>SecLearnへようこそ</h1>
+      <p>SecLearnは情報セキュリティ人材育成e-learningシステムです。</p>
+      <p>SecLearnは、情報セキュリティのモデルの一つである　ThreatModel(脅威モデル)と情報システムとの関係を学習することができるe-learningシステムです。</p>
+      <p><a class="btn btn-primary btn-lg" href="lecture1.html" role="button">学習を始める</a></p>
     </div>
+    
   </div>
+
   <!-- main -->
+
+</div>
+
 <div class="control">
-   <button class="btn btn-primary" id="btn_eval"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>採点する</button> <button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>リセットする</button>
-</div>
-</div>
+  <p>SecLearnは、情報セキュリティの問題は、複雑な情報システム中のプログラムやデータの相互関係から発生する、という考えに基づき制作されました。</p>
+  <p>このシステムの必要環境は以下のとおりです　ブラウザ：Chrome40以上 横1400以上の解像度</p>
+  <p>引用：本研究は　IPA（情報処理機構）が提供する　脆弱性体験ツール　AppGoatの一部データを引用しています。
 
-<!--右側表示システム -->
-<div class="col-md-2">
-  <h3>ここにヒントや正解、フィードバックが表示されます</h3>
-  <div id="right_message"></div>
+  <p>まずはじめにウェブアプリケーションの仕組みから学習しましょう。　左のメニュー欄から　「サーバとブラウザの関係」を選択しましょう</p>
+  
 </div>
-
 
 </div>
 <!-- 右フレーム -->
 
-<!-- スクリプトでブロッキングを起こすものはここに記述
-ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
-<!-- SCRIPTS -->
-<!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<!-- Jquery -->
-<script type="text/javascript">
-  var user_answers = new Object();
-$(function() {
-// 1ドラッグ＆ドロップ機能を実装
-  $(".dragbox").draggable();
-  $(".drop").droppable({
-    drop: function(e,ui) {
-     
-    }
-   });
-　$(".arrow").droppable({
-     drop: function(e,ui){
-
-    user_answers[$(this).attr("id")] = ui.draggable.attr("id");
-    //alert(user_answers.toSource());
-    
-  }});
-
-  
-
-
-  $("#btn_eval").click(function() {
-  //外部モジュール　Evaluate_xxxx.js内のEvaluateメソッドを用いて評価を行う
-  result_obj = Evaluate(user_answers);
-
-  if(result_obj.result) {
-    //正解の時
-    $("#right_message").html(result_obj.feedback);
-    $("#correct-popup").show();
-
-  }else{
-    //不正解の時
-    $("#incorrect-popup").show();
-    $("#right_message").html(result_obj.feedback);
-  }
-  });
-
-
-});
-</script>
 
 
 
