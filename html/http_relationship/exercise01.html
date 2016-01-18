@@ -131,11 +131,13 @@
   <div id="main">
   <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
   <div id="drag_field">
-    <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>play</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
+    
    <div id="blocks_field">
      <div id="drag1"; class="dragbox">HTMLリクエスト</div>
-     <div id="drag2"; class="dragbox">HTMLデータ</div>
-     <div id="drag3"; class="dragbox">SQL</div>
+     <div id="drag2"; class="dragbox">HTMLファイル</div>
+     <div id="drag3"; class="dragbox">Javascript</div>
+     <div id="drag4"; class="dragbox">SQL</div>
+     <div id="drag5"; class="dragbox">データベース実行結果</div>
    </div>
    <!-- ドラッグする要素置き場とDrop先を分けるため -->
    <div style="clear:both"></div>
@@ -143,16 +145,16 @@
   <div id="drops_field">
     <div class="drop" id="drop1">ブラウザ <img src="images/chrome_browser.png"></div>
     <div class="arrow" id="arrow1"><img src="images/arrow.png"></div>
-    <div class="drop" id="drop2">アプリケーションサーバ<img src="images/server.png"></div>
-    <div class="arrow" id="arrow2"><img src="images/arrow.png"></div>
-    <div class="drop" id="drop3">データベース<img src="images/database.png"></div>
+    <div class="drop" id="drop2">ウェブサーバ<img src="images/server.png"></div>
+    
   </div>
  
     </div>
   </div>
   <!-- main -->
-<div class="control">
-   <button class="btn btn-primary" id="btn_eval"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>採点する</button> 
+  <div class="control">
+    <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>ステップを進める</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
+
 </div>
 </div>
 
