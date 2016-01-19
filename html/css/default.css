@@ -1,9 +1,9 @@
 /*
 this is for using seclearn system.
-version: 0.1
+version: 0.2
 author:shimizu ryosuke
 
-last update: 2016/01/14
+last update: 2016/01/19
 
 */
 
@@ -13,8 +13,9 @@ last update: 2016/01/14
   .drop {float:left;width: 150px; height: 250px; margin: 10px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
   .drop img{width:120px; height:auto; margin:auto; text-align:center; vertical-align:middle; floating:clear;}
   .arrowbox{float:left;height:auto}
-  .arrow {margin: 10px;  z-index:1; border:2px #333; border-style:dashed; border-radius:5px; text-align:top;}
-  .arrow img{max-height:80%; max-width:50%;}
+  .arrow {width:150px; height:100px;margin: 10px;  z-index:1; border:2px #333; border-style:dashed; border-radius:5px; text-align:center;}
+  .arrow img{max-width:90%}
+  .reverse{transform: rotate( 180deg );}
   .alert {display:none;}
   nav {height:3%}
   #container{margin-top:3%; padding-top:1%;}
