@@ -204,7 +204,11 @@ $(function() {
     
   }});
 
-
+$(".dropindrag").droppable({
+drop:function(e,ui){
+   alert(ui.draggable.attr("id");
+}
+});
 
   /* 擬似デバッガを操作*/
   $("#btn_start").click(function(){
