@@ -211,7 +211,9 @@ user_answers[$(this).attr("id")] = ui.draggable.attr("id");
 
 
 //上書きしてボックスの中にあるように表現する。
-$("#"+ui.draggable.attr("id")).appendTo($(this));
+//$("#"+ui.draggable.attr("id")).appendTo($(this));
+$(this).text(ui.text);
+$(this).style.backgroundColor("#ff7f50");
 }
 });
 
