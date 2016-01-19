@@ -131,10 +131,10 @@
   <div id="drag_field">
     <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>play</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
    <div id="blocks_field">
-     <div id="drag1"; class="dragbox">HTMLリクエスト<div class="dropindrag">stub</div></div>
-     <div id="drag2"; class="dragbox">HTMLデータ <div class="dropindrag">stub</div></div>
-     <div id="drag3"; class="dragbox">SQL <div class="dropindrag">stub</div></div>
-     <div id="drag3"; class="dragbox">ユーザID &amp; パスワード <div class="dropindrag">stub</div></div>
+     <div id="drag1"; class="dragbox">HTMLリクエスト<div class="dropindrag"></div></div>
+     <div id="drag2"; class="dragbox">HTMLデータ <div class="dropindrag"></div></div>
+     <div id="drag3"; class="dragbox">SQL <div class="dropindrag"></div></div>
+     <div id="drag3"; class="dragbox">ユーザID &amp; パスワード <div class="dropindrag"></div></div>
 
      <div id="drag4"; class="dragbox">
      
@@ -214,7 +214,6 @@ user_answers[$(this).attr("id")] = ui.draggable.attr("id");
 var target = $("#" + ui.draggable.attr("id"));
 
 alert(target.text());
-$(this).text("");
 $(this).text(target.text());
 $(this).backgroundColor("#ff7f50");
 }
