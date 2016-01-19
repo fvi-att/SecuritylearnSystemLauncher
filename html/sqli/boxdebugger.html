@@ -214,8 +214,9 @@ user_answers[$(this).attr("id")] = ui.draggable.attr("id");
 var target = $("#" + ui.draggable.attr("id"));
 
 alert(target.text());
+$(this).text("");
 $(this).text(target.text());
-//$(this).style.backgroundColor("#ff7f50");
+$(this).backgroundColor("#ff7f50");
 }
 });
 
