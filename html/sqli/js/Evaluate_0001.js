@@ -19,7 +19,15 @@ function getDebuggerProcess() {
 	    {id:"arrow2",action:function() {
 	    }},
 	    {id:"drop3", action:function() {
-	    }}
+	    }},
+	    {id:"arrow3", action:function() {
+	    }},
+	    {id:"drop2", action:function() {
+	    }},
+	    {id:"arrow4", action:function() {
+	    }},
+	    {id:"drop1", action:function() {
+	    }},   
 	]
     }
 
