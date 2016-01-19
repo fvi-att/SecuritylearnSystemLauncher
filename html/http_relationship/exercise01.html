@@ -238,7 +238,7 @@ $("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
   //外部モジュール　Evaluate_xxxx.js内のEvaluateメソッドを用いて評価を行う
   result_obj = Evaluate(user_answers);
 
-  alert(result_obj.toSource());
+ 
   if(result_obj.result) {
     //正解の時
     $("#right_message").html(result_obj.feedback);
