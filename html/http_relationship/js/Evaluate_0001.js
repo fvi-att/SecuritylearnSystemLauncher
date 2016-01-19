@@ -44,11 +44,11 @@ function Evaluate(target) {
     if (target["arrow2"] == "drag2"){
 
 	//SQLを選択する部分を間違えている
-	result_obj.feedback = "<img src='../images/mark_batsu.png' alt='不正解です'><p>データベースからデータを取り出すためには何が必要でしょうか？</p>";
+	result_obj.feedback = "<img class='result-icon' src='../images/mark_batsu.png' alt='不正解です'><p>データベースからデータを取り出すためには何が必要でしょうか？</p>";
 	
 	if (target["arrow1"] == "drag1"){
 	    result_obj.result = true;
-	    result_obj.feedback = '<img src="../images/mark_maru.png" alt="正解です"><a href="lecture1.html">(##要変更##)次のページへ</a>';
+	    result_obj.feedback = '<img class="result-icon" src="../images/mark_maru.png" alt="正解です"><a href="lecture1.html">(##要変更##)次のページへ</a>';
 	}
     }
     
