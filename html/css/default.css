@@ -9,14 +9,14 @@ last update: 2016/01/14
 
 
 #blocks_field {border-bottom: 1px solid #d3d3d3;}
-  .dragbox {width:100px; height: 100px; margin:10px; border:solid 1px #333; background-color:#e0ffff; float:left; text-align:middle;  z-index:2;}
-  .drop { width: 150px; height: 400px; margin: 10px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
+  .dragbox {width:90px; height: 90px; margin:10px; border:solid 1px #333; background-color:#e0ffff; float:left; text-align:middle;  z-index:2;}
+  .drop {float:left;width: 150px; height: 250px; margin: 10px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
   .drop img{width:120px; height:auto; margin:auto; text-align:center; vertical-align:middle; floating:clear;}
-  .arrow {width: 150px, max-height: 150px; margin: 10px; float:left; z-index:1; border:2px #333; border-style:dashed; border-radius:5px; text-align:top;　clear:both;}
-  .arrow img{max-height:90% max-width:90%;}
+  .arrowbox{float:left;height:auto}
+  .arrow {margin: 10px;  z-index:1; border:2px #333; border-style:dashed; border-radius:5px; text-align:top;}
+  .arrow img{max-height:80%; max-width:50%;}
   .alert {display:none;}
   nav {height:3%}
-  
   #container{margin-top:3%; padding-top:1%;}
   .col-md-2 {border-right: 1px solid #d3d3d3; height:100%}
   #main {clear:both;}
