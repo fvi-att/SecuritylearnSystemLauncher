@@ -166,7 +166,7 @@
 <div class="col-md-2">
   <h3>ここにヒントや正解、フィードバックが表示されます</h3>
   <div id="right_message"></div>
-  <a href="lecture1.html">(##要変更##)次のページへ</a>
+  
 </div>
 
 
@@ -225,7 +225,7 @@ $("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
 　$("#step_cnt").text(process_step_cnt);
 
   //各要素の一括評価
-  if(process_step_cnt > 4) {
+  if(process_step_cnt => processes.length) {
     Evaluate_once();
   }
 
