@@ -224,12 +224,17 @@ $("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
 　
 　$("#step_cnt").text(process_step_cnt);
 
+  //各要素の一括評価
+  if(process_step_cnt > 4) {
+    Evaluate_once();
+  }
+
 
   });
 
 
   /* arrowの中身が正解かどうか評価を行う　*/
-  $("#btn_eval").click(function() {
+ function Evaluate_once() {
   //外部モジュール　Evaluate_xxxx.js内のEvaluateメソッドを用いて評価を行う
   result_obj = Evaluate(user_answers);
 
@@ -243,7 +248,7 @@ $("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
     $("#incorrect-popup").show();
     $("#right_message").html(result_obj.feedback);
   }
-  });
+  }
 
 
 });
