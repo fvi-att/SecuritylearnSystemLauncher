@@ -48,7 +48,7 @@ function Evaluate(target) {
 	
 	if (target["arrow1"] == "drag1"){
 	    result_obj.result = true;
-	    result_obj.feedback = '<img class="result-icon" src="../images/mark_maru.png" alt="正解です"><a href="lecture1.html">次のページへ</a>';
+	    result_obj.feedback = '<img class="result-icon" src="../images/mark_maru.png" alt="正解です"><p>正解です。あなたはサーバとブラウザとの間でどのような情報がやり取りされているか、把握できるようになりました。<a href="lecture1.html">次のページへ</a></p>';
 	}
     }
     
