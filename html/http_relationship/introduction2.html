@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
  
 <!-- ページのタイトルを記述 -->
-<title>解説ページ</title>
+<title>サーバとブラウザの情報のやり取り</title>
  
 <!-- パフォーマンスのために使用する文字のエンコーディングを記述
      参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
@@ -28,7 +28,6 @@
 
 <script type="text/javascript" src="js/Evaluate_0001.js"></script>
 <link rel="stylesheet" type="text/css" href="css/default.css">
-
 
 
 
@@ -94,8 +93,8 @@
 <div id="container">
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked">
-     <li><a href="../start.html">始めに</a></li>
-      <li><a href="introduce.html">ブラウザとサーバの関係</a></li>
+      <li><a href="../index.html">始めに</a></li>
+      <li class="active"><a href="#">ブラウザとサーバの関係</a></li>
       <li><a href="#">ブラウザとデータベースの関係</a></li>
       <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
       
@@ -114,50 +113,63 @@
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li><a href="ブラウザとサーバの関係">SQLインジェクション</a></li>
-  <li><a href="exercise01.html">演習</a></li>
-  <li class="active"><a href="#">演習の解説</a></li>
+  <li class="active"><a href="#">始めに</a></li>
 </ol>
 
 <div id="main">
-  <blockquote cite="https://www.ipa.go.jp/security/vuln/appgoat/">
-    <div class="jumbotron">
-      <h1>ウェブサーバとブラウザの最も単純な情報のやり取り</h1>
-      <p>ここでは演習で得られた結果から、ウェブサーバとブラウザの間でやり取りされる情報について解説を行います</p>
-    </div>
+  <h1>サーバとブラウザの関係の演習</h1>
+  <p>ウェブアプリケーションを構成する　サーバとブラウザの関係を俯瞰的視点を通して確認していきましょう。</p>
 
-    <h1>ブラウザがサーバに送信する情報</h1>
-    <p>ブラウザがインターネットを経由してサーバに要求するものは、HTMLファイルと呼ばれるHTMLマークアップ言語によって書かれた人間が読みやすい文書のデータです。</p>
-    <p>この文書をサーバに要求する際、ブラウザはサーバに<strong>HTTPリクエスト</strong>を送信します</p>
-    <blockquote>
-      GET　/www.yoheim.net/?key1=value1&key2=value2 HTTP/1.1</br>
-Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</br>
-Accept-Charset:Shift_JIS,utf-8;q=0.7,*;q=0.3</br>
-Accept-Encoding:gzip,deflate,sdch</br>
-Accept-Language:ja,en-US;q=0.8,en;q=0.6</br>
-Cache-Control:max-age=0</br>
-Connection:keep-alive</br>
-Cookie:utma=something;</br>
-Host:www.yoheim.net</br>
-User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.54 Safari/536.5</br>
-    </blockquote>
-    <p>HTTPリクエストの中身はこのようになっていますが、現時点ではどのような構造なのか理解する必要はありません。</p>
-    
-    
+  <h2>事前に確認する用語</h2>
+  <ul>
+    <li>サーバ　：　クライアントサーバモデルにおいてクライアントからの要求に対して何らかのサービスを提供する役割を果たす。今回はウェブサーバを中心にすすめる。</li>
+    <li>ブラウザ：　、ウェブページを画面や印刷機に出力したり、ハイパーリンクをたどったりするなどの機能がある。単にブラウザ（ブラウザー）と呼んだ場合、多くはウェブブラウザのことを指す。</li>
+  </ul>
+
+  
+
+  <h2>参考URL</h2>
+  <ul>
+    <li><a href="http://ja.wikipedia.org/サーバ">サーバ</a></li>
+    <li><a href="http://ja.wikipedia.org/ブラウザ">ブラウザ</a></li>
+  </ul>
+
+  <h2>演習を行うにあたって</h2>
+  <p>それでは、実際にウェブアプリケーションの構造を本システムが提供する俯瞰的視点を通して学びましょう</p>
+  <h2>演習の目的</h2>
+  <p>情報システムに対する俯瞰的視点を通して、システム内部でどのような作用が行われているのかを確認します。</p>
+  <p>また、演習を通して本システムの操作方法を学習します</p>
+
+  <h2>演習イメージと操作方法</h2>
+  <p>演習は以下のような情報システム（ウェブアプリケーション）を抽象化したシミュレーションシステムを用います。</p>
+  <img src="images/exercise01_example.png" alt="演習イメージ画像" width="50%" height="auto">
+  <p>以下の手順でシミュレーションを操作してみましょう。</p>
+
+  <ol>
+    <li>今回の例ではサーバとブラウザとの間でやり取りされる情報に関して何がやり取りされるか確認してみましょう。</li>
+    <li>構成は　上に並ぶ四角い要素がそれぞれのデータを表現し、下に並ぶ四角と矢印の組み合わせが抽象化された情報システムを表します。</li>
+    <li>上の矢印をドラッグして、該当する矢印中の枠に入れてみましょう</li>
+    <li>すべての矢印に該当するデータを入れたら、下にある"実行"を押してシミュレーションを進めていきましょう。</li>
+    <li>実行を押すたびに、シミュレーション上の情報システム内部での処理が進みます。矢印中のデータは正しい内容であればそのまま実行されますが、不正解の場合はそこで処理が止まってしまうので、やり直してみましょう</li>
+    <li>すべてのステップが終了し、シミュレーション上の目的を達すると画面右側に表示されるリンクから次へ進むことができます</li>
+  </ol>
+  
+<a href="exercise02.html">演習を行う</a>
+  
   </div>
-<a href="introduction2.html">データベースとの関連を深くする</a>
-<!-- main -->
-</div>
 
-
+  <!-- main -->
 
 </div>
 
-<!-- スクリプトでブロッキングを起こすものはここに記述
-ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
-<!-- SCRIPTS -->
-<!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<!-- Jquery -->
+<div class="control">
+
+</div>
+
+</div>
+<!-- 右フレーム -->
+
+
 
 
 
