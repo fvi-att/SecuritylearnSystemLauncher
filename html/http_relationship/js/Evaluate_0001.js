@@ -9,7 +9,7 @@ function getDebuggerProcess() {
     var process_obj = {
 	process:[
 	    {id:"drop1", action:function(){
-		alert("you run step1");
+
 
 	    }},
 	    {id:"arrow1", action:function() {
