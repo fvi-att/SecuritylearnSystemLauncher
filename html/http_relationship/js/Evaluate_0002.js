@@ -50,7 +50,7 @@ function Evaluate(target) {
 
 
     //汎用的不正解に対するフィードバック
-    result_obj.feedback = "<img class='result-icon' src='../images/mark_batsu.png' alt='不正解です'><p>(##要詳細##)まだそれぞれの間に流れる情報について学習しきれていないようです。以下のサイトを参考に調査を行ってみましょう。<a href="#">リンク１</a><a href="#">リンク2</a></p>";
+    result_obj.feedback = "<img class='result-icon' src='../images/mark_batsu.png' alt='不正解です'><p>(##要詳細##)まだそれぞれの間に流れる情報について学習しきれていないようです。以下のサイトを参考に調査を行ってみましょう。<a href='#'>リンク１</a><a href='#'>リンク2</a></p>";
     
     //ユーザの解答に対して評価を行う
     if (target["arrow2"] == "drag3"){
