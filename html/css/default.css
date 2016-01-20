@@ -23,3 +23,5 @@ last update: 2016/01/19
   #main {clear:both;}
   .result-icon{width:150px; height:auto;}
   .control {float:left; margin-left:1%; padding-top:1%; border-top:solid 1px #d3d3d3; width:1500px}
+
+  .jumbotron {background-image:url("../images/background_jumbotron.jpg"); background-size:cover;}
