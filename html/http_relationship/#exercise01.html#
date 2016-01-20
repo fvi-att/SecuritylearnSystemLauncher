@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- IE8+に対して「IE=edge」と指定することで、利用できる最も互換性の高い最新のエンジンを使用するよう指示できます
+     参考: https://www.modern.ie/en-us/performance/how-to-use-x-ua-compatible -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+<!-- ページのタイトルを記述 -->
+<title>情報セキュリティ人材育成システムSecLearn</title>
+ 
+<!-- パフォーマンスのために使用する文字のエンコーディングを記述
+     参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
+<meta charset="utf-8">
+ 
+<!-- content属性にページの紹介文を記述 -->
+<meta name="description" content="Page for Learning Security">
+ 
+<!-- content属性にページの著者情報を記述 -->
+<meta name="author" content="Ryosuke Shimizu">
+ 
+<!-- モバイル端末への対応、ページをビューポートの幅に合わせてレンダリング（Android, iOS6以降）
+     ズームを許可しない設定「user-scalable=no」は加えない -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<!-- スタイルシートはできるだけ早くレンダリングされるため、HTMLドキュメントの上の方に記述
+     href属性にスタイルシートファイルのURIを記述 -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/default.css">
+
+<script type="text/javascript" src="js/Evaluate_0001.js"></script>
+
+<!-- IE8以下用に2つのスクリプトを記述
+     html5shiv.js: IE8以下にHTML5の要素を認識するようにさせる
+     respond.js: IE8以下にMedia Queriesの代替え機能を提供 -->
+<!--&#91;if lt IE 9&#93;>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<!&#91;endif&#93;-->
+
+<link type="text/css" rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+
+
+<!-- href属性にファビコンファイルのURIを記述 -->
+<link rel="shortcut icon" href="">
+ 
+<!-- コメントアウトしてあるコードは、iOS/Android用のアイコン指定 -->
+<!--
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="196x196" href="">
+<link rel="apple-touch-icon" sizes="152x152" href="">
+-->
+
+
+<!-- for bootstrap -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+
+
+<!-- スクリプトでブロッキングを起こさないものはここに記述
+     可能であれば「async（文書の読み込みが完了した時点でスクリプトを実行）」を使用
+     Example: <script src="" async></script> -->
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+
+
+
+</head>
+
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+
+        <!--ブランド名 ロゴ名の表示-->
+        <a class="navbar-brand" href="#">SecLearn</a>
+
+        <!--トグルボタンの設置-->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+  </nav>
+
+<div id="container">
+  <div class="col-md-2">
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="../index.html">始めに</a></li>
+      <li class="active"><a href="introduction.html">ブラウザとサーバの関係</a></li>
+      <li><a href="#">ブラウザとデータベースの関係</a></li>
+      <li><a href="../sqli/sqli_introduction.html">SQLインジェクション</a></li>
+      
+      <li><a href="">脅威モデル</a></li>
+      <li><a href="">脅威モデル1.　Spoofing</a></li>
+      <li><a href="">脅威モデル2.　Tampering</a></li>
+      <li><a href="">脅威モデル3.　Reduction</a></li>
+      <li><a href="">脅威モデル4.　InformationDisclosure</a></li>
+      <li><a href="">脅威モデル5.　DoS</a></li>
+      <li><a href="">脅威モデル6.　Elavation　Privilleges</a></li>
+      <li><a href="questionaries.html">アンケートのお願い</a></li>
+    </ul>
+  </div>
+  <!-- 左フレーム -->
+<div class="col-md-8">
+  <!-- 正解の表示 -->
+<div class="alert alert-success alert-dismissible" role="alert" id="correct-popup">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>正解です！</strong> 次の章へ進みましょう！
+</div>
+
+<div class="alert alert-warning alert-dismissible" role="alert" id="incorrect-popup">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>どこか間違っているようです</strong>　確認してみましょう！
+</div>
+
+
+
+  <!-- Breadcrumb -->
+<ol class="breadcrumb">
+  <li><a href="#">始めに</a></li>
+  <li><a href="#">サーバ間とブラウザの関係</a></li>
+  <li><a href="#">データベースとサーバの関係</a></li>
+  <li class="active">擬似デバッガーを利用した演習</li>
+</ol>
+
+  <div id="main">
+  <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
+  <div id="drag_field">
+    
+   <div id="blocks_field">
+     <div id="drag1"; class="dragbox">HTMLリクエスト</div>
+     <div id="drag2"; class="dragbox">HTMLファイル</div>
+     <div id="drag3"; class="dragbox">Javascript</div>
+     <div id="drag4"; class="dragbox">SQL</div>
+     <div id="drag5"; class="dragbox">データベース実行結果</div>
+   </div>
+   <!-- ドラッグする要素置き場とDrop先を分けるため -->
+   <div style="clear:both"></div>
+  
+  <div id="drops_field">
+    <div class="drop" id="drop1">ブラウザ <img src="images/chrome_browser.png"></div>
+    <div class="arrowbox">
+      <div class="arrow" id="arrow1"><img src="images/arrow.png"></div>
+      <div class="arrow" id="arrow2"><img class="reverse" src="images/arrow.png"></div>
+    </div>
+    
+    <div class="drop" id="drop2">ウェブサーバ<img src="images/server.png"></div>
+    
+  </div>
+ 
+    </div>
+  </div>
+  <!-- main -->
+  <div class="control">
+    <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>ステップを進める</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
+
+</div>
+</div>
+
+<!--右側表示システム -->
+<div class="col-md-2">
+  <h3>ここにヒントや正解、フィードバックが表示されます</h3>
+  <div id="right_message"></div>
+  
+</div>
+
+
+</div>
+<!-- 右フレーム -->
+
+<!-- スクリプトでブロッキングを起こすものはここに記述
+ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
+<!-- SCRIPTS -->
+<!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<!-- Jquery -->
+<script type="text/javascript">
+
+// intilized nums
+  var user_answers = new Object();
+  var process_step_cnt = 0;
+
+  
+$(function() {
+// 1ドラッグ＆ドロップ機能を実装
+  $(".dragbox").draggable();
+  $(".drop").droppable({
+    drop: function(e,ui) {
+     
+    }
+   });
+　$(".arrow").droppable({
+     drop: function(e,ui){
+
+    user_answers[$(this).attr("id")] = ui.draggable.attr("id");
+    //alert(user_answers.toSource());
+    
+  }});
+
+
+
+  /* 擬似デバッガを操作*/
+  $("#btn_start").click(function(){
+  process_obj = getDebuggerProcess();
+  processes = process_obj["process"];
+
+  /*変更している部分を表示する　*/
+$("#" + processes[process_step_cnt]["id"] ).css('border-color','red');
+$("#" + processes[process_step_cnt]["id"] ).css('border-width','5px');
+
+/*擬似デバッガ内での処理を行うステップ */
+processes[process_step_cnt]["action"]();
+
+
+if (process_step_cnt > 0){
+$("#" + processes[process_step_cnt -1]["id"] ).css('border-color','blue');
+$("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
+}
+  process_step_cnt++;
+　
+　$("#step_cnt").text(process_step_cnt);
+
+  //各要素の一括評価
+  if(process_step_cnt >= processes.length) {
+    Evaluate_once();
+  }
+
+
+  });
+
+
+  /* arrowの中身が正解かどうか評価を行う　*/
+ function Evaluate_once() {
+  //外部モジュール　Evaluate_xxxx.js内のEvaluateメソッドを用いて評価を行う
+  result_obj = Evaluate(user_answers);
+
+  
+  if(result_obj.result) {
+    //正解の時
+    $("#right_message").html(result_obj.feedback);
+    $("#correct-popup").show();
+
+  }else{
+    //不正解の時
+    $("#incorrect-popup").show();
+    $("#right_message").html(result_obj.feedback);
+  }
+  }
+
+
+});
+</script>
+
+
+
+
+
+</body>
+</html>
