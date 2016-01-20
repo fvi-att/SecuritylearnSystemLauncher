@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
  
 <!-- ページのタイトルを記述 -->
-<title>解説ページ</title>
+<title>サーバとブラウザの情報のやり取り</title>
  
 <!-- パフォーマンスのために使用する文字のエンコーディングを記述
      参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
@@ -28,7 +28,6 @@
 
 <script type="text/javascript" src="js/Evaluate_0001.js"></script>
 <link rel="stylesheet" type="text/css" href="css/default.css">
-
 
 
 
@@ -94,10 +93,10 @@
 <div id="container">
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked">
-     <li><a href="../start.html">始めに</a></li>
-      <li><a href="introduction1.html">ブラウザとサーバの関係</a></li>
-      <li class="active"><a href="introduction2.html">ブラウザとデータベースの関係</a></li>
-      <li><a href="../sqli/start.html">SQLインジェクション</a></li>
+      <li><a href="../index.html">始めに</a></li>
+      <li class="active"><a href="#">ブラウザとサーバの関係</a></li>
+      <li><a href="#">ブラウザとデータベースの関係</a></li>
+      <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
       
       <li><a href="">脅威モデル</a></li>
       <li><a href="">脅威モデル1.　Spoofing</a></li>
@@ -114,57 +113,66 @@
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li><a href="ブラウザとサーバの関係">ブラウザとサーバ、データベースの関係</a></li>
-  <li><a href="exercise01.html">演習</a></li>
-  <li class="active"><a href="#">解説</a></li>
+  <li class="active"><a href="#">始めに</a></li>
 </ol>
 
 <div id="main">
-  <blockquote cite="https://www.ipa.go.jp/security/vuln/appgoat/">
-    <div class="jumbotron">
-      <h1>データベースとは</h1>
-      <p>ここでは演習で得られた学習を深いものにするため、ウェブサーバ、ブラウザ　や　データベースの間でやり取りされる情報について解説を行います</p>
-    </div>
+  <h1>サーバとブラウザの関係の演習</h1>
+  <p>ウェブアプリケーションを構成する　サーバとブラウザの関係を俯瞰的視点を通して確認していきましょう。</p>
 
-    <h1>SQLとは</h1>
-    <p> SQLとはデータベースにおいて、データの操作や定義を行うための言語である。</p>
-    <p>　データベースに保存した情報に関して問い合わせる時、サーバはデータベースに<strong>SQL</strong>を送信します</p>
-    <blockquote>
-      SELECT * FROM user WHERE id = 'yamada';
-    </blockquote>
-    <p>このメッセージでは　idの項目の中に　yamada が入っているデータを全て選択してデータベースから呼び出すことを表しています。</p>
+  <h2>事前に確認する用語</h2>
+  <ul>
+    <li>サーバ　：　クライアントサーバモデルにおいてクライアントからの要求に対して何らかのサービスを提供する役割を果たす。今回はウェブサーバを中心にすすめる。</li>
+    <li>ブラウザ：　、ウェブページを画面や印刷機に出力したり、ハイパーリンクをたどったりするなどの機能がある。単にブラウザ（ブラウザー）と呼んだ場合、多くはウェブブラウザのことを指す。</li>
+  </ul>
 
+  
 
-    <h1>情報のながれ</h1>
-    <p></p>
+  <h2>参考URL</h2>
+  <ul>
+    <li><a href="http://ja.wikipedia.org/サーバ">サーバ</a></li>
+    <li><a href="http://ja.wikipedia.org/ブラウザ">ブラウザ</a></li>
+  </ul>
 
-    <h1>参考情報</h1>
-     <ul>
-       <li>SQLに関する学習：<a href="http://dotinstall.com/lessons/basic_mysql_v2">ドットインストール MySQL編</a></li>
-     </ul>
-      
-     <h1>情報システム内部を俯瞰的視点に基づいて観察</h1>
-    <p>これであなたは、情報システムの内部での作用を把握することができるようになりました</p>
-    <p>さっそく情報システム上の問題点である脆弱性に関する学習を、この把握をもとに進めていきましょう<p>
-    <p>左のメニュー欄から　&quot;SQLインジェクション&quot;の項目をクリックしてください</p>
+  <h2>演習を行うにあたって</h2>
+  <p>それでは、実際にウェブアプリケーションの構造を本システムが提供する俯瞰的視点を通して学びましょう</p>
+  <h2>演習の目的</h2>
+  <p>情報システムに対する俯瞰的視点を通して、システム内部でどのような作用が行われているのかを確認します。</p>
+  <p>また、演習を通して本システムの操作方法を学習します</p>
+
+  <h2>演習イメージと操作方法</h2>
+  <p>演習は以下のような情報システム（ウェブアプリケーション）を抽象化したシミュレーションシステムを用います。</p>
+  <img src="images/exercise01_example.png" alt="演習イメージ画像" width="50%" height="auto">
+  <p>以下の手順でシミュレーションを操作してみましょう。</p>
+
+  <ol>
+    <li>今回の例ではサーバとブラウザとの間でやり取りされる情報に関して何がやり取りされるか確認してみましょう。</li>
+    <li>構成は　上に並ぶ四角い要素がそれぞれのデータを表現し、下に並ぶ四角と矢印の組み合わせが抽象化された情報システムを表します。</li>
+    <li>上の矢印をドラッグして、該当する矢印中の枠に入れてみましょう</li>
+    <li>すべての矢印に該当するデータを入れたら、下にある"実行"を押してシミュレーションを進めていきましょう。</li>
+    <li>実行を押すたびに、シミュレーション上の情報システム内部での処理が進みます。矢印中のデータは正しい内容であればそのまま実行されますが、不正解の場合はそこで処理が止まってしまうので、やり直してみましょう</li>
+    <li>すべてのステップが終了し、シミュレーション上の目的を達すると画面右側に表示されるリンクから次へ進むことができます</li>
+  </ol>
+  
+<a href="exercise01.html">演習を行う</a>
+  
   </div>
-<a href="boxdebugger.html">データベースとの関連を深くする</a>
-<!-- main -->
-</div>
 
-
+  <!-- main -->
 
 </div>
 
-<!-- スクリプトでブロッキングを起こすものはここに記述
-ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
-<!-- SCRIPTS -->
-<!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<!-- Jquery -->
+<div class="control">
+
+</div>
+
+</div>
+<!-- 右フレーム -->
+
+
 
 
 
 
 </body>
 </html>
-
