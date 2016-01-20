@@ -225,7 +225,7 @@ $("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
 　$("#step_cnt").text(process_step_cnt);
 
   //各要素の一括評価
-  if(process_step_cnt => processes.length) {
+  if(process_step_cnt >= processes.length) {
     Evaluate_once();
   }
 
@@ -238,7 +238,7 @@ $("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
   //外部モジュール　Evaluate_xxxx.js内のEvaluateメソッドを用いて評価を行う
   result_obj = Evaluate(user_answers);
 
- 
+  
   if(result_obj.result) {
     //正解の時
     $("#right_message").html(result_obj.feedback);
