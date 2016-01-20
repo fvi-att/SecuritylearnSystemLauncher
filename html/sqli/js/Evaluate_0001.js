@@ -52,11 +52,11 @@ function Evaluate(target) {
     if (target["arrow2"] == "drag3"){
 
 	//SQLを選択する部分を間違えている
-	result_obj.feedback = "<p>データベースからデータを取り出すためには何が必要でしょうか？</p>";
+	result_obj.feedback = "<img class='result-icon' src='../images/mark_batsu.png' alt='不正解です'><p>データベースからデータを取り出すためには何が必要でしょうか？</p>";
 	
 	if (target["arrow1"] == "drag1"){
 	    result_obj.result = true;
-	    result_obj.feedback = '<p>これで全てのレクチャーは修了です！お疲れ様でした！　アンケートは必ず答えてください！</p><a href="questionaries.html">アンケートを応える</a>';
+	    result_obj.feedback = '<img class="result-icon" src="../images/mark_maru.png" alt="正解です"><p>正解です！　これであなたはSQLインジェクションの仕組みを把握しました。</p><a href="sqli_principle_1.html">解説ページへ</a>';
 	}
     }
     
