@@ -9,9 +9,9 @@ last update: 2016/01/19
 
 
 #blocks_field {border-bottom: 1px solid #d3d3d3;}
-  .dragbox {width:120px; height: 90px; margin:5px; border:solid 1px #333; background-color:#e0ffff; float:left; text-align:middle;  z-index:2;}
+  .dragbox {width:130px; height: 90px; margin:5px; border:solid 1px #333; background-color:#e0ffff; float:left; text-align:middle;  z-index:2;}
   .drop {float:left;width: 150px; height: 250px; margin: 5px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
-  .dropindrag {max-width:95%; height:40%; background-color:gray; bottom:3px;}
+  .dropindrag {max-width:95%; height:40%; background-color:gray; bottom:3px; -webkit-border-radius:6px; -moz-border-radius:6px}
 
   .drop img{width:120px; height:auto; margin:auto; text-align:center; vertical-align:middle; floating:clear;}
   .arrowbox{float:left;height:auto}
@@ -25,3 +25,4 @@ last update: 2016/01/19
   #main {clear:both;}
   .result-icon{width:150px; height:auto;}
   .control {float:left; margin-left:1%; padding-top:1%; border-top:solid 1px #d3d3d3; width:1500px}
+  .input-box {width:120px,height:50px; margin:3px; border:solid 1px orangered; background-color:#ff7f50; float:left; -webkit-border-radius:5px; -moz-border-radius:5px;  z-index:4;}
