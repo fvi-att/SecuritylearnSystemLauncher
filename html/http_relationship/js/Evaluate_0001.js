@@ -47,7 +47,7 @@ function Evaluate(target) {
     if (target["arrow2"] == "drag2"){
 
 	//SQLを選択する部分を間違えている
-	result_obj.feedback = "feedback/exercise01/sql_wrong.html";
+	result_obj.feedback = "feedback/exercise01/http_return_wrong.html";
 	
 	if (target["arrow1"] == "drag1"){
 	    result_obj.result = true;
