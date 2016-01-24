@@ -104,23 +104,38 @@
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
+  <li><a href="start.html">SQLインジェクション</a></li>
   <li class="active"><a href="#">演習</a></li>
   
 </ol>
 
   <div id="main">
-  <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
+  <h2>webアプリのログインを想定して、正しくログインを行ってください</h2>
   <div id="drag_field">
     <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>play</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
    <div id="blocks_field">
-     <div id="drag1"; class="dragbox">HTMLリクエスト<div class="dropindrag" id="dragdrop1"></div></div>
-     <div id="drag2"; class="dragbox">HTMLデータ <div class="dropindrag" id="dragdrop2"></div></div>
-     <div id="drag3"; class="dragbox">SQL <div class="dropindrag" id="dragdrop3"></div></div>
-     <div id="drag4"; class="dragbox">ユーザID &amp; パスワード <div class="dropindrag" id="dragdrop4"></div></div>
-     <div id="drag5"; class="dragbox">管理者のデータを取得するSQL<div class="dropindrag" id="dragdrop5"></div></div>
-     <div id="drag6"; class="dragbox">ユーザに関する保存されていた情報<div class="dropindrag" id="dragdrop6"></div></div>
+     <div id="drag1"; class="dragbox">HTTPリクエスト<div class="dropindrag" id="dragdrop1">空</div></div>
+     <div id="drag2"; class="dragbox">HTTPレスポンス<div class="dropindrag" id="dragdrop2">空</div></div>
+     <div id="drag3"; class="dragbox">SQL <div class="dropindrag" id="dragdrop3">空</div></div>
+     <div id="drag4"; class="dragbox">ユーザID &amp; パスワード <div class="dropindrag" id="dragdrop4">空</div></div>
+     <div id="drag5"; class="dragbox">管理者のデータを取得するSQL<div class="dropindrag" id="dragdrop5">空</div></div>
+     <div id="drag6"; class="dragbox">ユーザに関する保存されていた情報<div class="dropindrag" id="dragdrop6">空</div>
+     </div>
+
      
+   <!-- ドラッグする要素置き場とDrop先を分けるため -->
+   <div style="clear:both"></div>
+     
+     <div id="input_field">
+     <div id="input1"; class="input-box">HTTPリクエスト</div>
+     <div id="input2"; class="input-box">HTTPレスポンス</div>
+     <div id="input3"; class="input-box">SQL</div>
+     <div id="input4"; class="input-box">ユーザID &amp; パスワード</div>
+     <div id="input5"; class="input-box">管理者のデータを取得するSQL</div>
+     <div id="input6"; class="input-box">ユーザに関する保存されていた情報</div>
+     <div id="input7"; class="input-box">HTMLファイル</div>
+     <div id="input8"; class="input-box">JavaScript</div>
+
      
    </div>
    <!-- ドラッグする要素置き場とDrop先を分けるため -->
@@ -144,10 +159,7 @@
  
     </div>
   </div>
-  <!-- main -->
-<div class="control">
-   <button class="btn btn-primary" id="btn_eval"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>採点する</button> 
-</div>
+
 </div>
 </div>
 <!--右側表示システム -->
@@ -183,6 +195,8 @@ dragend: function(e,ui){
     $("#"+ui.draggable.attr("id")).css('z-index',2);
 }});
 
+$(".input-box").draggable({});
+
 
   $(".drop").droppable({
     drop: function(e,ui) {
@@ -206,9 +220,14 @@ user_answers[$(this).attr("id")] = ui.draggable.attr("id");
 //上書きしてボックスの中にあるように表現する。
 var target = $("#" + ui.draggable.attr("id"));
 
+
 alert(target.text() + "を内部の要素にセットしました");
 $(this).text(target.text());
 $(this).css('background-color',"#ff7f50");
+
+
+$(".input_field").appendTo(target.clone());
+target.hide();
 
 }});
 
@@ -251,13 +270,13 @@ $("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
   
   if(result_obj.result) {
     //正解の時
-    $("#right_message").html(result_obj.feedback);
+    $("#right_message").load(result_obj.feedback);
     $("#correct-popup").show();
 
   }else{
     //不正解の時
     $("#incorrect-popup").show();
-    $("#right_message").html(result_obj.feedback);
+    $("#right_message").load(result_obj.feedback);
   }
  }
 

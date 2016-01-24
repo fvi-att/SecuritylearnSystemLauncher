@@ -117,8 +117,8 @@
   <div id="drag_field">
     
    <div id="blocks_field">
-     <div id="drag1"; class="dragbox">HTMLリクエスト</div>
-     <div id="drag2"; class="dragbox">HTMLファイル</div>
+     <div id="drag1"; class="dragbox">HTTPリクエスト</div>
+     <div id="drag2"; class="dragbox">HTTPレスポンス</div>
      <div id="drag3"; class="dragbox">Javascript</div>
      <div id="drag4"; class="dragbox">SQL</div>
      <div id="drag5"; class="dragbox">データベース実行結果</div>
@@ -222,16 +222,19 @@ $("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
   //外部モジュール　Evaluate_xxxx.js内のEvaluateメソッドを用いて評価を行う
   result_obj = Evaluate(user_answers);
 
-  
+ 
+
   if(result_obj.result) {
     //正解の時
-    $("#right_message").html(result_obj.feedback);
+
+    $("#right_message").load(result_obj.feedback);
     $("#correct-popup").show();
 
   }else{
-    //不正解の時
+//不正解の時
+    $("#right_message").load(result_obj.feedback);
     $("#incorrect-popup").show();
-    $("#right_message").html(result_obj.feedback);
+
   }
   }
 

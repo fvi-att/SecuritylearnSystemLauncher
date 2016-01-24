@@ -40,15 +40,18 @@ function Evaluate(target) {
 	feedback:""
     };
 
+        
     //ユーザの解答に対して評価を行う
+    //２問とも不正解の場合、HTTPとにおけるぶらうざとサーバの役割が理解できていない
+    result_obj.feedback ="feedback/exercise01/http_wrong.html";
     if (target["arrow2"] == "drag2"){
 
 	//SQLを選択する部分を間違えている
-	result_obj.feedback = "<img class='result-icon' src='../images/mark_batsu.png' alt='不正解です'><p>データベースからデータを取り出すためには何が必要でしょうか？</p>";
+	result_obj.feedback = "feedback/exercise01/http_return_wrong.html";
 	
 	if (target["arrow1"] == "drag1"){
 	    result_obj.result = true;
-	    result_obj.feedback = '<img class="result-icon" src="../images/mark_maru.png" alt="正解です"><p>正解です。あなたはサーバとブラウザとの間でどのような情報がやり取りされているか、把握できるようになりました。<a href="lecture1.html">次のページへ</a></p>';
+	    result_obj.feedback = 'feedback/exercise01/correct.html';
 	}
     }
     
