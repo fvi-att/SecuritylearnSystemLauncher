@@ -7,18 +7,23 @@ actionはその要素でどのような動作を行うかを提議させます
 function getDebuggerProcess() {
 
     var process_obj = {
+
 	process:[
 	    {id:"drop1", action:function(){
-
+		//id=drop1の処理が通過するとき、このfunction内の処理が実行されます
 
 	    }},
 	    {id:"arrow1", action:function() {
+		//id=arrow1の処理が通過するとき、このfunction内の処理が実行されます
 	    }},
 	    {id:"drop2", action:function() {
+		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます
 	    }},
 	    {id:"arrow2",action:function() {
+		//id=arrow2の処理が通過するとき、このfunction内の処理が実行されます
 	    }},
 	    {id:"drop3", action:function() {
+		//id=drop3の処理が通過するとき、このfunction内の処理が実行されます
 	    }}
 	]
     }
@@ -26,6 +31,17 @@ function getDebuggerProcess() {
     return process_obj;
 }
 
+/* シミュレーションの各ステップごとにて評価を行い、正解不正解、oフィードバックを返すようにする*/
+function getStepEvaluateObj(){
+    var eval_obj = [
+	{evaluate:function(){ return true;},correct_fb:"",wrong_fb:""},
+	{evaluate:function(){ return true;},correct_fb:"",wrong_fb:""},
+	{evaluate:function(){ return true;},correct_fb:"",wrong_fb:""},
+	{evaluate:function(){ return true;},correct_fb:"",wrong_fb:""},
+	{evaluate:function(){ return true;},correct_fb:"",wrong_fb:""},
+    ];
+    return eval_obj;
+}
 
 
 
