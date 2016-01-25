@@ -24,9 +24,12 @@ function getDebuggerProcess(target) {
 	    {id:"drop2", action:function() {
 		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます
 	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
+	    
 	    {id:"arrow2",action:function() {
 		//id=arrow2の処理が通過するとき、このfunction内の処理が実行されます
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
+	    }, evaluate:function(){if(target["arrow2"] == "drag5") {return true;}else{return false;}
+	      },feedback:"feedback/exercise01/http_wrong.html"},
+	    
 	    {id:"drop3", action:function() {
 		//id=drop3の処理が通過するとき、このfunction内の処理が実行されます
 	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/correct.html"},
@@ -34,36 +37,4 @@ function getDebuggerProcess(target) {
     }
 
     return process_obj;
-}
-
-
-
-
-
-function Evaluate(target) {
-
-
-    //コンテンツの結果に関する
-    var result_obj ={
-	result:false,
-	message:document,
-	feedback:""
-    };
-
-        
-    //ユーザの解答に対して評価を行う
-    //２問とも不正解の場合、HTTPとにおけるぶらうざとサーバの役割が理解できていない
-    result_obj.feedback ="feedback/exercise01/http_wrong.html";
-    if (target["arrow2"] == "drag2"){
-
-	//SQLを選択する部分を間違えている
-	result_obj.feedback = "feedback/exercise01/http_return_wrong.html";
-	
-	if (target["arrow1"] == "drag1"){
-	    result_obj.result = true;
-	    result_obj.feedback = 'feedback/exercise01/correct.html';
-	}
-    }
-    
-    return result_obj;
 }
