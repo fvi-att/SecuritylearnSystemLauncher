@@ -26,7 +26,8 @@
      href属性にスタイルシートファイルのURIを記述 -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="css/default.css">
-<script type="text/javascript" src="js/Evaluate_0002.js"></script>
+
+<script type="text/javascript" src="js/Evaluate_0001.js"></script>
 
 <!-- IE8以下用に2つのスクリプトを記述
      html5shiv.js: IE8以下にHTML5の要素を認識するようにさせる
@@ -88,6 +89,7 @@
 
 <div id="container">
   
+  <!-- 左フレーム -->
 <div class="col-md-7">
   <!-- 正解の表示 -->
 <div class="alert alert-success alert-dismissible" role="alert" id="correct-popup">
@@ -104,24 +106,22 @@
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
-  <li class="active"><a href="#">演習</a></li>
-  
+  <li><a href="#">始めに</a></li>
+  <li><a href="#">サーバ間とブラウザの関係</a></li>
+  <li><a href="#">データベースとサーバの関係</a></li>
+  <li class="active">擬似デバッガーを利用した演習</li>
 </ol>
 
   <div id="main">
   <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
   <div id="drag_field">
-    <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>play</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
+    
    <div id="blocks_field">
      <div id="drag1"; class="dragbox">HTTPリクエスト</div>
      <div id="drag2"; class="dragbox">HTTPレスポンス</div>
-     <div id="drag3"; class="dragbox">SQL </div>
-     <div id="drag4"; class="dragbox">ユーザID &amp; パスワード</div>
-     <div id="drag5"; class="dragbox">SYN/ACK</div>
-     <div id="drag6"; class="dragbox">データベース実行結果</div>
-     <div id="drag7"; class="dragbox">Cookie</div>
-     
+     <div id="drag3"; class="dragbox">Javascript</div>
+     <div id="drag4"; class="dragbox">SQL</div>
+     <div id="drag5"; class="dragbox">データベース実行結果</div>
    </div>
    <!-- ドラッグする要素置き場とDrop先を分けるため -->
    <div style="clear:both"></div>
@@ -130,35 +130,32 @@
     <div class="drop" id="drop1">ブラウザ <img src="images/chrome_browser.png"></div>
     <div class="arrowbox">
       <div class="arrow" id="arrow1"><img src="images/arrow.png"></div>
-      <div class="arrow" id="arrow4"><img class="reverse" src="images/arrow.png"></div>
+      <div class="arrow" id="arrow2"><img class="reverse" src="images/arrow.png"></div>
     </div>
     
-    <div class="drop" id="drop2">アプリケーションサーバ<img src="images/server.png"></div>
-    <div class="arrowbox">
-      <div class="arrow" id="arrow2"><img src="images/arrow.png"></div>
-      <div class="arrow" id="arrow3"><img class="reverse" src="images/arrow.png"></div>
-    </div>
+    <div class="drop" id="drop2">ウェブサーバ<img src="images/server.png"></div>
     
-    <div class="drop" id="drop3">データベース<img src="images/database.png"></div>
   </div>
  
     </div>
   </div>
   <!-- main -->
-<div class="control">
-   <button class="btn btn-primary" id="btn_eval"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>採点する</button> 
+  <div class="control">
+    <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>ステップを進める</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
+
 </div>
 </div>
-</div>
-<!--デバッグ中身情報表示 -->
+<!--　ScopeField　  -->
 <div class="col-md-2">
-  <p>sample</p>
+  <h1>デバッガの処理の中身を表示します。</h1>
+  <p>sample text</p>
 </div>
 
-<!--右側表示システム -->
-<div class="col-md-3">
+<!--div -->
+<右側表示システム class="col-md-3">
   <h3>ここにヒントや正解、フィードバックが表示されます</h3>
   <div id="right_message"></div>
+  
 </div>
 
 
@@ -170,110 +167,8 @@
 <!-- SCRIPTS -->
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
-<script type="text/javascript">
+<script type="text/javascript" src="../js/debugger.js"></script>
 
-// intilized nums
-  var user_answers = new Object();
-  var process_step_cnt = 0;
-
-  
-$(function() {
-// 1ドラッグ＆ドロップ機能を実装
-$(".dragbox").draggable({
-dragstart: function(e,ui){
-    $("#"+ui.draggable.attr("id")).css('z-index',3);
-
-},
-dragend: function(e,ui){
-    $("#"+ui.draggable.attr("id")).css('z-index',2);
-}});
-
-
-  $(".drop").droppable({
-    drop: function(e,ui) {
-     
-    }
-   });
-　$(".arrow").droppable({
-     drop: function(e,ui){
-
-    user_answers[$(this).attr("id")] = ui.draggable.attr("id");
-    //alert(user_answers.toSource());
-    
-  }});
-
-$(".dropindrag").droppable({
-drop:function(e,ui){
-
-user_answers[$(this).attr("id")] = ui.draggable.attr("id");
-
-
-//上書きしてボックスの中にあるように表現する。
-var target = $("#" + ui.draggable.attr("id"));
-
-alert(target.text());
-$(this).text(target.text());
-$(this).css('background-color',"#ff7f50");
-}
-});
-
-  /* 擬似デバッガを操作*/
-  $("#btn_start").click(function(){
-  process_obj = getDebuggerProcess();
-  processes = process_obj["process"];
-
-  /*変更している部分を表示する　*/
-$("#" + processes[process_step_cnt]["id"] ).css('border-color','red');
-$("#" + processes[process_step_cnt]["id"] ).css('border-width','5px');
-
-/*擬似デバッガ内での処理を行うステップ */
-processes[process_step_cnt]["action"]();
-
-
-if (process_step_cnt > 0){
-$("#" + processes[process_step_cnt -1]["id"] ).css('border-color','blue');
-$("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
-}
-  process_step_cnt++;
-　
-　$("#step_cnt").text(process_step_cnt);
-
-  //各要素の一括評価
-  if(process_step_cnt >= processes.length) {
-    Evaluate_once();
-  }
-
-
-
-  });
-
-
-/* arrowの中身が正解かどうか評価を行う　*/
- function Evaluate_once() {
-  //外部モジュール　Evaluate_xxxx.js内のEvaluateメソッドを用いて評価を行う
-  result_obj = Evaluate(user_answers);
-
-  
-  if(result_obj.result) {
-    //正解の時
-    $("#right_message").html(result_obj.feedback);
-    $("#correct-popup").show();
-
-  }else{
-    //不正解の時
-    $("#incorrect-popup").show();
-    $("#right_message").html(result_obj.feedback);
-  }
-  }
-
-  /* arrowの中身が正解かどうか評価を行う　*/
-  $("#btn_eval").click(function() {
-
-  });
-
-
-});
-</script>
 
 
 
