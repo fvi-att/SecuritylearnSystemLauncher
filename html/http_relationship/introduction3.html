@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
  
 <!-- ページのタイトルを記述 -->
-<title>解説ページ</title>
+<title>SQLインジェクションに関する学習</title>
  
 <!-- パフォーマンスのために使用する文字のエンコーディングを記述
      参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
@@ -26,10 +26,9 @@
      href属性にスタイルシートファイルのURIを記述 -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 
-<script type="text/javascript" src="js/Evaluate_0001.js"></script>
+
 <link rel="stylesheet" type="text/css" href="css/default.css">
-
-
+<script type="text/javascript" src="js/Evaluate_0001.js"></script>
 
 
 <!-- IE8以下用に2つのスクリプトを記述
@@ -90,62 +89,63 @@
         </button>
       </div>
   </nav>
-
+<-- 左フレーム -->
 <div id="container">
   <div class="col-md-2"></div>
-  <!-- 左フレーム -->
+<!-- 左フレーム -->
 <div class="col-md-10">
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li><a href="ブラウザとサーバの関係">ブラウザとサーバ、データベースの関係</a></li>
-  <li><a href="exercise01.html">演習</a></li>
-  <li class="active"><a href="#">解説</a></li>
+  <li class="active"><a href="#">SQLインジェクション</a></li>
+  <li class="active"><a href="#">はじめに</a></li>
 </ol>
 
 <div id="main">
-  <blockquote cite="https://www.ipa.go.jp/security/vuln/appgoat/">
-    <div class="jumbotron">
-      <h1>データベースとは</h1>
-      <p>ここでは演習で得られた学習を深いものにするため、ウェブサーバ、ブラウザ　や　データベースの間でやり取りされる情報について解説を行います</p>
-    </div>
 
-    <h1>SQLとは</h1>
-    <p> SQLとはデータベースにおいて、データの操作や定義を行うための言語である。</p>
-    <p>　データベースに保存した情報に関して問い合わせる時、サーバはデータベースに<strong>SQL</strong>を送信します</p>
-    <blockquote>
-      SELECT * FROM user WHERE id = 'yamada';
-    </blockquote>
-    <p>このメッセージでは　idの項目の中に　yamada が入っているデータを全て選択してデータベースから呼び出すことを表しています。</p>
+  <h1>ブロックの中にブロックを入れて作用を変えてみる</h1>
+  <p>次のシミュレーションでは、先ほどのブロックの中にさらに様々な情報を付加できるようになっています</p>
+  
+     <img src="images/boxes01.PNG" alt="作用を変えられるブロック達">
+     <h2>ブロックを付加することによるシステムの変化</h2>
+  <p>ブロックの中にブロックを付加することで、外側のブロックの情報の中に中のブロックに関する情報を埋め込んだことと同義になります</p>
+  <img src="images/input_complete.PNG" alt="埋め込まれた情報">
+  <p>上の図ではHTMLリクエストの中にユーザIDとパスワードに関する情報が埋め込まれたことを示します。</p>
+  <p>埋め込まれた情報をもとに、シミュレーションシステムは情報の処理を行います。</p>
+
+  <h2>ブロックの中にブロックを入れる方法</h2>
+  <p>ブロックの中にブロックを入れるためには以下の操作を行います</p>
+  <ol>
+    <li>任意の入れたいブロックをドラッグ</li>
+    <li>入れる先のブロックまでドラッグして重ねる</li>
+    <img src="images/input_info.PNG" alt="ドラッグして重ねる">
+    <li> 入れた先のブロックにオレンジ色の要素が追加されていたら完了</li>
+    <img src="images/input_complete.PNG" alt="追加完了">
+  </ol>
+  
+
+  <h1>演習活動</h1>
+  <p>次の演習ではデータベースを用いたウェブアプリケーションシステム上でHTTPを用いたログインを行ってみましょう<p>
+  <p>ログインには以下の情報が必要になります<p>
+    <ol>
+      <li>ユーザ名</li>
+      <li>パスワード</li>
+    </ol>
+
+    <p>今回はユーザAとしてブラウザからウェブシステムにログインできるようにしましょう</p>
+ 
+  <p><a href="exercise03.html">演習活動へ</a></p>
+</div>
 
 
-    <h1>情報のながれ</h1>
-    <p></p>
-
-    <h1>参考情報</h1>
-     <ul>
-       <li>SQLに関する学習：<a href="http://dotinstall.com/lessons/basic_mysql_v2">ドットインストール MySQL編</a></li>
-     </ul>
-
-     <h1>(##考え##)</h1>
-    <p>これであなたは、情報システムの内部でどのような情報がやり取りされているかを学びました。では特定の事象の時、
-      　それらがどのような情報を取り扱っているのか学習してみましょう</p>
-    <a href="introduction3.html">次の学習へ進む</a>
-     <!-- ココは一旦削ります　 -->
-     <h1>情報システム内部を俯瞰的視点に基づいて観察</h1>
-    <p>これであなたは、情報システムの内部での作用を把握することができるようになりました</p>
-    <p>さっそく情報システム上の問題点である脆弱性に関する学習を、この把握をもとに進めていきましょう<p>
-    <p>左のメニュー欄から　&quot;SQLインジェクション&quot;の項目をクリックしてください</p>
-  </div>
-
+ 
 <!-- main -->
 </div>
 
 
 
 </div>
-
-
+ 
 <!-- スクリプトでブロッキングを起こすものはここに記述
 ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
 <!-- SCRIPTS -->
@@ -155,11 +155,10 @@
 
   $(function() {
   
-  $(".col-md-2").load("side_menu2.html");
+  $(".col-md-2").load("side_menu.html");
   
   });
-</script>
-
+</script> 
 
 
 
