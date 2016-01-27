@@ -30,7 +30,7 @@ function getDebuggerProcess(target) {
 	    }, evaluate:function(){if(target["arrow2"] == "drag2") {return true;}else{return false;}
 	      },feedback:"feedback/exercise01/http_wrong.html"},
 	    
-	    {id:"drop3", action:function() {
+	    {id:"drop1", action:function() {
 		//id=drop3の処理が通過するとき、このfunction内の処理が実行されます
 	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/correct.html"},
 	]
