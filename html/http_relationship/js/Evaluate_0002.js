@@ -27,7 +27,7 @@ function getDebuggerProcess(target) {
 	    
 	    {id:"arrow2",action:function() {
 		//id=arrow2の処理が通過するとき、このfunction内の処理が実行されます
-	    }, evaluate:function(){if(target["arrow2"] == "drag2") {return true;}else{return false;}
+	    }, evaluate:function(){if(target["arrow2"] == "drag3") {return true;}else{return false;}
 	      },feedback:"feedback/exercise01/http_wrong.html"},
 	    
 	    {id:"drop3", action:function() {
@@ -36,7 +36,7 @@ function getDebuggerProcess(target) {
 
 	    {id:"arrow3",action:function() {
 		//id=arrow2の処理が通過するとき、このfunction内の処理が実行されます
-	    }, evaluate:function(){if(target["arrow2"] == "drag2") {return true;}else{return false;}
+	    }, evaluate:function(){if(target["arrow3"] == "drag6") {return true;}else{return false;}
 	      },feedback:"feedback/exercise01/http_wrong.html"},
 
 	    {id:"drop2", action:function() {
@@ -45,7 +45,7 @@ function getDebuggerProcess(target) {
 
 	    {id:"arrow4",action:function() {
 		//id=arrow2の処理が通過するとき、このfunction内の処理が実行されます
-	    }, evaluate:function(){if(target["arrow2"] == "drag2") {return true;}else{return false;}
+	    }, evaluate:function(){if(target["arrow4"] == "drag2") {return true;}else{return false;}
 	      },feedback:"feedback/exercise01/http_wrong.html"},
 
 	    {id:"drop1", action:function() {
