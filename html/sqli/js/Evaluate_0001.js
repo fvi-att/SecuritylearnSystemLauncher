@@ -4,61 +4,57 @@ processの内部要素の順列にそって実行されます
 idはどの要素をアクティブにして動作させるか
 actionはその要素でどのような動作を行うかを提議させます
 */
-function getDebuggerProcess() {
+function getDebuggerProcess(target) {
 
     var process_obj = {
+
+
 	process:[
 	    {id:"drop1", action:function(){
-		alert("you run step1");
-
-	    }},
+		//id=drop1の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){return true;}
+	     ,feedback:"feedback/exercise01/http_wrong.html"},
+	    
 	    {id:"arrow1", action:function() {
-	    }},
+		//id=arrow1の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){
+		if(target["arrow1"] == "drag1"){return true;}else{return false;}
+	    },feedback:"feedback/exercise01/http_wrong.html"},
+	    
 	    {id:"drop2", action:function() {
-	    }},
+		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
+	    
 	    {id:"arrow2",action:function() {
-	    }},
+		//id=arrow2の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){if(target["arrow2"] == "drag3") {return true;}else{return false;}
+	      },feedback:"feedback/exercise01/http_wrong.html"},
+	    
 	    {id:"drop3", action:function() {
-	    }},
-	    {id:"arrow3", action:function() {
-	    }},
+		//id=drop3の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/correct.html"},
+
+	    {id:"arrow3",action:function() {
+		//id=arrow3の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){if(target["arrow3"] == "drag6") {return true;}else{return false;}
+	      },feedback:"feedback/exercise01/http_wrong.html"},
+
 	    {id:"drop2", action:function() {
-	    }},
-	    {id:"arrow4", action:function() {
-	    }},
+		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
+
+	    {id:"arrow4",action:function() {
+		//id=arrow4の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){if(target["arrow4"] == "drag2") {return true;}else{return false;}
+	      },feedback:"feedback/exercise01/http_wrong.html"},
+
 	    {id:"drop1", action:function() {
-	    }},   
+		//id=drop1の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/correct.html"},
+
+	    
 	]
     }
 
     return process_obj;
-}
-
-
-
-
-
-function Evaluate(target) {
-
-
-    //コンテンツの結果に関する
-    var result_obj ={
-	result:false,
-	message:document,
-	feedback:""
-    };
-
-    //ユーザの解答に対して評価を行う
-    if (target["arrow2"] == "drag3"){
-
-	//SQLを選択する部分を間違えている
-	result_obj.feedback = "feedback/exercise01/sql_not_correct.html";
-	
-	if (target["arrow1"] == "drag1"){
-	    result_obj.result = true;
-	    result_obj.feedback = 'feedback/exercise01/correct.html';
-	}
-    }
-    
-    return result_obj;
 }
