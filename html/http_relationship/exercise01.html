@@ -193,7 +193,13 @@
 <!-- SCRIPTS -->
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
-<script type="text/javascript" src="../js/debugger.js"></script>
+<script type="text/javascript" src="../js/debugger.js">
+
+  var step_callback = function(user_answers){
+      alert("this will be ran");
+  };
+
+</script>
 
 
 
