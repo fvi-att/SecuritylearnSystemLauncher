@@ -110,7 +110,18 @@
 </ol>
 <div id="main">
   <!-- メインコンテンツ表示 -->
-    <div id="filter_box" style="background-color:#66cdaa"><label>name</label><input type="text" name="email" class="form-control"></div>
+  <div id="filter_box" style="background-color:#66cdaa"><label>name</label><input type="text" name="email" class="form-control"></div>
+
+  <div class="form-group">
+  <label for="sel1">どこでこの処理を行うべきでしょうか？</label>
+  <select class="form-control" id="sel1">
+    <option>ブラウザでユーザの処理を受け付けた時</option>
+    <option>アプリサーバ内部でユーザのHTTPリクエストを受け取った時点</option>
+    <option>アプリサーバ内部でSQL文を組み立てる際に</option>
+    <option>データベースを呼び出してSQL実行結果をもらった時</option>
+  </select>
+  </div>
+  
 </div>
 </div>
 <!--右側表示システム -->
