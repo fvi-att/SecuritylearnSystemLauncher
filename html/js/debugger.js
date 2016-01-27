@@ -50,7 +50,15 @@ processes[process_step_cnt]["action"]();
 
 /*フィードバックを返すかどうかの処理 */
 if (!processes[process_step_cnt]["evaluate"]() || (process_step_cnt == processes.length -1)) {
+
+    //feedback
     $("#right_message").load(processes[process_step_cnt]["feedback"]);
+
+    //間違っていた時はブロックにびっくりを追加
+    if(!processes[process_step_cnt]["evaluate"]()){
+	$("#" +user_answers[processes[process_step_cnt]["id"]]).html("<img src='../images/bikkuri.png'>");
+    }
+    
     result_flag = false;
 }
 
