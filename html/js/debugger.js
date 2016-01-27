@@ -1,7 +1,7 @@
 // intilized nums
   var user_answers = new Object();
   var process_step_cnt = 0;
-
+  var result_flag = true;
   
 $(function() {
 // 1ドラッグ＆ドロップ機能を実装
@@ -24,6 +24,10 @@ $(function() {
 /* 擬似デバッガを操作*/
 $("#btn_start").click(function(){
 
+    if (!result_flag) {
+	return;
+    }
+    
   process_obj = getDebuggerProcess(user_answers);
   processes = process_obj["process"];
 
@@ -47,6 +51,7 @@ processes[process_step_cnt]["action"]();
 /*フィードバックを返すかどうかの処理 */
 if (!processes[process_step_cnt]["evaluate"]() || (process_step_cnt == processes.length -1)) {
     $("#right_message").load(processes[process_step_cnt]["feedback"]);
+    result_flag = false;
 }
 
 

@@ -33,6 +33,26 @@ function getDebuggerProcess(target) {
 	    {id:"drop3", action:function() {
 		//id=drop3の処理が通過するとき、このfunction内の処理が実行されます
 	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/correct.html"},
+
+	    {id:"arrow3",action:function() {
+		//id=arrow2の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){if(target["arrow2"] == "drag2") {return true;}else{return false;}
+	      },feedback:"feedback/exercise01/http_wrong.html"},
+
+	    {id:"drop2", action:function() {
+		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
+
+	    {id:"arrow4",action:function() {
+		//id=arrow2の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){if(target["arrow2"] == "drag2") {return true;}else{return false;}
+	      },feedback:"feedback/exercise01/http_wrong.html"},
+
+	    {id:"drop1", action:function() {
+		//id=drop3の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/correct.html"},
+
+	    
 	]
     }
 
