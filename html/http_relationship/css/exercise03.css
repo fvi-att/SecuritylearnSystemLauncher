@@ -15,7 +15,7 @@ last update: 2016/01/19
 
   .drop img{width:110px; height:auto; margin:auto; text-align:center; vertical-align:middle; floating:clear;}
   .arrowbox{float:left;height:auto}
-  .arrow {width:150px; height:100px;margin: 5px;  z-index:1; border:2px #333; border-style:dashed; border-radius:5px; text-align:center;}
+  .arrow {width:140px; height:100px;margin: 5px;  z-index:1; border:2px #333; border-style:dashed; border-radius:5px; text-align:center;}
   .arrow img{max-width:90%}
   .reverse{transform: rotate( 180deg );}
   .alert {display:none;}
