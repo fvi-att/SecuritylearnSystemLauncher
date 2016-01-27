@@ -14,7 +14,7 @@ last update: 2016/01/19
   .drop {width: 120px; height: 250px; margin: 5px; border: solid 1px #333; background-color:#cf6; float:left; z-index:1;}
   .dropindrag {max-width:95%; height:40%; background-color:gray; bottom:3px; -webkit-border-radius:6px; -moz-border-radius:6px}
 
-  .drop img{width:120px; height:auto; margin:auto; text-align:center; vertical-align:middle; floating:clear;}
+  .drop img{max-width:90% height:auto; margin:auto; text-align:center; vertical-align:middle; floating:clear;}
   .arrowbox{float:left;height:auto}
   .arrow {width:150px; height:100px;margin: 5px;  z-index:1; border:2px #333; border-style:dashed; border-radius:5px; text-align:center;}
   .arrow img{max-width:90%}
