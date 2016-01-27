@@ -2,7 +2,7 @@
   var user_answers = new Object();
   var process_step_cnt = 0;
   var result_flag = true;
-  var step_callback = function(){};
+
 
 
 $(function() {
@@ -17,7 +17,7 @@ $(function() {
      drop: function(e,ui){
 
     user_answers[$(this).attr("id")] = ui.draggable.attr("id");
-    //alert(user_answers.toSource());
+
     
   }});
 
@@ -49,8 +49,7 @@ if (process_step_cnt > 0){
 /*擬似デバッガ内での処理を行うステップ */
 processes[process_step_cnt]["action"]();
 
-//callback呼び出し
-    step_callback(user_answers);
+
 
 /*フィードバックを返すかどうかの処理 */
 if (!processes[process_step_cnt]["evaluate"]() || (process_step_cnt == processes.length -1)) {
