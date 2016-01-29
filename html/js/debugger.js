@@ -26,6 +26,7 @@ $(function() {
 /* 擬似デバッガを操作*/
 $("#btn_start").click(function(){
 
+    //不正解時などこれ以上シミュレータを動かしたくないときはココで停止する
     if (!result_flag) {
 
 	return;

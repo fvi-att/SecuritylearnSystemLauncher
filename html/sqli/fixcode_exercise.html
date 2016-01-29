@@ -26,7 +26,7 @@
      href属性にスタイルシートファイルのURIを記述 -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="css/default.css">
-<script type="text/javascript" src="js/Evaluate_0002.js"></script>
+
 
 <!-- IE8以下用に2つのスクリプトを記述
      html5shiv.js: IE8以下にHTML5の要素を認識するようにさせる
@@ -143,7 +143,13 @@
 <!-- SCRIPTS -->
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
-<script type="text/javascript"></script>
+<script type="text/javascript" src="./js/openwebSQL.js"></script>
+<script type="text/javascript">
+  createTableIfNotExists();
+
+  alert("result:" + isExcutableSQL("insert into USER_TABLE values ('Bob','passworddesu');"));
+
+</script>
 
 
 

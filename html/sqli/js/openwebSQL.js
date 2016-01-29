@@ -9,7 +9,7 @@ since:2016/01
 */
 
 
-$(function(){
+
     var dbName = 'Test1';
     var version = '1.0';
     var displayName = 'Test1';
@@ -18,10 +18,10 @@ $(function(){
     function createTableIfNotExists(){
 	var db = openDB();
 	db.transaction( function(trans){
-	    trans.executeSql( 'CREATE TABLE IF NOT EXISTS meibo ' + '( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ' + ' name TEXT NOT NULL,' + ' email TEXT NOT NULL);' );
+	    trans.executeSql( 'CREATE TABLE IF NOT EXISTS USER_TABLE ' + '( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ' + ' user_id TEXT NOT NULL,' + ' password TEXT NOT NULL);' );
 	});
     }
-
+    /*
     function insertData(){
 	var db = openDB();
 	db.transaction( function(trans){
@@ -38,15 +38,15 @@ $(function(){
 	    }
 			    );
 	} ); }
+     */
+function isExcutableSQL(sql_){
+    var db = openDB();
+    try {
+	db.transaction( function(trans){ trans.exucuteSql(sql_,[],this.resultSetHandler,this.errorHandler);});
+	return true;
+    }catch(e){
+	return false;
+    }
+}
 
     function openDB(){ return openDatabase( dbName, version, displayName, estimatedSize); }
-
-
-    $('#button1').click(function(){ createTableIfNotExists(); });
-    $('#button2').click(function(){ insertData(); });
-    $('#button3').click(function(){ getData(); });
-
-
-});
-
-
