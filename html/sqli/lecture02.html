@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
  
 <!-- ページのタイトルを記述 -->
-<title>SQLインジェクションに関する学習</title>
+<title>解説ページ</title>
  
 <!-- パフォーマンスのために使用する文字のエンコーディングを記述
      参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
@@ -26,9 +26,10 @@
      href属性にスタイルシートファイルのURIを記述 -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 
-
-<link rel="stylesheet" type="text/css" href="css/default.css">
 <script type="text/javascript" src="js/Evaluate_0001.js"></script>
+<link rel="stylesheet" type="text/css" href="css/default.css">
+
+
 
 
 <!-- IE8以下用に2つのスクリプトを記述
@@ -45,7 +46,7 @@
 
  
 <!-- href属性にファビコンファイルのURIを記述 -->
-<link rel="shortcut icon" href="">
+<link rel="shortcut icon" href="../images/favicon.ico">
  
 <!-- コメントアウトしてあるコードは、iOS/Android用のアイコン指定 -->
 <!--
@@ -81,70 +82,64 @@
         <!--ブランド名 ロゴ名の表示-->
         <a class="navbar-brand" href="#">SecLearn</a>
 
-        <!--トグルボタンの設置-->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
       </div>
   </nav>
-<-- 左フレーム -->
+
 <div id="container">
   <div class="col-md-2"></div>
-<!-- 左フレーム -->
+  <!-- 左フレーム -->
 <div class="col-md-10">
 
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li class="active"><a href="#">SQLインジェクション</a></li>
-  <li class="active"><a href="#">はじめに</a></li>
+  <li><a href="start.html">SQLインジェクション</a></li>
+  <li><a href="exercise02.html">演習</a></li>
+  <li class="active"><a href="#">対策と解説</a></li>
 </ol>
 
-<div id="main">  
-  <h1>SQLインジェクションとは</h1>
-  <p>sqlインジェクションとは、データベースに設計者の意図していないSQLを問い合わせされてしまう情報セキュリティ上の問題点です。</p>
-  <p>sqlインジェクション攻撃が行われると以下の様な被害が発生すると考えられています。</p>
-          
-    <h2　id="effect_article">影響解説</h2>
-    <ol>
-      <li><h3>データベースに蓄積された非公開情報を閲覧される</h3>
-	<p>データベースの非公開情報を閲覧されることで、個人情報や機密情報などが漏えいする可能性があります。</p>
-      </li>
-      
-      <li><h3>データベースに蓄積された情報を改竄、消去される</h3>
-	<p>データベースの情報を改ざん、消去されることで、ウェブページが改ざんされたり、パスワードが変更されてしまったり、システムが停止するといった被害が発生する可能性があります。</p>
-      </li>
-      
-    <li><h3>認証回避によって不正にログインされる</h3>
-      <p>不正にログインされることで、ログインしたユーザに許可されている全ての操作が可能となり、不正な行為が行われる可能性があります。</p>
-    </li>
+<div id="main">
+  <blockquote cite="https://www.ipa.go.jp/security/vuln/appgoat/">
+    <div class="jumbotron">
+      <h1>SQLインジェクションの解決法</h1>
+      <p>ここでは演習で行った活動を通して、SQLインジェクションを防ぐための手立てについて学ぶとともに、実際の情報システムにおける修正法に関する解説を行います</p>
+    </div>
+
+    <h1>実際のSQLインジェクションの解決法</h1>
+    <img src="images/placeholder.png" alt="プレースホルダの図">
+    <p>SQLインジェクション全般の対策として、&quot;プレースホルダ&quot;によるSQL文の組み立てを行います。プレースホルダによるSQL文の組み立てとは、検索条件などのパラメータ部分を　？などの記号で示しておき、後から実際の値を機械的な処理で割り当てる方法です。ここで、パラメータ部分を示す記号　？のことをプレースホルダと予備、そこへ実際の値を割り当てることを「バインドする」と呼びます。プレースホルダのことを「バインド変数」と呼ぶこともあります。</p>
+    <p>プレースホルダには次の2種類があります。</p>
+
+    <ul>
+      <li><h2>静的プレースホルダ</h2><p>静的プレースホルダは、JIS/ISOの規格では「準備された文(Prepared Statement)」と規定されています。これは、プレースホルダのままのSQL文をデータベース側にあらかじめ送信して、実行前に、SQL文の構文解析などの準備をしておく方式です。SQL実行の段階で、実際のパラメータの値をデータベース側に送信し、データベース側がバインド処理します。</p></li>
+
+      <li><h2>動的プレースホルダ</h2><p>動的プレースホルダは、静的プレースホルダとは異なり、プレースホルダを利用するものの、値のバインド処理をデータベース側で行うのではなく、ウェブアプリケーション側のライブラリ内で実行する方式です。</p></li>
+    </ul>
     
-    <li><h3>ストアドプロシージャなどを利用した OS コマンドを実行される</h3>
-      <p>OSコマンドを実行されることで、システムの乗っ取りや、他への攻撃の踏み台として悪用される可能性があります。</p>
-    </li>
 
-    <h2>ではこのSQLインジェクション攻撃を擬似的シミュレーション上で実現してみましょう</h2>
-    <img src="images/simlation.PNG" alt="シミュレーション全体">
-      <p>このシミュレーションでは二段階に分けて演習を行ってもらいます</p>
-      <p><strong>このシミュレーションは　ブラウザ利用者がログインを行うための処理をシミュレートしています</strong>
-      <ol>
-	<li>脆弱性を攻撃しない普通の場合のシミュレーション</li>
-	<li>脆弱性を攻撃する場合のシミュレーション</li>
-      </ol>
-      <p>脆弱性を攻撃する場面では<a href="#effect_article">&quot;影響解説&quot;</a>の内容からどのようにすれば、攻撃が起きてしまうかを考えながらシミュレーションを行ってみましょう</p>
-  <p><a href="exercise01.html">演習活動へ</a></p>
-</div>
+    <h1>参考情報</h1>
+     <ul>
+       <li>概要：<a href="https://ja.wikipedia.org/wiki/SQL%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">Wikipedia SQLインジェクション</a></li>
+       <li>IPA提供資料：<a href="https://www.ipa.go.jp/security/awareness/vendor/programmingv2/contents/502.html">SQLインジェクションに関する情報</a></li>
+     </ul>
 
+     <h1>まとめ</h1>
+    <p>これであなたは、情報システムの内部での作用を通してSQLインジェクションの原理を学ぶことが出来ました。</p>
+    <p>ウェブシステムの脆弱性はこの他にも数多くあります。ここで学んだことを活かして学習を進めていきましょう。</p>
 
- 
+    <h2>アンケートのお願い</h2>
+    <p>本システムは情報セキュリティに対する学習コンテンツの開発・研究の一環として開発されました。今後の修正、発展のためにもアンケートのご協力おねがいします。</p>
+
+    <p><a href="../questionaries.html">アンケートページヘ</a></p>
+  </div>
+
 <!-- main -->
 </div>
 
 
 
 </div>
- 
+
+
 <!-- スクリプトでブロッキングを起こすものはここに記述
 ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
 <!-- SCRIPTS -->
@@ -154,10 +149,11 @@
 
   $(function() {
   
-  $(".col-md-2").load("side_menu.html");
+  $(".col-md-2").load("side_menu2.html");
   
   });
-</script> 
+</script>
+
 
 
 

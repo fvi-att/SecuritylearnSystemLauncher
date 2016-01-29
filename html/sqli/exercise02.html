@@ -92,9 +92,14 @@
 </ol>
 <div id="main">
   <!-- メインコンテンツ表示 -->
+
+  <h1>特定の文字を排除して正常なログインを実現しつつ、攻撃が実現しないようにしてください</h1>
   <div id="sql_field" style="width:100%; height:auto"><div id="good_input" style="float:left; margin:10px; align:center;width:40%; background-color:#00bfff;">正常なログインデータ</br>ID: user1 PASSWORD: password1 </br><span style="font-size:x-large">⇓</div><div id="bad_input" style="float:left; margin:10px; align:center;width:40%; background-color:#fa8072;">攻撃の可能性が高いログインデータ</br>ID: admin PASSWORD: 'OR 1=1;--　</br><span style="font-size:x-large">⇓</span></div>
   </div>
   <div id="filter_box" style="clear:both; background-color:#66cdaa"><label>無害化する文字</label><input type="text" name="email" class="form-control"></div>
+
+  <div style="clear:both"></div>
+  <div id="sql_field" style="width:100%; height:auto"><div id="good_input" style="float:left; margin:10px; align:center;width:40%; background-color:#00bfff;"><span style="font-size:x-large">⇓</span></br>正常なログインデータ</br><span id="normal-sanitized">SQL:</span></div><div id="bad_input" style="float:left; margin:10px; align:center;width:40%; background-color:#fa8072;"><span style="font-size:x-large">⇓</span></br>攻撃の可能性が高いログインデータ</br>SQL:<span id="attack-sanitized"></span></div>
 
 <div class="form-group">
   <label for="where_to_sanitize">どこでこの無害化処理を行うべきとおもいますか？</label>
@@ -107,6 +112,7 @@
 </div>
 
 <button type="button" id="btn_start" class="btn btn-primary">チェックする</button>
+</div>
 </div>
 </div>
 <!--右側表示システム -->
@@ -134,8 +140,9 @@
   
   $(function() {
   $("#btn_start").click(function() {
-
-   
+  
+  //まずは正解を表示するようにする
+  $("#right_message").load("feedback/exercise02/correct.html");
   });
   
 });
