@@ -161,11 +161,14 @@
     .scope p {margin:0px; font-size:small; padding-left:5px;}
      -->
     </style>
-  <div class="scope" id="scope1";><p>POST /index.html HTTP/1.1 </br> id=sample&password=passworddesu</p></div>
+    <div class="scope" id="scope1";>
+      <p>POST /index.html HTTP/1.1</p>
+      <div class="scope-input" id="scope-input1">空</div>
+    </div>
   <p style="align:center;max-width:100%;">⇓</p>
-  <div class="scope" id="scope2";><p>SELECT * FROM USER_TABLE WHERE ID="" AND PASSWORD=""</p></div>
+  <div class="scope" id="scope2";><p>SQL文</p><p>SELECT * FROM USER_TABLE WHERE </p><div class="scope-input" id="scope-input2">ID="" AND PASSWORD=""</div></div>
   <p style="align:center;max-width:100%;">⇓</p>
-  <div class="scope" id="scope3";><p>{USERLOGIN:"SUCCESS" ,ID:""}</p></div>
+  <div class="scope" id="scope3";><div class="scope-input" id="scope-input3">{USERLOGIN:"SUCCESS" ,ID:""}</div></div>
    <p style="align:center;max-width:100%;">⇓</p>
   <div class="scope" id="scope4">
 
@@ -180,9 +183,7 @@
 <p>Connection: Keep-Alive</p>
 <p>Content-Type: text/html</p>
 </br>
-<p>&lt;html&gt;</p>
-<p> ようこそ！　xxさん！</p>
-<p>&lt;/html&gt;</p>
+<div class="scope-input" id="scope-input4">空</div>
 
 </div>
 </div>
@@ -203,7 +204,7 @@
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
 <script type="text/javascript" src="../js/debugger.js"></script>
-
+<script type="text/javascript" src="js/input-scope.js"></script>
 <!-- debugger.jsの機能に追加して内部に値をセットできるようにしておく -->
 <script type="text/javascript">
 $(function() {
@@ -213,6 +214,9 @@ $(function() {
 drop:function(e,ui){
 
 user_answers[$(this).attr("id")] = ui.draggable.attr("id");
+
+//スコープ中のデータを書き換え
+$("#" + scope_obj[$(this).attr("id")]).html(input_obj[ui.draggable.attr("id")]);
 
 
 //上書きしてボックスの中にあるように表現する。
