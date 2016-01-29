@@ -137,8 +137,8 @@
     <p>悪意のある人によって不正にログインされた場合、本人でなければ利用できない操作を行われてしまいます。</p>
     <p>以下のサイトも参考にしましょう<p><a href="http://www.ipa.go.jp/security/vuln/vuln_contents/sql.html">知っていますか？脆弱性　SQLインジェクション</a></p>
 </div>
-<p>ではこれまでの学習を活かして、SQLインジェクションの発生を防ぐための演習を行いましょう</p>
-<a href="exercise02.html">演習ページへ</a>
+<p>では最後にSQLインジェクションの対策について解説を行います。</p>
+<a href="lecture02.html">演習ページへ</a>
 <!-- main -->
 </div>
 

@@ -96,7 +96,10 @@
   <div id="drag_field">
     <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>play</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
   </div>
-     <p><strong>ID、パスワードをセットして、&quot;ログインボタン&quot;を押すとシミュレーションの準備を行います。</strong></p>
+  <p><strong>ID、パスワードをセットして、&quot;ログインボタン&quot;を押すとシミュレーションの準備を行います。</strong></p>
+  <p>右のオレンジは　ヒントです。ドラッグ＆ドロップでいろいろなところに入れてみましょう</p>
+  
+  
      <div id="psuedo-browser" style="width:500px; height:250px; background-color:#e6e6fa; margin-bottom:10px; float:left; border-top:solid 4px #4169e1; border-bottom:solid 4px #4169e1; border-right:double 4px #4169e1; border-left:double 4px #4169e1; ">
        <div style="max-width:100%; border-bottom:solid 2px black"><label for:="url-form">URL:</form><input type="text" name="url-form" value="http://www.bank.com/login" /><button type="button"><span class="glyphicon glyphicon-arrow-right"></span></button> 擬似ブラウザ</div>
 <div id="psuedo-browser-content">
@@ -108,8 +111,25 @@
 	<button type="button" id="btn-login" class="btn btn-primary">ログイン</button>
       </form>
 </div>
+</div>
 
- </div>     
+<div id="droppable-fields">
+     <div id="input1" class="input-box">password</div>
+     <div id="input2" class="input-box">OR</div>
+     <div id="input3" class="input-box">AND</div>
+     <div id="input4" class="input-box">'</div>
+     <div id="input5" class="input-box">hidden</div>
+     <div id="input6" class="input-box">;</div>
+     <div id="input6" class="input-box">Bob</div>
+     <div id="input7" class="input-box">';</div>
+     <div id="input8" class="input-box">1=1</div>
+     <div id="input9" class="input-box">--</div>
+     <div id="input10" class="input-box">admin</div>
+     <div id="input11" class="input-box">id</div>
+     
+  </div>
+
+      
 
    
    <!-- ドラッグする要素置き場とDrop先を分けるため -->
@@ -197,6 +217,19 @@
     $("#btn_start").prop("disabled",false);
     alert("シミュレーションを行ってみましょう。playボタンを押してください");
   });
+
+  $(".input-box").draggable({});
+ $("#psuedo-loginform [name=id-form]").droppable({drop:function(e,ui){
+  $(this).val($(this).val() + $("#"+ui.draggable.attr("id")).text());
+  $("#"+ui.draggable.attr("id")).hide();
+  }});
+
+  $("#psuedo-loginform [name=pw-form]").droppable({drop:function(e,ui){
+  $(this).val($(this).val() + $("#"+ui.draggable.attr("id")).text());
+  $("#"+ui.draggable.attr("id")).hide();
+  }});
+  
+
 
 });
 </script>

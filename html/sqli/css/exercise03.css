@@ -27,5 +27,5 @@ last update: 2016/01/19
   .result-icon{width:150px; height:auto;}
   
   .control {float:left; margin-left:1%; padding-top:1%; border-top:solid 1px #d3d3d3; width:1500px}
-  .input-box {width:120px,height:50px; margin:3px; border:solid 1px orangered; background-color:#ff7f50; float:left; -webkit-border-radius:5px; -moz-border-radius:5px;  z-index:4;}
+  .input-box {width:120px,height:50px; margin:3px; border:solid 1px orangered; background-color:#ff7f50; float:left; -webkit-border-radius:5px; -moz-border-radius:5px;  z-index:4; font-size:x-large;}
   .scope-input{border:solid 2px #ff7f50;}
