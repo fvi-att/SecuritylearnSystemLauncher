@@ -97,21 +97,24 @@
 </ol>
 
   <div id="main">
-  <h2>webアプリのログインを想定して、正しくログインを行ってください</h2>
+  <h2>webアプリのログインを想定して、管理者でログインしてください。</h2>
   <div id="drag_field">
     <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>play</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
   </div>
-     <p>仮想ブラウザ</p>
-     <div id="psuedo-browser" style="width:50%; height:350px; background-color:#e6e6fa; margin-bottom:10px; float:left; border-top:solid 4px #4169e1; border-bottom:solid 4px #4169e1; border-right:double 4px #4169e1; border-left:double 4px #4169e1; ">
+     <p><strong>ID、パスワードをセットして、&quot;ログインボタン&quot;を押すとシミュレーションの準備を行います。</strong></p>
+     <div id="psuedo-browser" style="width:50%; height:250px; background-color:#e6e6fa; margin-bottom:10px; float:left; border-top:solid 4px #4169e1; border-bottom:solid 4px #4169e1; border-right:double 4px #4169e1; border-left:double 4px #4169e1; ">
        <div style="max-width:100%; border-bottom:solid 2px black"><label for:="url-form">URL:</form><input type="text" name="url-form" value="http://www.bank.com/login" /><button type="button"><span class="glyphicon glyphicon-arrow-right"></span></button></div>
+<div id="psuedo-browser-content">
 <h1>ログインを行ってください</h1>
 　　　 <p>銀行システムは　IDとパスワードでログインができます。</p>
       <form id="psuedo-loginform">
-	<label for="id-form">ID:</label><input type="text" name="id-form" />
-	<label for="pw-form">PASSWORD:</label><input type="text" name="pw-form" />
-	<button type="button" class="btn btn-primary">ログイン</button>
+	<label for="id-form">ID:</label><input type="text" id="id-form" name="id-form" />
+	<label for="pw-form">PASSWORD:</label><input type="text" id="pw-form" name="pw-form" />
+	<button type="button" id="btn-login" class="btn btn-primary">ログイン</button>
       </form>
-      </div>
+</div>
+
+ </div>     
 
    
    <!-- ドラッグする要素置き場とDrop先を分けるため -->
@@ -149,11 +152,11 @@
       <p>POST /index.html HTTP/1.1</p>
       <div class="scope-input" id="scope-input1">空</div>
     </div>
-  <p style="align:center;max-width:100%;">⇓</p>
+  <p style="align:center;max-width:100%; font-size:x-large">⇓</p>
   <div class="scope" id="scope2";><p>SQL文</p><p>SELECT * FROM USER_TABLE WHERE </p><div class="scope-input" id="scope-input2">ID="" AND PASSWORD=""</div></div>
-  <p style="align:center;max-width:100%;">⇓</p>
+  <p style="align:center;max-width:100%; font-size:x-large;">⇓</p>
   <div class="scope" id="scope3";><div class="scope-input" id="scope-input3">{USERLOGIN:"SUCCESS" ,ID:""}</div></div>
-   <p style="align:center;max-width:100%;">⇓</p>
+   <p style="align:center;max-width:100%; font-size:x-large;">⇓</p>
   <div class="scope" id="scope4">
 
 <p>HTTP/1.1 200 OK</p>
@@ -190,7 +193,18 @@
 <script type="text/javascript" src="../js/debugger.js"></script>
 
 <!-- debugger.jsの機能に追加して内部に値をセットできるようにしておく -->
+<script type="text/javascript">
+$(function() {
+  $("#btn_start").prop("disabled",true);
 
+
+  $("#btn-login").click(function(){
+    $("#btn_start").prop("disabled",false);
+    alert("シミュレーションを行ってみましょう。playボタンを押してください");
+  });
+
+});
+</script>
 
 
 
