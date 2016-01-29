@@ -19,7 +19,7 @@ function getDebuggerProcess(target) {
 	    {id:["drag1","scope1"], action:function() {
 		//id=arrow1の処理が通過するとき、このfunction内の処理が実行されます
 
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise03/http_wrong.html"},
+	    }, evaluate:function(){if(target["dragdrop1"] == "input4"){return true;}else{return false;}},feedback:"feedback/exercise03/http_wrong.html"},
 	    
 	    {id:["drop2"], action:function() {
 		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます
@@ -29,7 +29,7 @@ function getDebuggerProcess(target) {
 	    {id:["drag3","scope2"],action:function() {
 		//id=arrow2の処理が通過するとき、このfunction内の処理が実行されます
 
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise03/http_wrong.html"},
+	    }, evaluate:function(){if(target["dragdrop3"] == "input3"){return true;}else{return false;}},feedback:"feedback/exercise03/http_wrong.html"},
 	    
 	    {id:["drop3"], action:function() {
 		//id=drop3の処理が通過するとき、このfunction内の処理が実行されます
@@ -39,7 +39,7 @@ function getDebuggerProcess(target) {
 	    {id:["drag6","scope3"],action:function() {
 		//id=arrow3の処理が通過するとき、このfunction内の処理が実行されます
 
-	    }, evaluate:function(){return true; },feedback:"feedback/exercise03/http_wrong.html"},
+	    }, evaluate:function(){if(target["dragdrop6"] == "input6"){return true;}else{return false;} },feedback:"feedback/exercise03/http_wrong.html"},
 
 	    {id:["drop2"], action:function() {
 		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます

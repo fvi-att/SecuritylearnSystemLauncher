@@ -27,7 +27,7 @@ $(function() {
 $("#btn_start").click(function(){
 
     if (!result_flag) {
-	alert("停止しました。リセットしてください");
+
 	return;
     }
     
