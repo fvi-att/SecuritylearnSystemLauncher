@@ -49,7 +49,7 @@ function getDebuggerProcess(target) {
 	    {id:["drag2","scope4"],action:function() {
 		//id=arrow4の処理が通過するとき、このfunction内の処理が実行されます
 
-	    }, evaluate:function(){if(target["drag2"] == "input7"){return true;}else{return false;}},feedback:"feedback/exercise03/http_wrong.html"},
+	    }, evaluate:function(){if(target["dragdrop2"] == "input7"){return true;}else{return false;}},feedback:"feedback/exercise03/http_wrong.html"},
 
 	    {id:"drop1", action:function() {
 		//id=drop1の処理が通過するとき、このfunction内の処理が実行されます
