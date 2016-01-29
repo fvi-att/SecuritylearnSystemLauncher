@@ -25,7 +25,7 @@
 <!-- スタイルシートはできるだけ早くレンダリングされるため、HTMLドキュメントの上の方に記述
      href属性にスタイルシートファイルのURIを記述 -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="css/default.css">
+<link rel="stylesheet" type="text/css" href="css/exercise03.css">
 <script type="text/javascript" src="js/Evaluate_0001.js"></script>
 
 <!-- IE8以下用に2つのスクリプトを記述
@@ -41,7 +41,7 @@
 
 
 <!-- href属性にファビコンファイルのURIを記述 -->
-<link rel="shortcut icon" href="">
+<link rel="shortcut icon" href="../images/favicon.ico">
  
 <!-- コメントアウトしてあるコードは、iOS/Android用のアイコン指定 -->
 <!--
@@ -88,20 +88,7 @@
 
 <div id="container">
 
-<div class="col-md-6">
-  <!-- 正解の表示 -->
-<div class="alert alert-success alert-dismissible" role="alert" id="correct-popup">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>正解です！</strong> 次の章へ進みましょう！
-</div>
-
-<div class="alert alert-warning alert-dismissible" role="alert" id="incorrect-popup">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>どこか間違っているようです</strong>　確認してみましょう！
-</div>
-
-
-
+<div class="col-md-7">
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
   <li><a href="start.html">SQLインジェクション</a></li>
@@ -113,23 +100,34 @@
   <h2>webアプリのログインを想定して、正しくログインを行ってください</h2>
   <div id="drag_field">
     <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>play</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
+  </div>
+     <p>仮想ブラウザ</p>
+     <div id="psuedo-browser" style="width:50%; height:350px; background-color:#e6e6fa; margin-bottom:10px; float:left; border-top:solid 4px #4169e1; border-bottom:solid 4px #4169e1; border-right:double 4px #4169e1; border-left:double 4px #4169e1; ">
+       <div style="max-width:100%; border-bottom:solid 2px black"><label for:="url-form">URL:</form><input type="text" name="url-form" value="http://www.bank.com/login" /><button type="button"><span class="glyphicon glyphicon-arrow-right"></span></button></div>
+<h1>ログインを行ってください</h1>
+　　　 <p>銀行システムは　IDとパスワードでログインができます。</p>
+      <form id="psuedo-loginform">
+	<label for="id-form">ID:</label><input type="text" name="id-form" />
+	<label for="pw-form">PASSWORD:</label><input type="text" name="pw-form" />
+	<button type="button" class="btn btn-primary">ログイン</button>
+      </form>
+      </div>
 
-
+   
    <!-- ドラッグする要素置き場とDrop先を分けるため -->
    <div style="clear:both"></div>
   
   <div id="drops_field">
     <div class="drop" id="drop1">ブラウザ <img src="images/chrome_browser.png"></div>
     <div class="arrowbox">
-      <div class="dragbox" id="arrow1">HTTPリクエスト<img src="images/arrow.png"></div>
-      <div class="dragbox" id="arrow4">HTTPレスポンス<img class="reverse" src="images/arrow.png"></div>
-    </div>
+      <div id="drag1"; class="dragbox">HTTPリクエスト<div class="dropindrag" id="dragdrop1">空</div><img src="images/arrow.png"></div>
+     <div id="drag2"; class="dragbox">HTTPレスポンス<div class="dropindrag" id="dragdrop2">空</div><img class="reverse" src="images/arrow.png"></div></div>
     
-    <div class="drop" id="drop2">アプリケーションサーバ<img src="images/server.png"></div>
+    <div class="drop" id="drop2">アプリケーション</br>サーバ<img src="images/server.png"></div>
     <div class="arrowbox">
-      <div class="dragbox" id="arrow2">SQL<img src="images/arrow.png"></div>
-      <div class="dragbox" id="arrow3">SQL実行結果<img class="reverse" src="images/arrow.png"></div>
-    </div>
+       <div id="drag3"; class="dragbox">SQL <div class="dropindrag" id="dragdrop3">空</div><img src="images/arrow.png"></div>
+       <div id="drag6"; class="dragbox">ユーザに関する保存されていた情報<div class="dropindrag" id="dragdrop6">空</div><img class="reverse" src="images/arrow.png"></div>
+       </div>
     
     <div class="drop" id="drop3">データベース<img src="images/database.png"></div>
   </div>
@@ -147,11 +145,14 @@
     .scope p {margin:0px; font-size:small; padding-left:5px;}
      -->
     </style>
-  <div class="scope" id="scope1";><p>POST /index.html HTTP/1.1 </br> id=sample&password=passworddesu</p></div>
+    <div class="scope" id="scope1";>
+      <p>POST /index.html HTTP/1.1</p>
+      <div class="scope-input" id="scope-input1">空</div>
+    </div>
   <p style="align:center;max-width:100%;">⇓</p>
-  <div class="scope" id="scope2";><p>SELECT * FROM USER_TABLE WHERE ID="" AND PASSWORD=""</p></div>
+  <div class="scope" id="scope2";><p>SQL文</p><p>SELECT * FROM USER_TABLE WHERE </p><div class="scope-input" id="scope-input2">ID="" AND PASSWORD=""</div></div>
   <p style="align:center;max-width:100%;">⇓</p>
-  <div class="scope" id="scope3";><p>{USERLOGIN:"SUCCESS" ,ID:""}</p></div>
+  <div class="scope" id="scope3";><div class="scope-input" id="scope-input3">{USERLOGIN:"SUCCESS" ,ID:""}</div></div>
    <p style="align:center;max-width:100%;">⇓</p>
   <div class="scope" id="scope4">
 
@@ -166,15 +167,13 @@
 <p>Connection: Keep-Alive</p>
 <p>Content-Type: text/html</p>
 </br>
-<p>&lt;html&gt;</p>
-<p> ようこそ！　xxさん！</p>
-<p>&lt;/html&gt;</p>
+<div class="scope-input" id="scope-input4">空</div>
 
 </div>
 </div>
 
 <!--右側表示システム -->
-<div class="col-md-3">
+<div class="col-md-2">
   <h3>ここにヒントや正解、フィードバックが表示されます</h3>
   <div id="right_message"></div>
 </div>
@@ -189,6 +188,8 @@
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
 <script type="text/javascript" src="../js/debugger.js"></script>
+
+<!-- debugger.jsの機能に追加して内部に値をセットできるようにしておく -->
 
 
 

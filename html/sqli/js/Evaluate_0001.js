@@ -10,41 +10,51 @@ function getDebuggerProcess(target) {
 
 
 	process:[
-	    {id:"drop1", action:function(){
+	    {id:["drop1"], action:function(){
 		//id=drop1の処理が通過するとき、このfunction内の処理が実行されます
+		
 	    }, evaluate:function(){return true;}
-	     ,feedback:"feedback/exercise01/http_wrong.html"},
-	    {id:"arrow1", action:function() {
+	     ,feedback:"feedback/exercise03/http_wrong.html"},
+	    
+	    {id:["drag1","scope1"], action:function() {
 		//id=arrow1の処理が通過するとき、このfunction内の処理が実行されます
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
+
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise03/http_wrong.html"},
 	    
-	    {id:"drop2", action:function() {
+	    {id:["drop2"], action:function() {
 		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
+
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise03/http_wrong.html"},
 	    
-	    {id:"arrow2",action:function() {
+	    {id:["drag3","scope2"],action:function() {
 		//id=arrow2の処理が通過するとき、このfunction内の処理が実行されます
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
+
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise03/http_wrong.html"},
 	    
-	    {id:"drop3", action:function() {
+	    {id:["drop3"], action:function() {
 		//id=drop3の処理が通過するとき、このfunction内の処理が実行されます
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/correct.html"},
 
-	    {id:"arrow3",action:function() {
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise03/correct.html"},
+
+	    {id:["drag6","scope3"],action:function() {
 		//id=arrow3の処理が通過するとき、このfunction内の処理が実行されます
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
 
-	    {id:"drop2", action:function() {
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise03/http_wrong.html"},
+
+	    {id:["drop2"], action:function() {
 		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
 
-	    {id:"arrow4",action:function() {
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise03/http_wrong.html"},
+
+	    {id:["drag2","scope4"],action:function() {
 		//id=arrow4の処理が通過するとき、このfunction内の処理が実行されます
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
+
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise03/http_wrong.html"},
 
 	    {id:"drop1", action:function() {
 		//id=drop1の処理が通過するとき、このfunction内の処理が実行されます
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/correct.html"},
+
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise03/correct.html"},
 
 	    
 	]
