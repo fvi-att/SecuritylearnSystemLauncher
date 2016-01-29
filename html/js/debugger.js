@@ -27,7 +27,7 @@ $(function() {
 $("#btn_start").click(function(){
 
     if (!result_flag) {
-	alert("リセットしてください");
+	alert("停止しました。リセットしてください");
 	return;
     }
     
@@ -41,13 +41,20 @@ $("#btn_start").click(function(){
 $("#" + processes[process_step_cnt]["id"][arr] ).css('border-color','red');
 $("#" + processes[process_step_cnt]["id"][arr] ).css('border-width','5px');
 
- /* 前のステップの部分を青で表示するようにする */
-if (process_step_cnt > 0){
-　　$("#" + processes[process_step_cnt -1]["id"][arr] ).css('border-color','blue');
-　　$("#" + processes[process_step_cnt -1]["id"][arr]).css('border-width','2px');
-}
+
+　
+
 
     }
+
+ /* 前のステップの部分を青で表示するようにする */
+if (process_step_cnt > 0){
+    for(var arr_pre=0; arr_pre < processes[process_step_cnt -1]["id"].length; arr_pre++){
+	$("#" + processes[process_step_cnt -1]["id"][arr_pre]).css('border-color','blue');
+	$("#" + processes[process_step_cnt -1]["id"][arr_pre]).css('border-width','2px');
+    }
+}
+	
 
 /*擬似デバッガ内での処理を行うステップ */
 processes[process_step_cnt]["action"]();
