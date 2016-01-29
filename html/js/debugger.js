@@ -27,6 +27,7 @@ $(function() {
 $("#btn_start").click(function(){
 
     if (!result_flag) {
+	alert("リセットしてください");
 	return;
     }
     
@@ -34,17 +35,19 @@ $("#btn_start").click(function(){
   processes = process_obj["process"];
 
 
+    for (var arr=0; arr < processes[process_step_cnt]["id"].length; arr++){ 
 
   /* 変更している部分を表示する　*/
-$("#" + processes[process_step_cnt]["id"] ).css('border-color','red');
-$("#" + processes[process_step_cnt]["id"] ).css('border-width','5px');
+$("#" + processes[process_step_cnt]["id"][arr] ).css('border-color','red');
+$("#" + processes[process_step_cnt]["id"][arr] ).css('border-width','5px');
 
  /* 前のステップの部分を青で表示するようにする */
 if (process_step_cnt > 0){
-　　$("#" + processes[process_step_cnt -1]["id"] ).css('border-color','blue');
-　　$("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
+　　$("#" + processes[process_step_cnt -1]["id"][arr] ).css('border-color','blue');
+　　$("#" + processes[process_step_cnt -1]["id"][arr]).css('border-width','2px');
 }
 
+    }
 
 /*擬似デバッガ内での処理を行うステップ */
 processes[process_step_cnt]["action"]();
