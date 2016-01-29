@@ -95,7 +95,8 @@
 </ol>
 
   <div id="main">
-  <h2>webアプリのログインを想定して、正しくログインを行ってください</h2>
+    <h1>ログインを想定したシミュレーション</h1>
+    <h2>ブロックに情報を追加して、正しくログインが行われるようにしましょう</h2>
   <div id="drag_field">
     <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>play</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
 
@@ -104,14 +105,14 @@
    <div style="clear:both"></div>
      
      <div id="input_field">
-     <div id="input1"; class="input-box">HTTPリクエスト</div>
-     <div id="input2"; class="input-box">HTTPレスポンス</div>
-     <div id="input3"; class="input-box">SQL</div>
-     <div id="input4"; class="input-box">ユーザID &amp; パスワード</div>
-     <div id="input5"; class="input-box">管理者のデータを取得するSQL</div>
-     <div id="input6"; class="input-box">ユーザに関する保存されていた情報</div>
-     <div id="input7"; class="input-box">HTMLファイル</div>
-     <div id="input8"; class="input-box">JavaScript</div>
+     <div id="input1"; class="input-box">POST /login/</div>
+     <div id="input2"; class="input-box">200 OK</div>
+     <div id="input3"; class="input-box">WHERE ID="Bob" AND PASSWORD='passworddesu';</div>
+     <div id="input4"; class="input-box">id=Bob&password=passworddesu</div>
+     <div id="input5"; class="input-box">SELECT PASSWORD FROM USER_TABLE WHERE ID="admin";</div>
+     <div id="input6"; class="input-box">{status:'success',userid:'Bob'}</div>
+     <div id="input7"; class="input-box">&lt;html&gt;&lt;body&gt;・・</div>
+     <div id="input8"; class="input-box">alert("hello");</div>
 
      
    </div>
@@ -153,7 +154,7 @@
   <p style="align:center;max-width:100%;">⇓</p>
   <div class="scope" id="scope2";><p>SQL文</p><p>SELECT * FROM USER_TABLE WHERE </p><div class="scope-input" id="scope-input2">ID="" AND PASSWORD=""</div></div>
   <p style="align:center;max-width:100%;">⇓</p>
-  <div class="scope" id="scope3";><div class="scope-input" id="scope-input3">{USERLOGIN:"SUCCESS" ,ID:""}</div></div>
+  <div class="scope" id="scope3";><div class="scope-input" id="scope-input3"></div></div>
    <p style="align:center;max-width:100%;">⇓</p>
   <div class="scope" id="scope4">
 
@@ -210,7 +211,7 @@ var target = $("#" + ui.draggable.attr("id"));
 
 
 alert(target.text() + "を内部の要素にセットしました");
-$(this).text(target.text());
+$(this).text(target.text().slice(0,12));
 $(this).css('background-color',"#ff7f50");
 
 
