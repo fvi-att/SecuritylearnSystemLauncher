@@ -189,7 +189,10 @@
 
 <!-- debugger.jsの機能に追加して内部に値をセットできるようにしておく -->
 <script type="text/javascript">
-$(function() {
+  $(function() {
+
+  $("#btn_start").prop("disabled",true);
+  
   $("#btn-login").click(function(){
     $("#btn_start").prop("disabled",false);
     alert("シミュレーションを行ってみましょう。playボタンを押してください");
