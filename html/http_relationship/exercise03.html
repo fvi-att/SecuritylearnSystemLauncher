@@ -217,6 +217,7 @@ user_answers[$(this).attr("id")] = ui.draggable.attr("id");
 
 //スコープ中のデータを書き換え
 $("#" + scope_obj[$(this).attr("id")]).html(input_obj[ui.draggable.attr("id")]);
+$("#" + scope_obj[$(this).attr("id")]).fadeOut(200,function(){$(this).fadeIn(200)});
 
 
 //上書きしてボックスの中にあるように表現する。
