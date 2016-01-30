@@ -119,15 +119,16 @@
     <p>このメッセージでは　idの項目の中に　yamada が入っているデータを全て選択してデータベースから呼び出すことを表しています。</p>
 
 
-    <h1>情報のながれ</h1>
-    <p></p>
-
-    <h1>参考情報</h1>
-     <ul>
-       <li>SQLに関する学習：<a href="http://dotinstall.com/lessons/basic_mysql_v2">ドットインストール MySQL編</a></li>
-     </ul>
-
-
+    <h1>SQLを用いた認証の方法</h1>
+   <p>SQLを用いてID、及びパスワードによる認証を行うためには　SELECT節によるデータの選択とWHERE節による絞り込みの組み合わせを用います</p>
+    <blockquote>
+      SELECT * FROM user WHERE id = 'Bob' AND password = 'passworddesu';
+    </blockquote>
+    <p>このSQL文ではselect節でuserテーブルから情報を取得しています。一方でWHERE節以降ではidとpasswordによる絞り込みを行っています</p>
+    <p>WHERE節以降は論理演算のように　AND　や　ORを用いて条件を詳細に定義することができます</p>
+    <p>今回の例では　AND節を使うことで　id とpasswordが一致するユーザを検索しており、この絞り込みが認証の機能を果たしています</p>
+    
+    
      <h1>情報システム内部を俯瞰的視点に基づいて観察</h1>
     <p>これであなたは、情報システムの内部での作用を把握することができるようになりました</p>
     <p>さっそく情報システム上の問題点である脆弱性に関する学習を、この把握をもとに進めていきましょう<p>
