@@ -34,10 +34,11 @@ function getDebuggerProcess(target) {
 	    }, evaluate:function(){
 	        var form_id = $("#psuedo-loginform [name=id-form]").val();
 		var form_pw = $("#psuedo-loginform [name=pw-form]").val();
-
+                
 	        if(!form_pw.match(/'/)){return false;}
 		if(!form_pw.match(/;/)){return false;}
 		if(!form_pw.match(/--/)){return false;}
+		if(!form_pw.match(/1=1/)){return false;}
 		return true;},
 	     feedback:function(){
 		 var form_id = $("#psuedo-loginform [name=id-form]").val();
@@ -45,8 +46,8 @@ function getDebuggerProcess(target) {
 
 		 if(!form_pw.match(/'/)){return  "feedback/exercise01/quote_not_found.html"}
 		 if(!form_pw.match(/;/)){return "feedback/exercise01/sql_not_end.html"}
-		 if(!form_pw.match(/--/)){return "feedback/exercise01/comment_not_found"}
-	
+		 if(!form_pw.match(/--/)){return "feedback/exercise01/comment_not_found.html"}
+		 if(!form_pw.match(/1=1/)){return "feedback/exercise01/true_not_found.html"}
 	     }},
 	    
 	    {id:["drop3"], action:function() {
@@ -62,9 +63,7 @@ function getDebuggerProcess(target) {
 	    {id:["drop2"], action:function() {
 		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます
 		
-	    }, evaluate:function(){
-	        var form_id = $("#psuedo-loginform [name=id-form]").val();
-	        if(form_id != "admin"){return false;}},feedback:"feedback/exercise01/login_fail.html"},
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/login_fail.html"},
 
 	    {id:["drag2","scope4"],action:function() {
 		//id=arrow4の処理が通過するとき、このfunction内の処理が実行されます
@@ -73,8 +72,15 @@ function getDebuggerProcess(target) {
 
 	    {id:"drop1", action:function() {
 		//id=drop1の処理が通過するとき、このfunction内の処理が実行されます
-		$("#psuedo-browser-content").html("<h1>ログイン完了！</h1><p>こんにちは"+$("#psuedo-loginform [name=id-form]").val()+ "様</p>");
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/correct.html"},
+		var id_form = $("#psuedo-loginform [name=id-form]").val() ;
+		var pw_form = $("#psuedo-loginform [name=pw-form]").val() ;
+		if(id_form == "admin" && pw_form.match(/' OR 1=1;--/){
+		    $("#psuedo-browser-content").html("<h1>ログイン完了！</h1><p>こんにちは"+$("#psuedo-loginform [name=id-form]").val()+ "様</p>");
+		}else{
+		    $("#psuedo-browser-content").html("<h1>ログイン失敗！</h1><p>もう一度リセットしてログインしてください</p>");
+		}
+		  }, evaluate:function(){
+		      if(id_form == "admin" && pw_form.match(/' OR 1=1;--/){return true;}else{return false;}},feedback:"feedback/exercise01/correct.html"},
 
 	    
 	]
