@@ -3,10 +3,7 @@
   var process_step_cnt = 0;
   var result_flag = true;
 
-  function isFunction(functionToCheck) {
-      var getType = {};
-      return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
-  }
+
 
 $(function() {
 // 1ドラッグ＆ドロップ機能を実装
@@ -38,6 +35,15 @@ $("#btn_start").click(function(){
   process_obj = getDebuggerProcess(user_answers);
   processes = process_obj["process"];
 
+    //チート　修正TODO 全く持って良い書き方でない
+    var id_input = $("#psuedo-loginform [name=id-form]").val();
+    var pw_input = $("#psuedo-loginform [name=pw-form]").val();
+
+    //ここで強制的に評価を行う
+    if ((id_input != "admin") && (pw_input != "'OR 1=1;")){
+	processes[4]["evaluate"] = function(){return false;};
+	
+    }
 
     for (var arr=0; arr < processes[process_step_cnt]["id"].length; arr++){ 
 
@@ -66,15 +72,10 @@ processes[process_step_cnt]["action"]();
 
 
 /*フィードバックを返すかどうかの処理 */
-if (!processes[process_step_cnt]["evaluate"]() || (process_step_cnt == processes.length -1)) {
+if (!processes[process_step_cnt]["evaluate"]()[0] || (process_step_cnt == processes.length -1)) {
 
-    //step内においてfeedbackの内容自体を調整したい場合はfeedback内にてfunctionを定義する
-    if(isFunction(processes[process_step_cnt]["feedback"])){
-	$("#right_message").load(processes[process_step_cnt]["feedback"]());
-    }else{
-	$("#right_message").load(processes[process_step_cnt]["feedback"]);
-    }
-
+    //feedback
+    $("#right_message").load(processes[process_step_cnt]["feedback"]);
 
     //間違っていた時はブロックにびっくりを追加
     if(!processes[process_step_cnt]["evaluate"]()){

@@ -31,7 +31,23 @@ function getDebuggerProcess(target) {
 	    {id:["drag3","scope2"],action:function() {
 		//id=arrow2の処理が通過するとき、このfunction内の処理が実行されます
 
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
+	    }, evaluate:function(){
+	        var form_id = $("#psuedo-loginform [name=id-form]").val();
+		var form_pw = $("#psuedo-loginform [name=pw-form]").val();
+
+	        if(!form_pw.match(/'/)){return false;}
+		if(!form_pw.match(/;/)){return false;}
+		if(!form_pw.match(/--/)){return false;}
+		return true;},
+	     feedback:function(){
+		 var form_id = $("#psuedo-loginform [name=id-form]").val();
+		 var form_pw = $("#psuedo-loginform [name=pw-form]").val();
+
+		 if(!form_pw.match(/'/)){return  "feedback/exercise01/quote_not_found.html"}
+		 if(!form_pw.match(/;/)){return "feedback/exercise01/sql_not_end.html"}
+		 if(!form_pw.match(/--/)){return "feedback/exercise01/comment_not_found"}
+	
+	     }},
 	    
 	    {id:["drop3"], action:function() {
 		//id=drop3の処理が通過するとき、このfunction内の処理が実行されます
@@ -45,8 +61,10 @@ function getDebuggerProcess(target) {
 
 	    {id:["drop2"], action:function() {
 		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます
-
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
+		
+	    }, evaluate:function(){
+	        var form_id = $("#psuedo-loginform [name=id-form]").val();
+	        if(form_id != "admin"){return false;}},feedback:"feedback/exercise01/login_fail.html"},
 
 	    {id:["drag2","scope4"],action:function() {
 		//id=arrow4の処理が通過するとき、このfunction内の処理が実行されます
