@@ -72,7 +72,7 @@ function getDebuggerProcess(target) {
 		
 	    }, evaluate:function(){
 	        var form_id = $("#psuedo-loginform [name=id-form]").val();
-	        if(form_id != "admin"){return false;}},feedback:"feedback/exercise01/login_fail.html",
+	        if(form_id != "admin"){return false;}},feedback:"feedback/exercise01/login_fail.html"},
 
 	    {id:["drag2","scope4"],action:function() {
 		//id=arrow4の処理が通過するとき、このfunction内の処理が実行されます
