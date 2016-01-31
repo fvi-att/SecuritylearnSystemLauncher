@@ -34,12 +34,12 @@ function getDebuggerProcess(target) {
 	    }, evaluate:function(){
 	        var form_id = $("#psuedo-loginform [name=id-form]").val();
 		var form_pw = $("#psuedo-loginform [name=pw-form]").val();
-		if(!form_pw.match(/';--OR1=1/)){return true;}else{
+		
 	        if(!form_pw.match(/'/)){return false;}
 		if(!form_pw.match(/;/)){return false;}
 		if(!form_pw.match(/--/)){return false;}
 		    return true;
-		}},
+		},
 	     feedback:function(){
 		 var form_id = $("#psuedo-loginform [name=id-form]").val();
 		 var form_pw = $("#psuedo-loginform [name=pw-form]").val();
