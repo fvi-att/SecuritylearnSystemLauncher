@@ -3,6 +3,9 @@
   var process_step_cnt = 0;
   var result_flag = true;
 
+  //独自の状況下で使う変数。
+  var ENV_PARAM ={};
+ 
   function isFunction(functionToCheck) {
       var getType = {};
       return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';

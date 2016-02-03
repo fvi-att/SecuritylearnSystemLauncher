@@ -60,9 +60,13 @@ function getDebuggerProcess(target) {
 		var form_id = $("#psuedo-loginform [name=id-form]").val();
 		var form_pw = $("#psuedo-loginform [name=pw-form]").val();
 		
-		if(form_id == "admin" && form_pw.match(/'OR 1=1;--/)) {$("#scope-input3").text("{user_id:'admin'}");}
-		   else {
+		if(form_id == "admin" && form_pw.match(/'OR 1=1;--/)) {
+		    $("#scope-input3").text("{user_id:'admin'}");
+		    ENV_PARAM["login_status"] =true;
+
+		} else {
 		       $("#scope-input3").text("{user_id:''}");
+		       ENV_PARAM["login_status"] = false;
 		   }
 
 	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
@@ -70,22 +74,23 @@ function getDebuggerProcess(target) {
 	    {id:["drop2"], action:function() {
 		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます
 		
-	    }, evaluate:function(){
-	        var form_id = $("#psuedo-loginform [name=id-form]").val();
-	        if(form_id != "admin"){return false;}},feedback:"feedback/exercise01/login_fail.html"},
+	    }, evaluate:function(){return true;}},
 
 	    {id:["drag2","scope4"],action:function() {
 		//id=arrow4の処理が通過するとき、このfunction内の処理が実行されます
-		$("#scope-input4").text("こんにちは"+$("#psuedo-loginform [name=id-form]").val()+ "様");
-	    }, evaluate:function(){
-		var id_form = $("#psuedo-loginform [name=id-form]").val();
-		var pw_form = $("#psuedo-loginform [name=id-form]").val();
-		if (id_form == "admin" && pw_form.match(/'OR 1=1;--/)){return true;}else{return false;}},feedback:"feedback/exercise01/http_wrong.html"},
+		if(ENV_PARAM["login_status"]){
+		    $("#scope-input4").text("<html><body>ログイン完了!こんにちは"+$("#psuedo-loginform [name=id-form]").val()+ "様</body></html>");}else{
+		 $("#scope-input4").text("<html><body>ログインに失敗しました</body></html>");
+		    }
+	    }, evaluate:function(){return true},feedback:"feedback/exercise01/http_wrong.html"},
 
 	    {id:"drop1", action:function() {
 		//id=drop1の処理が通過するとき、このfunction内の処理が実行されます
-		$("#psuedo-browser-content").html("<h1>ログイン完了！</h1><p>こんにちは"+$("#psuedo-loginform [name=id-form]").val()+ "様</p>");
-	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/correct.html"},
+		if(ENV_PARAM["login_status"]){
+		    $("#psuedo-browser-content").html("<h1>ログイン完了！</h1><p>こんにちは"+$("#psuedo-loginform [name=id-form]").val()+ "様</p>");}else{
+		     $("#psuedo-browser-content").html("<h1>ログイン失敗！</h1><p>リセットしてもう一度やり直してください</p>")
+		    }
+	    }, evaluate:function(){return ENV_PARAM["login_status"]},feedback:"feedback/exercise01/correct.html"},
 
 	    
 	]
