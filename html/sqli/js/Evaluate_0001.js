@@ -34,7 +34,7 @@ function getDebuggerProcess(target) {
 	    }, evaluate:function(){
 	        var form_id = $("#psuedo-loginform [name=id-form]").val();
 		var form_pw = $("#psuedo-loginform [name=pw-form]").val();
-		
+		if(form_id != "admin"){return true;}
 	        if(!form_pw.match(/'/)){return false;}
 		if(!form_pw.match(/;/)){return false;}
 		if(!form_pw.match(/--/)){return false;}
@@ -43,7 +43,7 @@ function getDebuggerProcess(target) {
 	     feedback:function(){
 		 var form_id = $("#psuedo-loginform [name=id-form]").val();
 		 var form_pw = $("#psuedo-loginform [name=pw-form]").val();
-
+		 
 		 if(!form_pw.match(/'/)){return  "feedback/exercise01/quote_not_found.html"}
 		 if(!form_pw.match(/;/)){return "feedback/exercise01/sql_not_end.html"}
 		 if(!form_pw.match(/--/)){return "feedback/exercise01/comment_not_found"}
@@ -87,10 +87,12 @@ function getDebuggerProcess(target) {
 	    {id:"drop1", action:function() {
 		//id=drop1の処理が通過するとき、このfunction内の処理が実行されます
 		if(ENV_PARAM["login_status"]){
-		    $("#psuedo-browser-content").html("<h1>ログイン完了！</h1><p>こんにちは"+$("#psuedo-loginform [name=id-form]").val()+ "様</p>");}else{
+		    $("#psuedo-browser-content").html("<h1>ログイン完了！</h1><p>こんにちは"+$("#psuedo-loginform [name=id-form]").val()+ "様</p>");
+		}else{
 		     $("#psuedo-browser-content").html("<h1>ログイン失敗！</h1><p>リセットしてもう一度やり直してください</p>")
 		    }
-	    }, evaluate:function(){return ENV_PARAM["login_status"]},feedback:"feedback/exercise01/correct.html"},
+	    }, evaluate:function(){return ENV_PARAM["login_status"]},
+	     feedback:function(){return (ENV_PARAM["login_status"]) ? "feedback/exercise01/correct.html":"feedback/exercise01/login_failure.html";}},
 
 	    
 	]
