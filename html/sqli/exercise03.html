@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- IE8+に対して「IE=edge」と指定することで、利用できる最も互換性の高い最新のエンジンを使用するよう指示できます
+     参考: https://www.modern.ie/en-us/performance/how-to-use-x-ua-compatible -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+<!-- ページのタイトルを記述 -->
+<title>情報セキュリティ人材育成システムSecLearn</title>
+ 
+<!-- パフォーマンスのために使用する文字のエンコーディングを記述
+     参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
+<meta charset="utf-8">
+ 
+<!-- content属性にページの紹介文を記述 -->
+<meta name="description" content="Page for Learning Security">
+ 
+<!-- content属性にページの著者情報を記述 -->
+<meta name="author" content="Ryosuke Shimizu">
+ 
+<!-- モバイル端末への対応、ページをビューポートの幅に合わせてレンダリング（Android, iOS6以降）
+     ズームを許可しない設定「user-scalable=no」は加えない -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<!-- スタイルシートはできるだけ早くレンダリングされるため、HTMLドキュメントの上の方に記述
+     href属性にスタイルシートファイルのURIを記述 -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/exercise03.css">
+<script type="text/javascript" src="js/Evaluate_0003.js"></script>
+
+<!-- IE8以下用に2つのスクリプトを記述
+     html5shiv.js: IE8以下にHTML5の要素を認識するようにさせる
+     respond.js: IE8以下にMedia Queriesの代替え機能を提供 -->
+<!--&#91;if lt IE 9&#93;>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<!&#91;endif&#93;-->
+
+<link type="text/css" rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+
+
+<!-- href属性にファビコンファイルのURIを記述 -->
+<link rel="shortcut icon" href="../images/favicon.ico">
+ 
+<!-- コメントアウトしてあるコードは、iOS/Android用のアイコン指定 -->
+<!--
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="196x196" href="">
+<link rel="apple-touch-icon" sizes="152x152" href="">
+-->
+
+
+<!-- for bootstrap -->
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+
+
+<!-- スクリプトでブロッキングを起こさないものはここに記述
+     可能であれば「async（文書の読み込みが完了した時点でスクリプトを実行）」を使用
+     Example: <script src="" async></script> -->
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+
+
+
+</head>
+
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+
+        <!--ブランド名 ロゴ名の表示-->
+        <a class="navbar-brand" href="#">SecLearn</a>
+
+
+      </div>
+  </nav>
+
+<div id="container">
+
+<div class="col-md-7">
+
+
+
+  <!-- Breadcrumb -->
+<ol class="breadcrumb">
+  <li><a href="start.html">SQLインジェクション</a></li>
+  <li class="active"><a href="#">演習</a></li>
+  <li><a href="#">修正演習</a></li>
+  
+</ol>
+
+  <div id="main">
+    <h1>ログインを想定したシミュレーション</h1>
+    <h2>SQLの文字列リテラルの範囲を決めてSQLインジェクションを防いでください</h2>
+  <div id="drag_field">
+    <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>play</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button><button type="button" onclick="window.open('help01.html');"><span class="glyphicon glyphicon-exclamation-sign"></span>操作方法</button>　ステップ数：<span id="step_cnt">0</span>
+
+
+   <!-- ドラッグする要素置き場とDrop先を分けるため -->
+   <div style="clear:both"></div>
+   <!-- ドラッグする要素置き場とDrop先を分けるため -->
+   <div style="clear:both"></div>
+  
+  <div id="drops_field">
+    <div class="drop" id="drop1">ブラウザ <img src="images/chrome_browser.png"></div>
+    <div class="arrowbox">
+      <div id="drag1"; class="dragbox">HTTPリクエスト<img src="images/arrow.png"></div>
+     <!--<div id="drag2"; class="dragbox">HTTPレスポンス<img class="reverse" src="images/arrow.png"></div></div> -->
+    </div>
+    <div class="drop" id="drop2">アプリケーション</br>サーバ<img src="images/server.png"></div>
+    <div class="arrowbox">
+      <div id="drag3"; class="dragbox" style="width:180px;height:250px; font-size:xx-small"><p>SQL</p>
+	<form id="place-holder-form"><label for="input_place-holder" style="font-size:xx-small;"><p>文字列リテラルとして認識させる部分:</p><p>２つ以上認識させる場合は<strong>,</strong>で区切ること</p></label></br>
+	<input type="input" class="form-control" name="input_place-holder" id="input_place-holder" placeholder="右側のSQLを参考にすること"></form>
+	<img src="images/arrow.png"></div>
+     <!--  <div id="drag6"; class="dragbox">ユーザに関する保存されていた情報<img class="reverse" src="images/arrow.png"></div> -->
+       </div>
+    
+    <div class="drop" id="drop3">データベース<img src="images/database.png"></div>
+  </div>
+ 
+    </div>
+  </div>
+
+</div>
+</div>
+<div class="col-md-3">
+  <h1>シミュレーションで実際に処理されている情報を表示します</h1>
+    <style type="text/css">
+   <!--
+    .scope   {max-width:100%;box-sizing:border-box; background-color:#e0ffff; border: 1px solid blue}
+    .scope p {margin:0px; font-size:small; padding-left:5px;}
+     -->
+    </style>
+    <div class="scope" id="scope1";>
+      <p>POST /index.html HTTP/1.1</p>
+      <div class="scope-input" id="scope-input1">id=admin&password='OR1=1;--</div>
+    </div>
+  <p style="align:center;max-width:100%;">⇓</p>
+  <div class="scope" id="scope2";><p>SQL文</p><p>SELECT * FROM USER_TABLE WHERE </p><div class="scope-input" id="scope-input2">ID='admin' AND PASSWORD=''OR 1=1;--'</div></div>
+  <p style="align:center;max-width:100%;">⇓</p>
+  <div class="scope" id="scope3";><div class="scope-input" id="scope-input3">SQL呼び出し結果</div></div>
+  
+</div>
+
+<!--右側表示システム -->
+<div class="col-md-2">
+  <h3>ここにヒントや正解、フィードバックが表示されます</h3>
+  <div id="right_message"></div>
+</div>
+
+
+</div>
+<!-- 右フレーム -->
+
+<!-- スクリプトでブロッキングを起こすものはここに記述
+ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
+<!-- SCRIPTS -->
+<!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<!-- Jquery -->
+<script type="text/javascript" src="../js/debugger.js"></script>
+<script type="text/javascript" src="js/input-scope.js"></script>
+<!-- debugger.jsの機能に追加して内部に値をセットできるようにしておく -->
+<script type="text/javascript">
+$(function() {
+  $(".input-box").draggable({});
+
+  $(".dropindrag").droppable({
+drop:function(e,ui){
+
+user_answers[$(this).attr("id")] = ui.draggable.attr("id");
+
+//スコープ中のデータを書き換え
+$("#" + scope_obj[$(this).attr("id")]).html(input_obj[ui.draggable.attr("id")]);
+$("#" + scope_obj[$(this).attr("id")]).fadeOut(200,function(){$(this).fadeIn(200)});
+
+
+//上書きしてボックスの中にあるように表現する。
+var target = $("#" + ui.draggable.attr("id"));
+
+
+alert(target.text() + "を内部の要素にセットしました");
+$(this).text(target.text().slice(0,12));
+$(this).css('background-color',"#ff7f50");
+
+
+$(".input_field").appendTo(target.clone());
+target.hide();
+
+ }});
+});
+
+</script>
+
+
+
+
+
+</body>
+</html>

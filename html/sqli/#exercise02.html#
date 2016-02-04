@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
  
 <!-- ページのタイトルを記述 -->
-<title>解説ページ</title>
+<title>情報セキュリティ人材育成システムSecLearn</title>
  
 <!-- パフォーマンスのために使用する文字のエンコーディングを記述
      参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
@@ -25,11 +25,7 @@
 <!-- スタイルシートはできるだけ早くレンダリングされるため、HTMLドキュメントの上の方に記述
      href属性にスタイルシートファイルのURIを記述 -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
-
-<script type="text/javascript" src="js/Evaluate_0001.js"></script>
 <link rel="stylesheet" type="text/css" href="css/default.css">
-
-
 
 
 <!-- IE8以下用に2つのスクリプトを記述
@@ -44,7 +40,6 @@
   href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
 
 
- 
 <!-- href属性にファビコンファイルのURIを記述 -->
 <link rel="shortcut icon" href="../images/favicon.ico">
  
@@ -82,78 +77,65 @@
         <!--ブランド名 ロゴ名の表示-->
         <a class="navbar-brand" href="#">SecLearn</a>
 
+
       </div>
   </nav>
 
 <div id="container">
-  <div class="col-md-2"></div>
-  <!-- 左フレーム -->
-<div class="col-md-10">
-
+  
+<div class="col-md-9">
   <!-- Breadcrumb -->
 <ol class="breadcrumb">
-  <li><a href="start.html">SQLインジェクション</a></li>
-  <li><a href="exercise02.html">演習</a></li>
-  <li class="active"><a href="#">対策と解説</a></li>
+  <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
+  <li><a href="exercise01.html">演習</a></li>
+  <li class="active"><a href="#">無害化処理</a></li>
 </ol>
-
 <div id="main">
-  <blockquote cite="https://www.ipa.go.jp/security/vuln/appgoat/">
-    <div class="jumbotron">
-      <h1>SQLインジェクションの解決法</h1>
-      <p>ここでは演習で行った活動を通して、SQLインジェクションを防ぐための手立てについて学ぶとともに、実際の情報システムにおける修正法に関する解説を行います</p>
-    </div>
+  <!-- メインコンテンツ表示 -->
 
-    <h1>実際のSQLインジェクションの解決法</h1>
-    <img src="images/placeholder.png" alt="プレースホルダの図">
-    <p>SQLインジェクション全般の対策として、&quot;プレースホルダ&quot;によるSQL文の組み立てを行います。プレースホルダによるSQL文の組み立てとは、検索条件などのパラメータ部分を　？などの記号で示しておき、後から実際の値を機械的な処理で割り当てる方法です。ここで、パラメータ部分を示す記号　？のことをプレースホルダと予備、そこへ実際の値を割り当てることを「バインドする」と呼びます。プレースホルダのことを「バインド変数」と呼ぶこともあります。</p>
-    <p>プレースホルダには次の2種類があります。</p>
+  <h1>SQLインジェクション攻撃を防ぐため、SQLに関して操作を行ないましょう。</h1>
 
-    <ul>
-      <li><h2>静的プレースホルダ</h2><p>静的プレースホルダは、JIS/ISOの規格では「準備された文(Prepared Statement)」と規定されています。これは、プレースホルダのままのSQL文をデータベース側にあらかじめ送信して、実行前に、SQL文の構文解析などの準備をしておく方式です。SQL実行の段階で、実際のパラメータの値をデータベース側に送信し、データベース側がバインド処理します。</p></li>
-
-      <li><h2>動的プレースホルダ</h2><p>動的プレースホルダは、静的プレースホルダとは異なり、プレースホルダを利用するものの、値のバインド処理をデータベース側で行うのではなく、ウェブアプリケーション側のライブラリ内で実行する方式です。</p></li>
-    </ul>
-    
-
-    <h1>参考情報</h1>
-     <ul>
-       <li>概要：<a href="https://ja.wikipedia.org/wiki/SQL%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">Wikipedia SQLインジェクション</a></li>
-       <li>IPA提供資料：<a href="https://www.ipa.go.jp/security/awareness/vendor/programmingv2/contents/502.html">SQLインジェクションに関する情報</a></li>
-     </ul>
-
-     <h1>演習</h1>
-    <p>これであなたは、情報システムの内部での作用を通してSQLインジェクションの原理を学ぶことが出来ました。</p>
-    <p>では演習にて、実際にどこの部分を&quot;バインド&quot;させればよいか演習を行いましょう。</p>
-    <img src="images/exercise03_sample.png" style="width:400px;height:auto;" alt="修正演習">
-    <p>図　修正演習の様子</p>
-
-    <p>この演習では、ブラウザからSQLインジェクションを含む入力が送信されます。組み立てられたSQLのうち、どの部分を&quot;文字列リテラル&quot;として認識させるかをSQLブロック中の入力欄に入れてみましょう</p>
-    <p>テンプレート元のSQLは画面右に表示されています</p></br>
-    <a href="exercise03.html">演習へすすむ</a>
-  </div>
-
-<!-- main -->
+  
+  
+   <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>チェックする</button>
+  
+</div>
+</div>
+</div>
+<!--右側表示システム -->
+<div class="col-md-3">
+  <h3>ここにヒントや正解、フィードバックが表示されます</h3>
+  <div id="right_message"></div>
 </div>
 
 
-
 </div>
-
+<!-- 右フレーム -->
 
 <!-- スクリプトでブロッキングを起こすものはここに記述
 ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
 <!-- SCRIPTS -->
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
+<script type="text/javascript" src="./js/openwebSQL.js"></script>
 <script type="text/javascript">
+  /*
+  createTableIfNotExists();
 
-  $(function() {
-
-  $(".col-md-2").load("side_menu.html");
+  alert("result:" + isExcutableSQL("insert into USER_TABLE values ('Bob','passworddesu');"));
+  */
   
+  $(function() {
+  $("#btn_start").click(function() {
+  
+  //まずは正解を表示するようにする
+  $("#right_message").load("feedback/exercise02/correct.html");
   });
+  
+});
+
 </script>
+
 
 
 
