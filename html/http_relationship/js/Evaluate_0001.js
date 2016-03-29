@@ -4,53 +4,37 @@ processの内部要素の順列にそって実行されます
 idはどの要素をアクティブにして動作させるか
 actionはその要素でどのような動作を行うかを提議させます
 */
-function getDebuggerProcess() {
+function getDebuggerProcess(target) {
 
     var process_obj = {
+
+
 	process:[
 	    {id:"drop1", action:function(){
-
-
-	    }},
+		//id=drop1の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){return true;}
+	     ,feedback:"feedback/exercise01/http_wrong.html"},
+	    
 	    {id:"arrow1", action:function() {
-	    }},
+		//id=arrow1の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){
+		if(target["arrow1"] == "drag1"){return true;}else{return false;}
+	    },feedback:"feedback/exercise01/http_wrong.html"},
+	    
 	    {id:"drop2", action:function() {
-	    }},
+		//id=drop2の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/http_wrong.html"},
+	    
 	    {id:"arrow2",action:function() {
-	    }},
-	    {id:"drop3", action:function() {
-	    }}
+		//id=arrow2の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){if(target["arrow2"] == "drag2") {return true;}else{return false;}
+	      },feedback:"feedback/exercise01/http_wrong.html"},
+	    
+	    {id:"drop1", action:function() {
+		//id=drop3の処理が通過するとき、このfunction内の処理が実行されます
+	    }, evaluate:function(){return true;},feedback:"feedback/exercise01/correct.html"},
 	]
     }
 
     return process_obj;
-}
-
-
-
-
-
-function Evaluate(target) {
-
-
-    //コンテンツの結果に関する
-    var result_obj ={
-	result:false,
-	message:document,
-	feedback:""
-    };
-
-    //ユーザの解答に対して評価を行う
-    if (target["arrow2"] == "drag2"){
-
-	//SQLを選択する部分を間違えている
-	result_obj.feedback = "<img class='result-icon' src='../images/mark_batsu.png' alt='不正解です'><p>データベースからデータを取り出すためには何が必要でしょうか？</p>";
-	
-	if (target["arrow1"] == "drag1"){
-	    result_obj.result = true;
-	    result_obj.feedback = '<img class="result-icon" src="../images/mark_maru.png" alt="正解です"><p>正解です。あなたはサーバとブラウザとの間でどのような情報がやり取りされているか、把握できるようになりました。<a href="lecture1.html">次のページへ</a></p>';
-	}
-    }
-    
-    return result_obj;
 }

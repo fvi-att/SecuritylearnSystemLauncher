@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- IE8+に対して「IE=edge」と指定することで、利用できる最も互換性の高い最新のエンジンを使用するよう指示できます
+     参考: https://www.modern.ie/en-us/performance/how-to-use-x-ua-compatible -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+<!-- ページのタイトルを記述 -->
+<title>解説ページ</title>
+ 
+<!-- パフォーマンスのために使用する文字のエンコーディングを記述
+     参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
+<meta charset="utf-8">
+ 
+<!-- content属性にページの紹介文を記述 -->
+<meta name="description" content="Page for Learning Security">
+ 
+<!-- content属性にページの著者情報を記述 -->
+<meta name="author" content="Ryosuke Shimizu">
+ 
+<!-- モバイル端末への対応、ページをビューポートの幅に合わせてレンダリング（Android, iOS6以降）
+     ズームを許可しない設定「user-scalable=no」は加えない -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<!-- スタイルシートはできるだけ早くレンダリングされるため、HTMLドキュメントの上の方に記述
+     href属性にスタイルシートファイルのURIを記述 -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+
+<script type="text/javascript" src="js/Evaluate_0001.js"></script>
+<link rel="stylesheet" type="text/css" href="css/default.css">
+
+
+
+
+<!-- IE8以下用に2つのスクリプトを記述
+     html5shiv.js: IE8以下にHTML5の要素を認識するようにさせる
+     respond.js: IE8以下にMedia Queriesの代替え機能を提供 -->
+<!--&#91;if lt IE 9&#93;>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<!&#91;endif&#93;-->
+
+<link type="text/css" rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+
+
+ 
+<!-- href属性にファビコンファイルのURIを記述 -->
+<link rel="shortcut icon" href="../images/favicon.ico">
+ 
+<!-- コメントアウトしてあるコードは、iOS/Android用のアイコン指定 -->
+<!--
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="196x196" href="">
+<link rel="apple-touch-icon" sizes="152x152" href="">
+-->
+
+
+<!-- for bootstrap -->
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+
+
+<!-- スクリプトでブロッキングを起こさないものはここに記述
+     可能であれば「async（文書の読み込みが完了した時点でスクリプトを実行）」を使用
+     Example: <script src="" async></script> -->
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+
+
+
+</head>
+
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+
+        <!--ブランド名 ロゴ名の表示-->
+        <a class="navbar-brand" href="#">SecLearn</a>
+
+      </div>
+  </nav>
+
+<div id="container">
+  <div class="col-md-2"></div>
+  <!-- 左フレーム -->
+<div class="col-md-10">
+
+  <!-- Breadcrumb -->
+<ol class="breadcrumb">
+  <li><a href="start.html">SQLインジェクション</a></li>
+  <li><a href="exercise02.html">演習</a></li>
+  <li class="active"><a href="#">対策と解説</a></li>
+</ol>
+
+<div id="main">
+  <blockquote cite="https://www.ipa.go.jp/security/vuln/appgoat/">
+    <div class="jumbotron">
+      <h1>PHPを用いた情報システムの修正方法</h1>
+      <p>ここでは演習で行った活動を通して、SQLインジェクションを防ぐための手立てについて学ぶとともに、PHPにおける、プログラムの修正方法も含めて解説を行います。</p>
+    </div>
+
+    <h1>コード上におけるSQLインジェクションの解決法</h1>
+    
+    <img src="images/php_fixing_sample.PNG" alt="プレースホルダinPHP">
+    <p> 図　PHPを用いてプレースホルダ機能の実装例</p>
+    <a href="https://www.ipa.go.jp/files/000017320.pdf">(引用)正しいSQLの呼び出し方[pdf]</a>
+    <p>SQLインジェクション全般の対策として、&quot;プレースホルダ&quot;によるSQL文の組み立てを行います。プレースホルダによるSQL文の組み立てとは、検索条件などのパラメータ部分を　？などの記号で示しておき、後から実際の値を機械的な処理で割り当てる方法です。ここで、パラメータ部分を示す記号　？のことをプレースホルダと予備、そこへ実際の値を割り当てることを「バインドする」と呼びます。プレースホルダのことを「バインド変数」と呼ぶこともあります。</p>
+
+    <h1>参考情報</h1>
+     <ul>
+       <li>概要：<a href="https://ja.wikipedia.org/wiki/SQL%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">Wikipedia SQLインジェクション</a></li>
+       <li>IPA提供資料：<a href="https://www.ipa.go.jp/security/awareness/vendor/programmingv2/contents/502.html">SQLインジェクションに関する情報</a></li>
+     </ul>
+
+     <h1>まとめ</h1>
+    <p>これであなたは、情報システムの内部での作用を通してSQLインジェクションの原理を学ぶことが出来ました。</p>
+    <p>ウェブシステムの脆弱性はこの他にも数多くあります。ここで学んだことを活かして学習を進めていきましょう。</p>
+
+    <h2>アンケートのお願い</h2>
+    <p>本システムは情報セキュリティに対する学習コンテンツの開発・研究の一環として開発されました。今後の修正、発展のためにもアンケートのご協力おねがいします。</p>
+
+    <p><a href="../questionaries.html">アンケートページヘ</a></p>
+  </div>
+
+<!-- main -->
+</div>
+
+
+
+</div>
+
+
+<!-- スクリプトでブロッキングを起こすものはここに記述
+ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
+<!-- SCRIPTS -->
+<!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<!-- Jquery -->
+<script type="text/javascript">
+
+  $(function() {
+
+  $(".col-md-2").load("side_menu.html");
+  
+  });
+</script>
+
+
+
+
+</body>
+</html>
+x

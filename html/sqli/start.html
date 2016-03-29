@@ -56,7 +56,7 @@
 
 
 <!-- for bootstrap -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
 
 
@@ -89,26 +89,10 @@
         </button>
       </div>
   </nav>
-
+<-- 左フレーム -->
 <div id="container">
-  <div class="col-md-2">
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="../">始めに</a></li>
-      <li><a href="#">ブラウザとサーバの関係</a></li>
-      <li><a href="#">ブラウザとデータベースの関係</a></li>
-      <li class="active"><a href="#">SQLインジェクション</a></li>
-      
-      <li><a href="">脅威モデル</a></li>
-      <li><a href="">脅威モデル1.　Spoofing</a></li>
-      <li><a href="">脅威モデル2.　Tampering</a></li>
-      <li><a href="">脅威モデル3.　Reduction</a></li>
-      <li><a href="">脅威モデル4.　InformationDisclosure</a></li>
-      <li><a href="">脅威モデル5.　DoS</a></li>
-      <li><a href="">脅威モデル6.　Elavation　Privilleges</a></li>
-      <li><a href="../questionaries.html">アンケートのお願い</a></li>
-    </ul>
-  </div>
-  <!-- 左フレーム -->
+  <div class="col-md-2"></div>
+<!-- 左フレーム -->
 <div class="col-md-10">
 
   <!-- Breadcrumb -->
@@ -117,41 +101,40 @@
   <li class="active"><a href="#">はじめに</a></li>
 </ol>
 
-<div id="main">
-
-  <h1>ブロックの中にブロックを入れて作用を変えてみる</h1>
-  <p>次のシミュレーションでは、先ほどのブロックの中にさらに様々な情報を付加できるようになっています</p>
-  
-     <img src="images/boxes01.PNG" alt="作用を変えられるブロック達">
-     <h2>ブロックを付加することによるシステムの変化</h2>
-  <p>ブロックの中にブロックを付加することで、外側のブロックの情報の中に中のブロックに関する情報を埋め込んだことと同義になります</p>
-  <img src="images/added_box.PNG" alt="埋め込まれた情報">
-  <p>上の図ではHTMLリクエストの中にユーザIDとパスワードに関する情報が埋め込まれたことを示します。</p>
-  <p>埋め込まれた情報をもとに、シミュレーションシステムは情報の処理を行います。</p>
-
-  <h2>ブロックの中にブロックを入れる方法</h2>
-  <p>ブロックの中にブロックを入れるためには以下の操作を行います</p>
-  <ol>
-    <li>任意の入れたいブロックをドラッグ</li>
-    <li>入れる先のブロックまでドラッグして重ねる</li>
-    <img src="images/input_info.PNG" alt="ドラッグして重ねる">
-    <li> 入れた先のブロックにオレンジ色の要素が追加されていたら完了</li>
-    <img src="images/input_finish.PNG" alt="追加完了">
-  </ol>
-  
-
-
-  
+<div id="main">  
   <h1>SQLインジェクションとは</h1>
   <p>sqlインジェクションとは、データベースに設計者の意図していないSQLを問い合わせされてしまう情報セキュリティ上の問題点です。</p>
+  <p>sqlインジェクション攻撃が行われると以下の様な被害が発生すると考えられています。</p>
+          
+    <h2　id="effect_article">影響解説</h2>
+    <ol>
+      <li><h3>データベースに蓄積された非公開情報を閲覧される</h3>
+	<p>データベースの非公開情報を閲覧されることで、個人情報や機密情報などが漏えいする可能性があります。</p>
+      </li>
+      
+      <li><h3>データベースに蓄積された情報を改竄、消去される</h3>
+	<p>データベースの情報を改ざん、消去されることで、ウェブページが改ざんされたり、パスワードが変更されてしまったり、システムが停止するといった被害が発生する可能性があります。</p>
+      </li>
+      
+    <li><h3>認証回避によって不正にログインされる</h3>
+      <p>不正にログインされることで、ログインしたユーザに許可されている全ての操作が可能となり、不正な行為が行われる可能性があります。</p>
+    </li>
+    
+    <li><h3>ストアドプロシージャなどを利用した OS コマンドを実行される</h3>
+      <p>OSコマンドを実行されることで、システムの乗っ取りや、他への攻撃の踏み台として悪用される可能性があります。</p>
+    </li>
 
-  
-  
+    <h2>ではこのSQLインジェクション攻撃を擬似的シミュレーション上で実現してみましょう</h2>
+    <img src="images/simlation.PNG" alt="シミュレーション全体" style="width:50%; height:auto;">
+      <p style="align:center;">図　シミュレーションシステム外観</p>
+      
+      <p>このシミュレーションでは実際にSQLインジェクションを行って管理者でパスワード不明のID=adminにログインを行ってみましょう</p>
+      
+      <p>脆弱性を攻撃する場面では<a href="#effect_article">&quot;影響解説&quot;</a>の内容からどのようにすれば、攻撃が起きてしまうかを考えながらシミュレーションを行ってみましょう</p>
+  <p><a href="exercise01.html">演習活動へ</a></p>
 </div>
 
 
-
-  <a href="boxdebugger.html">演習活動へ</a>
  
 <!-- main -->
 </div>
@@ -159,13 +142,20 @@
 
 
 </div>
-
+ 
 <!-- スクリプトでブロッキングを起こすものはここに記述
 ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
 <!-- SCRIPTS -->
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
+<script type="text/javascript">
 
+  $(function() {
+  
+  $(".col-md-2").load("side_menu.html");
+  
+  });
+</script> 
 
 
 

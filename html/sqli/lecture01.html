@@ -57,7 +57,7 @@
 
 
 <!-- for bootstrap -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
 
 
@@ -91,25 +91,10 @@
       </div>
   </nav>
 
-<div id="container">
-  <div class="col-md-2">
-    <ul class="nav nav-pills nav-stacked">
-     <li class="active"><a href="#">始めに</a></li>
-      <li><a href="lecture1.html">ブラウザとサーバの関係</a></li>
-      <li><a href="index.html">ブラウザとデータベースの関係</a></li>
-      <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
-      
-      <li><a href="">脅威モデル</a></li>
-      <li><a href="">脅威モデル1.　Spoofing</a></li>
-      <li><a href="">脅威モデル2.　Tampering</a></li>
-      <li><a href="">脅威モデル3.　Reduction</a></li>
-      <li><a href="">脅威モデル4.　InformationDisclosure</a></li>
-      <li><a href="">脅威モデル5.　DoS</a></li>
-      <li><a href="">脅威モデル6.　Elavation　Privilleges</a></li>
-      <li><a href="questionaries.html">アンケートのお願い</a></li>
-    </ul>
-  </div>
+  <div id="container">
   <!-- 左フレーム -->
+  <div class="col-md-2"></div>
+  <!-- 左フレーム /-->
 <div class="col-md-10">
 
   <!-- Breadcrumb -->
@@ -150,9 +135,10 @@
       <li>その情報をウェブアプリケーションが利用することで、不正にログインされてしまいます。</li>
     </ol>
     <p>悪意のある人によって不正にログインされた場合、本人でなければ利用できない操作を行われてしまいます。</p>
-    <p>以下のサイトも参考にしましょう<p><a href="http://www.ipa.go.jp/security/vuln/vuln_contents/sql.html">知っていますか？脆弱性　SQLインジェクション</a></p><p>では次に、ここまで学習したことをふまえて【脆弱オンラインバンキングアプリケーション】を例に、疑似的に攻撃をし、動作を確認していきましょう。</p>
-  </div>
-<a href="boxdebugger.html">演習ページへ</a>
+    <p>以下のサイトも参考にしましょう<p><a href="http://www.ipa.go.jp/security/vuln/vuln_contents/sql.html">知っていますか？脆弱性　SQLインジェクション</a></p>
+</div>
+<p>ではこれまでの学習を活かして、SQLインジェクションの発生を防ぐための方法を習いましょう</p>
+<a href="lecture02.html">SQLインジェクション　対策法に関する解説法</a>
 <!-- main -->
 </div>
 
@@ -165,7 +151,14 @@
 <!-- SCRIPTS -->
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
+<script type="text/javascript">
 
+  $(function() {
+  
+  $(".col-md-2").load("side_menu.html");
+  
+  });
+</script> 
 
 
 

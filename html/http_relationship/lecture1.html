@@ -57,7 +57,7 @@
 
 
 <!-- for bootstrap -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
 
 
@@ -92,23 +92,7 @@
   </nav>
 
 <div id="container">
-  <div class="col-md-2">
-    <ul class="nav nav-pills nav-stacked">
-     <li><a href="../start.html">始めに</a></li>
-      <li><a href="introduce.html">ブラウザとサーバの関係</a></li>
-      <li><a href="#">ブラウザとデータベースの関係</a></li>
-      <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
-      
-      <li><a href="">脅威モデル</a></li>
-      <li><a href="">脅威モデル1.　Spoofing</a></li>
-      <li><a href="">脅威モデル2.　Tampering</a></li>
-      <li><a href="">脅威モデル3.　Reduction</a></li>
-      <li><a href="">脅威モデル4.　InformationDisclosure</a></li>
-      <li><a href="">脅威モデル5.　DoS</a></li>
-      <li><a href="">脅威モデル6.　Elavation　Privilleges</a></li>
-      <li><a href="questionaries.html">アンケートのお願い</a></li>
-    </ul>
-  </div>
+  <div class="col-md-2"></div>
   <!-- 左フレーム -->
 <div class="col-md-10">
 
@@ -158,7 +142,14 @@ User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/536.5 (KHT
 <!-- SCRIPTS -->
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
+<script type="text/javascript">
 
+  $(function() {
+  
+  $(".col-md-2").load("side_menu1.html");
+  
+  });
+</script> 
 
 
 

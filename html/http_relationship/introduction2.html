@@ -56,7 +56,7 @@
 
 
 <!-- for bootstrap -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
 
 
@@ -91,23 +91,7 @@
   </nav>
 
 <div id="container">
-  <div class="col-md-2">
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="../index.html">始めに</a></li>
-      <li class="active"><a href="#">ブラウザとサーバの関係</a></li>
-      <li><a href="#">ブラウザとデータベースの関係</a></li>
-      <li><a href="sqli_introduction.html">SQLインジェクション</a></li>
-      
-      <li><a href="">脅威モデル</a></li>
-      <li><a href="">脅威モデル1.　Spoofing</a></li>
-      <li><a href="">脅威モデル2.　Tampering</a></li>
-      <li><a href="">脅威モデル3.　Reduction</a></li>
-      <li><a href="">脅威モデル4.　InformationDisclosure</a></li>
-      <li><a href="">脅威モデル5.　DoS</a></li>
-      <li><a href="">脅威モデル6.　Elavation　Privilleges</a></li>
-      <li><a href="questionaries.html">アンケートのお願い</a></li>
-    </ul>
-  </div>
+  <div class="col-md-2"></div>
   <!-- 左フレーム -->
 <div class="col-md-10">
 
@@ -117,13 +101,14 @@
 </ol>
 
 <div id="main">
-  <h1>サーバとブラウザの関係の演習</h1>
+  <h1>サーバとブラウザ、データベース関係の演習</h1>
   <p>ウェブアプリケーションを構成する　サーバとブラウザの関係を俯瞰的視点を通して確認していきましょう。</p>
 
   <h2>事前に確認する用語</h2>
   <ul>
     <li>サーバ　：　クライアントサーバモデルにおいてクライアントからの要求に対して何らかのサービスを提供する役割を果たす。今回はウェブサーバを中心にすすめる。</li>
-    <li>ブラウザ：　、ウェブページを画面や印刷機に出力したり、ハイパーリンクをたどったりするなどの機能がある。単にブラウザ（ブラウザー）と呼んだ場合、多くはウェブブラウザのことを指す。</li>
+    <li>ブラウザ：　ウェブページを画面や印刷機に出力したり、ハイパーリンクをたどったりするなどの機能がある。単にブラウザ（ブラウザー）と呼んだ場合、多くはウェブブラウザのことを指す。</li>
+    <li>関係データベース（RDB): データベースの利用者は、クエリ（問い掛け）をデータベースに与え、複数の関係を連結させてデータを検索したり、変更することができる。</li>
   </ul>
 
   
@@ -132,6 +117,7 @@
   <ul>
     <li><a href="http://ja.wikipedia.org/サーバ">サーバ</a></li>
     <li><a href="http://ja.wikipedia.org/ブラウザ">ブラウザ</a></li>
+    <li><a href="httpp://ja.wikipedia.org/関係データベース">関係データベース</a></li>
   </ul>
 
   <h2>演習を行うにあたって</h2>
@@ -142,7 +128,7 @@
 
   <h2>演習イメージと操作方法</h2>
   <p>演習は以下のような情報システム（ウェブアプリケーション）を抽象化したシミュレーションシステムを用います。</p>
-  <img src="images/exercise01_example.png" alt="演習イメージ画像" width="50%" height="auto">
+  <img src="images/exercise02_example.png" alt="演習イメージ画像" width="50%" height="auto">
   <p>以下の手順でシミュレーションを操作してみましょう。</p>
 
   <ol>
@@ -169,6 +155,19 @@
 </div>
 <!-- 右フレーム -->
 
+<!-- スクリプトでブロッキングを起こすものはここに記述
+ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
+<!-- SCRIPTS -->
+<!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<!-- Jquery -->
+<script type="text/javascript">
+
+  $(function() {
+  
+  $(".col-md-2").load("side_menu2.html");
+  
+  });
+</script> 
 
 
 

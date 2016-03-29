@@ -52,7 +52,7 @@
 
 
 <!-- for bootstrap -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
 
 
@@ -77,45 +77,12 @@
         <!--ブランド名 ロゴ名の表示-->
         <a class="navbar-brand" href="#">SecLearn</a>
 
-        <!--トグルボタンの設置-->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
       </div>
   </nav>
 
 <div id="container">
-  <div class="col-md-2">
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="../index.html">始めに</a></li>
-      <li><a href="../http_relationship/introduction.html">ブラウザとサーバの関係</a></li>
-      <li><a href="#">ブラウザとデータベースの関係</a></li>
-      <li class="active"><a href="sqli_introduction.html">SQLインジェクション</a></li>
-      
-      <li><a href="">脅威モデル</a></li>
-      <li><a href="">脅威モデル1.　Spoofing</a></li>
-      <li><a href="">脅威モデル2.　Tampering</a></li>
-      <li><a href="">脅威モデル3.　Reduction</a></li>
-      <li><a href="">脅威モデル4.　InformationDisclosure</a></li>
-      <li><a href="">脅威モデル5.　DoS</a></li>
-      <li><a href="">脅威モデル6.　Elavation　Privilleges</a></li>
-      <li><a href="questionaries.html">アンケートのお願い</a></li>
-    </ul>
-  </div>
-  <!-- 左フレーム -->
-<div class="col-md-8">
-  <!-- 正解の表示 -->
-<div class="alert alert-success alert-dismissible" role="alert" id="correct-popup">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>正解です！</strong> 次の章へ進みましょう！
-</div>
-
-<div class="alert alert-warning alert-dismissible" role="alert" id="incorrect-popup">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>どこか間違っているようです</strong>　確認してみましょう！
-</div>
+ 
+<div class="col-md-9">
 
 
 
@@ -127,12 +94,12 @@
 </ol>
 
   <div id="main">
-  <h2>情報ブロックを該当する　&quot;情報のやり取りの部分(矢印)　&quot; にドラッグしてください。</h2>
+  <h2>ウェブシステムの情報のやり取りに該当するブロックをドラッグ&amp;ドロップしてください</h2>
   <div id="drag_field">
     <button type="button" id="btn_start" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>play</button><button type="button" id="btn_stop" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>stop</button><button class="btn btn-warning" id="btn_reset" onclick="window.location.reload();"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>リセットする</button>　ステップ数：<span id="step_cnt">0</span>
    <div id="blocks_field">
-     <div id="drag1"; class="dragbox">HTMLリクエスト</div>
-     <div id="drag2"; class="dragbox">HTMLデータ </div>
+     <div id="drag1"; class="dragbox">HTTPリクエスト</div>
+     <div id="drag2"; class="dragbox">HTTPレスポンス</div>
      <div id="drag3"; class="dragbox">SQL </div>
      <div id="drag4"; class="dragbox">ユーザID &amp; パスワード</div>
      <div id="drag5"; class="dragbox">SYN/ACK</div>
@@ -162,13 +129,12 @@
     </div>
   </div>
   <!-- main -->
-<div class="control">
-   <button class="btn btn-primary" id="btn_eval"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>採点する</button> 
 </div>
 </div>
-</div>
+
+
 <!--右側表示システム -->
-<div class="col-md-2">
+<div class="col-md-3">
   <h3>ここにヒントや正解、フィードバックが表示されます</h3>
   <div id="right_message"></div>
 </div>
@@ -182,110 +148,7 @@
 <!-- SCRIPTS -->
 <!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <!-- Jquery -->
-<script type="text/javascript">
-
-// intilized nums
-  var user_answers = new Object();
-  var process_step_cnt = 0;
-
-  
-$(function() {
-// 1ドラッグ＆ドロップ機能を実装
-$(".dragbox").draggable({
-dragstart: function(e,ui){
-    $("#"+ui.draggable.attr("id")).css('z-index',3);
-
-},
-dragend: function(e,ui){
-    $("#"+ui.draggable.attr("id")).css('z-index',2);
-}});
-
-
-  $(".drop").droppable({
-    drop: function(e,ui) {
-     
-    }
-   });
-　$(".arrow").droppable({
-     drop: function(e,ui){
-
-    user_answers[$(this).attr("id")] = ui.draggable.attr("id");
-    //alert(user_answers.toSource());
-    
-  }});
-
-$(".dropindrag").droppable({
-drop:function(e,ui){
-
-user_answers[$(this).attr("id")] = ui.draggable.attr("id");
-
-
-//上書きしてボックスの中にあるように表現する。
-var target = $("#" + ui.draggable.attr("id"));
-
-alert(target.text());
-$(this).text(target.text());
-$(this).css('background-color',"#ff7f50");
-}
-});
-
-  /* 擬似デバッガを操作*/
-  $("#btn_start").click(function(){
-  process_obj = getDebuggerProcess();
-  processes = process_obj["process"];
-
-  /*変更している部分を表示する　*/
-$("#" + processes[process_step_cnt]["id"] ).css('border-color','red');
-$("#" + processes[process_step_cnt]["id"] ).css('border-width','5px');
-
-/*擬似デバッガ内での処理を行うステップ */
-processes[process_step_cnt]["action"]();
-
-
-if (process_step_cnt > 0){
-$("#" + processes[process_step_cnt -1]["id"] ).css('border-color','blue');
-$("#" + processes[process_step_cnt -1]["id"] ).css('border-width','2px');
-}
-  process_step_cnt++;
-　
-　$("#step_cnt").text(process_step_cnt);
-
-  //各要素の一括評価
-  if(process_step_cnt >= processes.length) {
-    Evaluate_once();
-  }
-
-
-
-  });
-
-
-/* arrowの中身が正解かどうか評価を行う　*/
- function Evaluate_once() {
-  //外部モジュール　Evaluate_xxxx.js内のEvaluateメソッドを用いて評価を行う
-  result_obj = Evaluate(user_answers);
-
-  
-  if(result_obj.result) {
-    //正解の時
-    $("#right_message").html(result_obj.feedback);
-    $("#correct-popup").show();
-
-  }else{
-    //不正解の時
-    $("#incorrect-popup").show();
-    $("#right_message").html(result_obj.feedback);
-  }
-  }
-
-  /* arrowの中身が正解かどうか評価を行う　*/
-  $("#btn_eval").click(function() {
-
-  });
-
-
-});
-</script>
+<script type="text/javascript" src="../js/debugger.js"></script>
 
 
 
